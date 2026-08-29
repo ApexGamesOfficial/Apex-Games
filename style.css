@@ -1,1 +1,607 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #05070b;
+    color: #f4f7fb;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.5;
+}
+
+
+/* =========================
+   NAVIGATION
+========================= */
+
+.navbar {
+    height: 82px;
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+
+    padding: 0 5%;
+
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+
+    background: rgba(5,7,11,0.94);
+
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+
+    width: 150px;
+}
+
+.brand img {
+    width: 145px;
+    height: auto;
+    display: block;
+}
+
+.navbar nav {
+    display: flex;
+    gap: 38px;
+
+    margin-left: auto;
+    margin-right: 45px;
+}
+
+.navbar nav a {
+    color: #aeb7c5;
+    text-decoration: none;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+
+    transition: color 0.2s ease;
+}
+
+.navbar nav a:hover,
+.navbar nav a.active {
+    color: #168cff;
+}
+
+.discord-button {
+    border: 1px solid #168cff;
+
+    color: #168cff;
+    text-decoration: none;
+
+    padding: 11px 18px;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    text-transform: uppercase;
+    letter-spacing: 1px;
+
+    transition: 0.2s ease;
+}
+
+.discord-button:hover {
+    background: #168cff;
+    color: #ffffff;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    min-height: 650px;
+
+    display: flex;
+    align-items: center;
+
+    padding: 80px 8%;
+
+    position: relative;
+    overflow: hidden;
+
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+
+    background:
+        radial-gradient(
+            circle at 75% 45%,
+            rgba(0,115,255,0.16),
+            transparent 32%
+        ),
+        #05070b;
+}
+
+.hero::after {
+    content: "";
+
+    position: absolute;
+
+    width: 500px;
+    height: 500px;
+
+    right: -180px;
+    top: 80px;
+
+    border: 1px solid rgba(22,140,255,0.15);
+
+    transform: rotate(45deg);
+}
+
+.hero-content {
+    max-width: 720px;
+    position: relative;
+    z-index: 2;
+}
+
+.eyebrow,
+.section-label {
+    color: #168cff;
+
+    font-size: 12px;
+    font-weight: 800;
+
+    letter-spacing: 3px;
+    text-transform: uppercase;
+
+    margin-bottom: 16px;
+}
+
+.hero h1 {
+    font-size: clamp(48px, 6vw, 82px);
+
+    line-height: 0.98;
+
+    letter-spacing: -3px;
+
+    font-weight: 800;
+}
+
+.hero h1 span {
+    color: #168cff;
+}
+
+.hero-description {
+    max-width: 560px;
+
+    margin-top: 28px;
+
+    color: #929cab;
+
+    font-size: 17px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 14px;
+
+    margin-top: 35px;
+}
+
+.button {
+    display: inline-block;
+
+    padding: 14px 24px;
+
+    text-decoration: none;
+
+    font-size: 13px;
+    font-weight: 800;
+
+    text-transform: uppercase;
+    letter-spacing: 1px;
+
+    transition: 0.2s ease;
+}
+
+.button.primary {
+    background: #168cff;
+    color: white;
+}
+
+.button.primary:hover {
+    background: #0b72d4;
+    transform: translateY(-2px);
+}
+
+.button.secondary {
+    border: 1px solid #3a4657;
+    color: white;
+}
+
+.button.secondary:hover {
+    border-color: #168cff;
+    color: #168cff;
+}
+
+.hero-mark {
+    position: absolute;
+
+    right: 7%;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    width: 420px;
+
+    opacity: 0.07;
+}
+
+.hero-mark img {
+    width: 100%;
+}
+
+
+/* =========================
+   FEATURED
+========================= */
+
+.featured {
+    padding: 90px 7%;
+}
+
+.section-heading {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+
+    margin-bottom: 35px;
+}
+
+.section-heading h2 {
+    font-size: 44px;
+    letter-spacing: -1px;
+}
+
+.view-all {
+    color: #168cff;
+    text-decoration: none;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.game-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 22px;
+}
+
+.game-card {
+    background: #0a0d13;
+
+    border: 1px solid #18202c;
+
+    transition: 0.25s ease;
+}
+
+.game-card:hover {
+    border-color: #168cff;
+    transform: translateY(-5px);
+}
+
+.game-image {
+    height: 245px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+    overflow: hidden;
+}
+
+.game-image::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(22,140,255,0.16),
+            transparent
+        );
+}
+
+.game-one {
+    background:
+        radial-gradient(
+            circle at 70% 30%,
+            #16487c,
+            transparent 35%
+        ),
+        #0b111b;
+}
+
+.game-two {
+    background:
+        radial-gradient(
+            circle at 30% 50%,
+            #24344c,
+            transparent 40%
+        ),
+        #090d14;
+}
+
+.game-three {
+    background:
+        linear-gradient(
+            135deg,
+            #10141d,
+            #07172a
+        );
+}
+
+.game-image span {
+    position: relative;
+
+    color: rgba(255,255,255,0.6);
+
+    font-size: 11px;
+    font-weight: 800;
+
+    letter-spacing: 2px;
+}
+
+.game-info {
+    padding: 22px;
+}
+
+.game-info p {
+    color: #168cff;
+
+    font-size: 10px;
+    font-weight: 800;
+
+    letter-spacing: 2px;
+}
+
+.game-info h3 {
+    font-size: 22px;
+
+    margin: 7px 0 16px;
+}
+
+.game-info a {
+    color: #aeb7c5;
+
+    text-decoration: none;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.game-info a:hover {
+    color: #168cff;
+}
+
+
+/* =========================
+   PLAY PULSE
+========================= */
+
+.play-pulse {
+    margin: 20px 7% 90px;
+
+    padding: 55px;
+
+    border-left: 3px solid #168cff;
+
+    background:
+        linear-gradient(
+            100deg,
+            #0b111a,
+            #070a10
+        );
+}
+
+.play-pulse h2 {
+    font-size: 42px;
+    margin-bottom: 12px;
+}
+
+.play-pulse p:not(.section-label) {
+    color: #929cab;
+
+    max-width: 600px;
+
+    margin-bottom: 20px;
+}
+
+.text-link {
+    color: #168cff;
+
+    text-decoration: none;
+
+    font-size: 13px;
+    font-weight: 800;
+
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+
+/* =========================
+   STORE
+========================= */
+
+.store-preview {
+    padding: 100px 8%;
+
+    min-height: 430px;
+
+    display: flex;
+    align-items: center;
+
+    background:
+        linear-gradient(
+            90deg,
+            #07111f,
+            #05070b 70%
+        );
+
+    border-top: 1px solid rgba(255,255,255,0.07);
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+
+.store-text h2 {
+    font-size: 58px;
+
+    line-height: 1;
+
+    margin-bottom: 22px;
+}
+
+.store-text > p:not(.section-label) {
+    color: #929cab;
+
+    max-width: 500px;
+
+    margin-bottom: 28px;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    padding: 55px 7% 30px;
+
+    display: grid;
+
+    grid-template-columns:
+        1fr auto;
+
+    gap: 40px;
+
+    border-top: 1px solid rgba(255,255,255,0.07);
+}
+
+.footer-brand img {
+    width: 130px;
+}
+
+.footer-brand p {
+    color: #697483;
+
+    font-size: 12px;
+
+    margin-top: 12px;
+}
+
+.footer-links {
+    display: flex;
+    gap: 25px;
+}
+
+.footer-links a {
+    color: #929cab;
+
+    text-decoration: none;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.footer-links a:hover {
+    color: #168cff;
+}
+
+.copyright {
+    grid-column: 1 / -1;
+
+    color: #4f5967;
+
+    font-size: 11px;
+
+    padding-top: 25px;
+
+    border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 850px) {
+
+    .navbar {
+        padding: 0 20px;
+    }
+
+    .navbar nav {
+        display: none;
+    }
+
+    .discord-button {
+        margin-left: auto;
+    }
+
+    .hero {
+        padding: 70px 25px;
+    }
+
+    .hero-mark {
+        display: none;
+    }
+
+    .game-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .featured {
+        padding: 70px 25px;
+    }
+
+    .play-pulse {
+        margin: 10px 25px 70px;
+        padding: 35px;
+    }
+
+    .store-preview {
+        padding: 70px 25px;
+    }
+
+    footer {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-links {
+        flex-wrap: wrap;
+    }
+
+    .copyright {
+        grid-column: auto;
+    }
+}
