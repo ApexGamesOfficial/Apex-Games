@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Library | Apex Games</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="library.css">
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+
+    <header class="navbar">
+
+        <a href="index.html" class="brand">
+            <img src="assets/apex-logo.png" alt="Apex Games">
+        </a>
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="games.html">Games</a>
+            <a href="library.html" class="active">Library</a>
+            <a href="store.html">Store</a>
+            <a href="news.html">News</a>
+            <a href="about.html">About</a>
+        </nav>
+
+        <a href="login.html" class="discord-button">
+            Log In
+        </a>
+
+    </header>
+
+
+    <!-- LIBRARY -->
+
+    <main class="library-app">
+
+        <!-- LEFT SIDE -->
+
+        <aside class="library-sidebar">
+
+            <div class="library-title">
+                <p>APEX GAMES</p>
+                <h1>Library</h1>
+            </div>
+
+            <div class="library-search">
+                <input
+                    type="text"
+                    id="librarySearch"
+                    placeholder="Search your library..."
+                >
+            </div>
+
+            <div class="library-filters">
+
+                <button class="filter-button active">
+                    All Games
+                </button>
+
+                <button class="filter-button">
+                    Installed
+                </button>
+
+                <button class="filter-button">
+                    Favorites
+                </button>
+
+                <button class="filter-button">
+                    Recently Played
+                </button>
+
+            </div>
+
+
+            <!-- GAME LIST -->
+
+            <div class="library-game-list" id="gameList">
+
+                <button
+                    class="library-game active"
+                    data-game="demo"
+                >
+
+                    <div class="game-list-icon">
+                        A
+                    </div>
+
+                    <div>
+                        <strong>Apex Demo</strong>
+                        <span>Ready to Play</span>
+                    </div>
+
+                </button>
+
+
+                <button
+                    class="library-game"
+                    data-game="project"
+                >
+
+                    <div class="game-list-icon">
+                        P
+                    </div>
+
+                    <div>
+                        <strong>Project Unknown</strong>
+                        <span>Not Installed</span>
+                    </div>
+
+                </button>
+
+            </div>
+
+        </aside>
+
+
+        <!-- SELECTED GAME -->
+
+        <section class="selected-game">
+
+            <!-- BANNER -->
+
+            <div class="game-banner">
+
+                <div class="banner-overlay">
+
+                    <p class="game-studio">
+                        APEX GAMES
+                    </p>
+
+                    <h2 id="selectedTitle">
+                        Apex Demo
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <!-- GAME ACTIONS -->
+
+            <div class="game-actions-panel">
+
+                <button class="play-game-button" id="playButton">
+                    ▶ PLAY
+                </button>
+
+
+                <div class="game-stat">
+
+                    <span>PLAYTIME</span>
+
+                    <strong id="playtime">
+                        0 hours
+                    </strong>
+
+                </div>
+
+
+                <div class="game-stat">
+
+                    <span>LAST PLAYED</span>
+
+                    <strong id="lastPlayed">
+                        Never
+                    </strong>
+
+                </div>
+
+
+                <button
+                    class="favorite-game-button"
+                    id="favoriteButton"
+                    title="Favorite"
+                >
+                    ♡
+                </button>
+
+            </div>
+
+
+            <!-- GAME INFORMATION -->
+
+            <div class="game-dashboard">
+
+                <!-- LEFT -->
+
+                <div class="game-main-info">
+
+                    <section class="dashboard-card">
+
+                        <p class="section-label">
+                            ABOUT
+                        </p>
+
+                        <h3 id="aboutTitle">
+                            Apex Demo
+                        </h3>
+
+                        <p id="gameDescription">
+                            This is a temporary game used to preview
+                            your Apex Games Library. Your owned games
+                            will eventually appear here automatically.
+                        </p>
+
+                    </section>
+
+
+                    <section class="dashboard-card">
+
+                        <div class="card-heading">
+
+                            <div>
+                                <p class="section-label">
+                                    ACHIEVEMENTS
+                                </p>
+
+                                <h3>
+                                    Your Progress
+                                </h3>
+                            </div>
+
+                            <strong>
+                                0 / 0
+                            </strong>
+
+                        </div>
+
+                        <div class="achievement-progress">
+
+                            <div class="achievement-bar"></div>
+
+                        </div>
+
+                        <p class="muted-text">
+                            Achievements will appear here for supported games.
+                        </p>
+
+                    </section>
+
+                </div>
+
+
+                <!-- RIGHT -->
+
+                <aside class="game-side-info">
+
+                    <!-- RATINGS -->
+
+                    <section class="dashboard-card rating-card">
+
+                        <p class="section-label">
+                            COMMUNITY RATING
+                        </p>
+
+                        <div class="community-rating">
+
+                            <strong id="communityScore">
+                                —
+                            </strong>
+
+                            <span>★</span>
+
+                        </div>
+
+                        <p class="rating-count" id="ratingCount">
+                            No ratings yet
+                        </p>
+
+
+                        <div class="rating-divider"></div>
+
+
+                        <p class="your-rating-title">
+                            YOUR RATING
+                        </p>
+
+                        <div
+                            class="star-rating"
+                            id="starRating"
+                            aria-label="Rate this game"
+                        >
+
+                            <button data-rating="1">☆</button>
+                            <button data-rating="2">☆</button>
+                            <button data-rating="3">☆</button>
+                            <button data-rating="4">☆</button>
+                            <button data-rating="5">☆</button>
+
+                        </div>
+
+                        <p
+                            class="rating-message"
+                            id="ratingMessage"
+                        >
+                            Not rated
+                        </p>
+
+                    </section>
+
+
+                    <!-- DETAILS -->
+
+                    <section class="dashboard-card">
+
+                        <p class="section-label">
+                            GAME DETAILS
+                        </p>
+
+                        <div class="detail-row">
+                            <span>Developer</span>
+                            <strong>Apex Games</strong>
+                        </div>
+
+                        <div class="detail-row">
+                            <span>Status</span>
+                            <strong id="gameStatus">
+                                Installed
+                            </strong>
+                        </div>
+
+                        <div class="detail-row">
+                            <span>Platform</span>
+                            <strong>
+                                Web
+                            </strong>
+                        </div>
+
+                    </section>
+
+                </aside>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script src="library.js"></script>
+
+</body>
+
+</html>
