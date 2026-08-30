@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Create Account | Apex Games</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="account.css">
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+
+    <header class="navbar">
+
+        <a href="index.html" class="brand">
+            <img src="assets/apex-logo.png" alt="Apex Games">
+        </a>
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="games.html">Games</a>
+            <a href="library.html">Library</a>
+            <a href="store.html">Store</a>
+            <a href="news.html">News</a>
+            <a href="about.html">About</a>
+        </nav>
+
+        <a href="login.html" class="discord-button">
+            Log In
+        </a>
+
+    </header>
+
+
+    <!-- CREATE ACCOUNT -->
+
+    <main class="account-page">
+
+        <section class="account-box">
+
+            <div class="account-heading">
+
+                <p class="account-label">
+                    APEX GAMES ACCOUNT
+                </p>
+
+                <h1>Create Account</h1>
+
+                <p>
+                    One account for Apex Games, your Library,
+                    ratings, and connected Apex experiences.
+                </p>
+
+            </div>
+
+
+            <form id="signupForm">
+
+                <div class="form-group">
+
+                    <label for="username">
+                        USERNAME
+                    </label>
+
+                    <input
+                        type="text"
+                        id="username"
+                        autocomplete="username"
+                        placeholder="Choose a username"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="email">
+                        EMAIL
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        autocomplete="email"
+                        placeholder="Enter your email"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="password">
+                        PASSWORD
+                    </label>
+
+                    <input
+                        type="password"
+                        id="password"
+                        autocomplete="new-password"
+                        placeholder="Create a password"
+                        minlength="8"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="confirmPassword">
+                        CONFIRM PASSWORD
+                    </label>
+
+                    <input
+                        type="password"
+                        id="confirmPassword"
+                        autocomplete="new-password"
+                        placeholder="Enter your password again"
+                        minlength="8"
+                        required
+                    >
+
+                </div>
+
+
+                <p class="form-message" id="formMessage"></p>
+
+
+                <button type="submit" class="account-submit">
+                    CREATE ACCOUNT
+                </button>
+
+            </form>
+
+
+            <div class="account-bottom">
+
+                <p>
+                    Already have an Apex Games account?
+                </p>
+
+                <a href="login.html">
+                    Log In
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script src="signup.js"></script>
+
+</body>
+
+</html>
