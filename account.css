@@ -1,0 +1,212 @@
+/* =====================================
+   APEX GAMES ACCOUNTS
+===================================== */
+
+.account-page {
+    min-height: calc(100vh - 82px);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 60px 20px;
+
+    background:
+        radial-gradient(
+            circle at 50% 20%,
+            rgba(22, 140, 255, 0.15),
+            transparent 35%
+        ),
+        #05070b;
+}
+
+
+/* ACCOUNT BOX */
+
+.account-box {
+    width: 100%;
+    max-width: 470px;
+
+    background: #090d14;
+
+    border: 1px solid rgba(255,255,255,0.08);
+
+    padding: 42px;
+
+    box-shadow:
+        0 25px 70px rgba(0,0,0,0.35);
+}
+
+
+/* HEADING */
+
+.account-heading {
+    margin-bottom: 32px;
+}
+
+.account-label {
+    color: #168cff;
+
+    font-size: 10px;
+    font-weight: 800;
+
+    letter-spacing: 2.5px;
+
+    margin-bottom: 10px;
+}
+
+.account-heading h1 {
+    font-size: 34px;
+    margin-bottom: 10px;
+}
+
+.account-heading > p:not(.account-label) {
+    color: #7e8998;
+
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+
+/* FORM */
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+
+    color: #9ba5b3;
+
+    font-size: 10px;
+    font-weight: 800;
+
+    letter-spacing: 1.4px;
+
+    margin-bottom: 7px;
+}
+
+.form-group input {
+    width: 100%;
+    height: 48px;
+
+    background: #10151d;
+
+    border: 1px solid rgba(255,255,255,0.09);
+
+    color: white;
+
+    padding: 0 14px;
+
+    outline: none;
+
+    font-size: 14px;
+
+    transition: 0.2s;
+}
+
+.form-group input::placeholder {
+    color: #515b69;
+}
+
+.form-group input:focus {
+    border-color: #168cff;
+
+    box-shadow:
+        0 0 0 2px rgba(22,140,255,0.08);
+}
+
+
+/* SUBMIT */
+
+.account-submit {
+    width: 100%;
+    height: 50px;
+
+    margin-top: 5px;
+
+    border: 0;
+
+    background: #168cff;
+
+    color: white;
+
+    font-size: 12px;
+    font-weight: 900;
+
+    letter-spacing: 1.4px;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.account-submit:hover {
+    background: #0878e4;
+
+    transform: translateY(-1px);
+}
+
+
+/* MESSAGE */
+
+.form-message {
+    min-height: 18px;
+
+    margin: -5px 0 12px;
+
+    font-size: 12px;
+
+    color: #ff6767;
+}
+
+
+/* BOTTOM */
+
+.account-bottom {
+    border-top: 1px solid rgba(255,255,255,0.07);
+
+    margin-top: 28px;
+    padding-top: 23px;
+
+    text-align: center;
+}
+
+.account-bottom p {
+    color: #727d8c;
+
+    font-size: 12px;
+}
+
+.account-bottom a {
+    display: inline-block;
+
+    color: #168cff;
+
+    text-decoration: none;
+
+    font-size: 12px;
+    font-weight: 800;
+
+    margin-top: 5px;
+}
+
+.account-bottom a:hover {
+    text-decoration: underline;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+    .account-box {
+        padding: 30px 22px;
+    }
+
+    .account-heading h1 {
+        font-size: 29px;
+    }
+
+}
