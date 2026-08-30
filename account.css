@@ -210,3 +210,42 @@
     }
 
 }
+/* LOGIN OPTIONS */
+
+.login-options {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+
+    margin-top: -4px;
+    margin-bottom: 20px;
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+
+    color: #7e8998;
+    font-size: 12px;
+
+    cursor: pointer;
+}
+
+.remember-me input {
+    accent-color: #168cff;
+}
+
+.forgot-password {
+    color: #168cff;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    text-decoration: none;
+}
+
+.forgot-password:hover {
+    text-decoration: underline;
+}
