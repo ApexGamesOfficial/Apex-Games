@@ -3,237 +3,504 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>Apex Games</title>
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="home.css">
 </head>
 
 <body>
 
-    <!-- NAVIGATION -->
+    <!-- ========================================
+         NAVIGATION
+    ========================================= -->
 
-    <header class="navbar">
+    <header class="topbar">
 
-        <a href="index.html" class="brand">
-            <img src="assets/apex-logo.png" alt="Apex Games">
-        </a>
+        <div class="nav-left">
 
-       <nav>
-    <a href="index.html" class="active">Home</a>
-    <a href="games.html">Games</a>
-    <a href="library.html">Library</a>
-    <a href="store.html">Store</a>
-    <a href="news.html">News</a>
-    <a href="about.html">About</a>
-</nav>
+            <a href="index.html" class="brand">
+                <img
+                    src="assets/apex-logo.png"
+                    alt="Apex Games"
+                >
+            </a>
 
-<a href="signup.html" class="discord-button">
-    Create Account
-</a>
+            <nav class="main-nav">
+
+                <a href="index.html" class="active">
+                    Home
+                </a>
+
+                <a href="library.html">
+                    Library
+                </a>
+
+                <a href="chat.html">
+                    Chat
+                </a>
+
+                <a href="store.html">
+                    Store
+                </a>
+
+                <a href="news.html">
+                    News
+                </a>
+
+                <a href="about.html">
+                    About
+                </a>
+
+            </nav>
+
+        </div>
+
+
+        <!-- SEARCH -->
+
+        <form
+            class="nav-search"
+            id="navSearch"
+        >
+
+            <span class="search-icon">
+                ⌕
+            </span>
+
+            <input
+                type="search"
+                id="navSearchInput"
+                placeholder="Search Apex Games"
+                autocomplete="off"
+                aria-label="Search Apex Games"
+            >
+
+        </form>
+
+
+        <!-- ACCOUNT -->
+
+        <div class="nav-account">
+
+            <!-- LOGGED OUT -->
+
+            <div
+                class="logged-out-account"
+                id="loggedOutAccount"
+            >
+
+                <a
+                    href="login.html"
+                    class="login-link"
+                >
+                    Log In
+                </a>
+
+                <a
+                    href="signup.html"
+                    class="create-account-button"
+                >
+                    Create Account
+                </a>
+
+            </div>
+
+
+            <!-- LOGGED IN -->
+
+            <a
+                href="profile.html"
+                class="profile-widget"
+                id="profileWidget"
+                hidden
+            >
+
+                <img
+                    src="assets/default-profile.png"
+                    alt=""
+                    id="profilePicture"
+                >
+
+                <span id="profileGamertag">
+                    Player
+                </span>
+
+            </a>
+
+        </div>
 
     </header>
 
 
-    <!-- HERO -->
 
     <main>
 
+        <!-- ========================================
+             HERO
+        ========================================= -->
+
         <section class="hero">
 
-            <div class="hero-content">
+            <div class="hero-background"></div>
+            <div class="hero-overlay"></div>
 
-                <p class="eyebrow">
-                    APEX GAMES
-                </p>
 
-                <h1>
-                    Creating Worlds.<br>
-                    <span>Elevating Reality.</span>
-                </h1>
+            <div class="hero-layout">
 
-                <p class="hero-description">
-                    We create games, experiences, and worlds
-                    designed to stay with you long after you
-                    put down the controller.
-                </p>
 
-                <div class="hero-buttons">
+                <!-- LEFT HERO -->
 
-                    <a href="games.html" class="button primary">
-                        Explore Games
-                    </a>
+                <div class="hero-branding">
 
-                    <a href="store.html" class="button secondary">
-                        Visit Store
-                    </a>
+                    <p class="eyebrow">
+                        APEX GAMES
+                    </p>
+
+                    <h1>
+                        Creating Worlds.
+                        <span>
+                            Elevating Reality.
+                        </span>
+                    </h1>
+
+                    <p class="hero-description">
+                        Games, experiences, and worlds
+                        built to go beyond the screen.
+                    </p>
+
+                    <div class="hero-actions">
+
+                        <a
+                            href="store.html"
+                            class="hero-button primary"
+                        >
+                            Explore Games
+                        </a>
+
+                        <a
+                            href="news.html"
+                            class="hero-button secondary"
+                        >
+                            Latest News
+                        </a>
+
+                    </div>
 
                 </div>
+
+
+
+                <!-- RIGHT HERO: NEWS SPOTLIGHT -->
+
+                <article
+                    class="news-spotlight"
+                    id="newsSpotlight"
+                >
+
+                    <div
+                        class="spotlight-image"
+                        id="spotlightImage"
+                    >
+
+                        <div class="spotlight-badge">
+                            FEATURED NEWS
+                        </div>
+
+                    </div>
+
+
+                    <div class="spotlight-content">
+
+                        <div class="spotlight-meta">
+
+                            <span id="spotlightCategory">
+                                APEX NEWS
+                            </span>
+
+                            <span class="meta-dot"></span>
+
+                            <span id="spotlightDate">
+                                2026
+                            </span>
+
+                        </div>
+
+
+                        <h2 id="spotlightTitle">
+                            What's happening at Apex Games
+                        </h2>
+
+
+                        <p id="spotlightDescription">
+                            Discover the latest announcements,
+                            updates, and releases from Apex Games.
+                        </p>
+
+
+                        <a
+                            href="news.html"
+                            id="spotlightLink"
+                            class="spotlight-link"
+                        >
+                            Read Story
+                            <span>→</span>
+                        </a>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+
+            <div class="scroll-indicator">
+
+                <span>
+                    SCROLL TO DISCOVER
+                </span>
+
+                <div class="scroll-line"></div>
 
             </div>
 
         </section>
 
 
-        <!-- FEATURED GAMES -->
 
-        <section class="featured">
+        <!-- ========================================
+             DISCOVER APEX
+        ========================================= -->
+
+        <section class="discover-section">
 
             <div class="section-heading">
 
                 <div>
+
                     <p class="section-label">
-                        OUR GAMES
+                        DISCOVER APEX
                     </p>
 
                     <h2>
-                        Featured
+                        More than a game.
                     </h2>
+
                 </div>
 
-                <a href="games.html" class="view-all">
-                    View All →
-                </a>
+                <p class="section-description">
+                    Explore what's happening across
+                    Apex Games.
+                </p>
 
             </div>
 
 
-            <div class="game-grid">
+
+            <div class="discover-grid">
 
 
-                <!-- GAME 1 -->
+                <!-- FEATURED RELEASE -->
 
-                <article class="game-card">
+                <a
+                    href="games.html"
+                    class="discover-card featured-release"
+                >
 
-                    <div class="game-image game-one">
-                        <span>COMING SOON</span>
-                    </div>
+                    <div class="discover-card-background"></div>
 
-                    <div class="game-info">
+                    <div class="discover-card-content">
 
-                        <p>APEX GAMES</p>
-
-                        <h3>
-                            Your First Game
-                        </h3>
-
-                        <a href="#">
-                            Learn More →
-                        </a>
-
-                    </div>
-
-                </article>
-
-
-                <!-- GAME 2 -->
-
-                <article class="game-card">
-
-                    <div class="game-image game-two">
-                        <span>IN DEVELOPMENT</span>
-                    </div>
-
-                    <div class="game-info">
-
-                        <p>APEX GAMES</p>
+                        <p class="card-label">
+                            FEATURED RELEASE
+                        </p>
 
                         <h3>
-                            Tramp-O-Line!
+                            Enter the next
+                            Apex experience.
                         </h3>
 
-                        <a href="#">
-                            Learn More →
-                        </a>
+                        <p>
+                            Discover games currently being
+                            developed by Apex Games.
+                        </p>
+
+                        <span class="discover-link">
+                            Explore Games →
+                        </span>
 
                     </div>
 
-                </article>
+                </a>
 
 
-                <!-- GAME 3 -->
 
-                <article class="game-card">
+                <!-- COMMUNITY -->
 
-                    <div class="game-image game-three">
-                        <span>MORE TO COME</span>
-                    </div>
+                <a
+                    href="chat.html"
+                    class="discover-card community-card"
+                >
 
-                    <div class="game-info">
+                    <div class="discover-card-content">
 
-                        <p>APEX GAMES</p>
+                        <p class="card-label">
+                            COMMUNITY
+                        </p>
 
                         <h3>
-                            What's Next?
+                            Your friends.
+                            Your games.
                         </h3>
 
-                        <a href="#">
-                            Learn More →
-                        </a>
+                        <p>
+                            Connect with friends, see what
+                            they're playing, and stay connected.
+                        </p>
+
+                        <span class="discover-link">
+                            Open Chat →
+                        </span>
 
                     </div>
 
-                </article>
+                </a>
 
+
+
+                <!-- LIBRARY -->
+
+                <a
+                    href="library.html"
+                    class="discover-card library-card"
+                >
+
+                    <div class="discover-card-content">
+
+                        <p class="card-label">
+                            YOUR LIBRARY
+                        </p>
+
+                        <h3>
+                            Everything you own.
+                            One place.
+                        </h3>
+
+                        <p>
+                            Access your games and experiences
+                            across Apex Games.
+                        </p>
+
+                        <span class="discover-link">
+                            View Library →
+                        </span>
+
+                    </div>
+
+                </a>
 
             </div>
 
         </section>
 
 
-        <!-- PLAY PULSE -->
 
-        <section class="play-pulse">
+        <!-- ========================================
+             SECOND SCROLL AREA
+             LATEST AT APEX
+        ========================================= -->
 
-            <div>
+        <section class="latest-section">
 
-                <p class="section-label">
-                    AN APEX GAMES PROJECT
-                </p>
+            <div class="section-heading">
 
-                <h2>
-                    Play Pulse
-                </h2>
+                <div>
 
-                <p>
-                    A gaming portal created by Apex Games.
-                    Discover games, play instantly, and
-                    explore what's next.
-                </p>
+                    <p class="section-label">
+                        LATEST AT APEX
+                    </p>
 
-               <a href="https://apexgamesofficial.github.io/index.html" class="text-link">
-    Visit Play Pulse →
-</a>
+                    <h2>
+                        What's happening now.
+                    </h2>
+
+                </div>
+
+
+                <a
+                    href="news.html"
+                    class="view-all"
+                >
+                    View All News →
+                </a>
+
+            </div>
+
+
+
+            <div
+                class="latest-news-grid"
+                id="latestNewsGrid"
+            >
+
+                <!-- Filled automatically by home.js -->
 
             </div>
 
         </section>
 
 
-        <!-- STORE -->
 
-        <section class="store-preview">
+        <!-- ========================================
+             YOUR APEX
+        ========================================= -->
 
-            <div class="store-text">
+        <section class="your-apex">
 
-                <p class="section-label">
-                    APEX GAMES STORE
-                </p>
+            <div class="your-apex-inner">
 
-                <h2>
-                    Games worth<br>
-                    playing.
-                </h2>
+                <div class="your-apex-copy">
 
-                <p>
-                    Explore games from Apex Games and
-                    developers we're proud to work with.
-                </p>
+                    <p class="section-label">
+                        YOUR APEX
+                    </p>
 
-                <a href="store.html" class="button primary">
-                    Browse Store
-                </a>
+                    <h2>
+                        One account.
+                        Everything Apex.
+                    </h2>
+
+                    <p>
+                        Your library, friends, profile,
+                        activity, and games — connected
+                        through your Apex Games Account.
+                    </p>
+
+                </div>
+
+
+                <div class="your-apex-actions">
+
+                    <a
+                        href="signup.html"
+                        class="hero-button primary"
+                    >
+                        Create Account
+                    </a>
+
+                    <a
+                        href="login.html"
+                        class="hero-button secondary"
+                    >
+                        Log In
+                    </a>
+
+                </div>
 
             </div>
 
@@ -242,44 +509,71 @@
     </main>
 
 
-    <!-- FOOTER -->
+
+    <!-- ========================================
+         FOOTER
+    ========================================= -->
 
     <footer>
 
-        <div class="footer-brand">
+        <div class="footer-top">
 
-            <img src="assets/apex-logo.png" alt="Apex Games">
+            <div class="footer-brand">
 
-            <p>
-                Creating Worlds. Elevating Reality.
-            </p>
+                <img
+                    src="assets/apex-logo.png"
+                    alt="Apex Games"
+                >
+
+                <p>
+                    Creating Worlds.
+                    Elevating Reality.
+                </p>
+
+            </div>
+
+
+            <div class="footer-links">
+
+                <a href="library.html">
+                    Library
+                </a>
+
+                <a href="chat.html">
+                    Chat
+                </a>
+
+                <a href="store.html">
+                    Store
+                </a>
+
+                <a href="news.html">
+                    News
+                </a>
+
+                <a href="about.html">
+                    About
+                </a>
+
+            </div>
 
         </div>
 
 
-        <div class="footer-links">
+        <div class="footer-bottom">
 
-            <a href="games.html">Games</a>
-            <a href="store.html">Store</a>
-            <a href="news.html">News</a>
-            <a href="about.html">About</a>
-
-        </div>
-
-
-        <div class="copyright">
-
-            © 2026 Apex Games. All Rights Reserved.
+            © 2026 Apex Games.
+            All Rights Reserved.
 
         </div>
 
     </footer>
 
 
-    <script src="script.js"></script>
+
+    <script src="news-data.js"></script>
+    <script src="home.js"></script>
 
 </body>
 
 </html>
-
-
