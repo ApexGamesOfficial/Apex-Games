@@ -1,0 +1,168 @@
+.profile-page {
+    min-height: 100vh;
+    padding: 130px 8% 80px;
+    background:
+        radial-gradient(
+            circle at 20% 0%,
+            rgba(22, 140, 255, 0.12),
+            transparent 30%
+        ),
+        #05070b;
+}
+
+
+.profile-hero {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    padding-bottom: 45px;
+    border-bottom: 1px solid rgba(255,255,255,.08);
+}
+
+
+.profile-avatar {
+    width: 150px;
+    height: 150px;
+
+    object-fit: cover;
+
+    border-radius: 12px;
+
+    border:
+        1px solid rgba(62,161,255,.35);
+
+    background: #0b1119;
+}
+
+
+.profile-main-info h1 {
+    font-size: clamp(40px, 5vw, 70px);
+    line-height: 1;
+    margin: 8px 0 10px;
+}
+
+
+.profile-label,
+.section-label {
+    color: #3ea1ff;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+
+.profile-gamertag {
+    color: #8f9baa;
+    font-size: 18px;
+}
+
+
+.profile-bio {
+    max-width: 600px;
+    margin-top: 18px;
+
+    color: #98a4b3;
+    line-height: 1.7;
+}
+
+
+.profile-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 25px;
+
+    margin-top: 35px;
+}
+
+
+.profile-card {
+    background: #0a0f16;
+
+    border:
+        1px solid rgba(255,255,255,.08);
+
+    padding: 28px;
+
+    border-radius: 8px;
+}
+
+
+.profile-card h2 {
+    margin: 7px 0 24px;
+}
+
+
+.profile-detail-row {
+    display: flex;
+    justify-content: space-between;
+
+    padding: 14px 0;
+
+    border-bottom:
+        1px solid rgba(255,255,255,.06);
+}
+
+
+.profile-detail-row span {
+    color: #7f8b9a;
+}
+
+
+.profile-action {
+    width: 100%;
+    min-height: 48px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin-top: 12px;
+
+    border-radius: 5px;
+
+    font-weight: 800;
+    text-decoration: none;
+
+    cursor: pointer;
+}
+
+
+.profile-action.primary {
+    background: #168cff;
+    color: white;
+    border: 0;
+}
+
+
+.profile-action.primary:hover {
+    background: #3ea1ff;
+}
+
+
+.profile-action.danger {
+    background: transparent;
+    color: #d4dce5;
+
+    border:
+        1px solid rgba(255,255,255,.12);
+}
+
+
+.profile-action.danger:hover {
+    background:
+        rgba(255,255,255,.05);
+}
+
+
+@media (max-width: 800px) {
+
+    .profile-hero {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .profile-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
