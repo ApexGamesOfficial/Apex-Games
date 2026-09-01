@@ -52,9 +52,8 @@ async function updateAccountNavbar() {
     profileGamertag.textContent =
         profile.gamertag;
 
-
-    profilePicture.src =
-        profile.avatar_url || "default-profile.png";
+profilePicture.src =
+    profile.avatar_url || "Default Apex Games Profile Picture.png";
 
 
     loggedOutAccount.hidden = true;
