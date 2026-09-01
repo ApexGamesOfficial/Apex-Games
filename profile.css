@@ -849,3 +849,170 @@ body {
     box-shadow:
         0 0 12px rgba(67, 209, 122, 0.8);
 }
+/* =========================================
+   PROFILE STATUS MENU
+========================================= */
+
+.status-wrapper {
+    position: relative;
+    width: fit-content;
+    margin-top: 10px;
+}
+
+.profile-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+
+    padding: 0;
+
+    border: 0;
+    background: transparent;
+
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 1.5px;
+
+    cursor: pointer;
+}
+
+.profile-status .status-dot {
+    width: 8px;
+    height: 8px;
+
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.status-arrow {
+    margin-left: 2px;
+
+    font-size: 9px;
+    opacity: .6;
+}
+
+
+/* ONLINE */
+
+.profile-status.online {
+    color: #43d17a;
+}
+
+.profile-status.online .status-dot {
+    background: #43d17a;
+    box-shadow: 0 0 12px rgba(67, 209, 122, .8);
+}
+
+
+/* AWAY */
+
+.profile-status.away {
+    color: #e8b84a;
+}
+
+.profile-status.away .status-dot {
+    background: #e8b84a;
+    box-shadow: 0 0 12px rgba(232, 184, 74, .7);
+}
+
+
+/* DO NOT DISTURB */
+
+.profile-status.dnd {
+    color: #ef5b5b;
+}
+
+.profile-status.dnd .status-dot {
+    background: #ef5b5b;
+    box-shadow: 0 0 12px rgba(239, 91, 91, .7);
+}
+
+
+/* APPEAR OFFLINE */
+
+.profile-status.offline {
+    color: #7d8998;
+}
+
+.profile-status.offline .status-dot {
+    background: #7d8998;
+}
+
+
+/* DROPDOWN */
+
+.status-menu {
+    position: absolute;
+
+    top: calc(100% + 10px);
+    left: 0;
+
+    width: 190px;
+
+    padding: 7px;
+
+    background: #0b1118;
+
+    border:
+        1px solid rgba(255,255,255,.10);
+
+    box-shadow:
+        0 15px 35px rgba(0,0,0,.45);
+
+    z-index: 50;
+}
+
+.status-menu[hidden] {
+    display: none;
+}
+
+.status-menu button {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 11px 10px;
+
+    border: 0;
+
+    background: transparent;
+
+    color: #dce4ed;
+
+    text-align: left;
+
+    font: inherit;
+
+    cursor: pointer;
+}
+
+.status-menu button:hover {
+    background:
+        rgba(255,255,255,.05);
+}
+
+.status-choice-dot {
+    width: 8px;
+    height: 8px;
+
+    border-radius: 50%;
+}
+
+.status-choice-dot.online {
+    background: #43d17a;
+}
+
+.status-choice-dot.away {
+    background: #e8b84a;
+}
+
+.status-choice-dot.dnd {
+    background: #ef5b5b;
+}
+
+.status-choice-dot.offline {
+    background: #7d8998;
+}
