@@ -48,6 +48,9 @@ async function loadFriendsPage() {
    await loadIncomingRequests();
 await loadFriendsList();
     async function respondToRequest(
+        if (newStatus === "accepted") {
+    await loadFriendsList();
+}
 
 }
 async function loadFriendsList() {
