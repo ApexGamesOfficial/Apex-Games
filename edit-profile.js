@@ -299,18 +299,6 @@ const {
     .from("profiles")
     .update(profileChanges)
     .eq("id", currentUser.id);
-            .from("profiles")
-            .update({
-                display_name:
-                    displayName || null,
-
-                bio:
-                    bio || null,
-
-                updated_at:
-                    new Date().toISOString()
-            })
-            .eq("id", currentUser.id);
 
 
         if (error) {
