@@ -39,6 +39,10 @@ let currentUser = null;
 let selectedAvatarFile = null;
 
 
+/* =========================================
+   LOAD PROFILE
+========================================= */
+
 async function loadEditProfile() {
 
     const {
@@ -47,7 +51,10 @@ async function loadEditProfile() {
 
 
     if (!session?.user) {
-        window.location.href = "login.html";
+
+        window.location.href =
+            "login.html";
+
         return;
     }
 
@@ -60,19 +67,28 @@ async function loadEditProfile() {
         error
     } = await supabaseClient
         .from("profiles")
-        .select(
-            "gamertag, display_name, avatar_url, bio"
+        .select(`
+            gamertag,
+            display_name,
+            avatar_url,
+            bio
+        `)
+        .eq(
+            "id",
+            currentUser.id
         )
-        .eq("id", currentUser.id)
         .single();
 
 
     if (error || !profile) {
 
+        console.error(
+            "Unable to load profile:",
+            error
+        );
+
         formMessage.textContent =
             "Unable to load profile.";
-
-        console.error(error);
 
         return;
     }
@@ -83,8 +99,11 @@ async function loadEditProfile() {
         "Default Apex Games Profile Picture.png";
 
 
-    avatarPreview.src = avatar;
-    profilePicture.src = avatar;
+    avatarPreview.src =
+        avatar;
+
+    profilePicture.src =
+        avatar;
 
     profileGamertag.textContent =
         profile.gamertag;
@@ -99,15 +118,17 @@ async function loadEditProfile() {
         profile.bio || "";
 
     updateBioCounter();
-
 }
 
+
+/* =========================================
+   BIO COUNTER
+========================================= */
 
 function updateBioCounter() {
 
     bioCount.textContent =
         bioInput.value.length;
-
 }
 
 
@@ -116,6 +137,10 @@ bioInput.addEventListener(
     updateBioCounter
 );
 
+
+/* =========================================
+   AVATAR PREVIEW
+========================================= */
 
 avatarInput.addEventListener(
     "change",
@@ -130,10 +155,17 @@ avatarInput.addEventListener(
         }
 
 
-        if (!file.type.startsWith("image/")) {
+        const allowedTypes = [
+            "image/png",
+            "image/jpeg",
+            "image/webp"
+        ];
+
+
+        if (!allowedTypes.includes(file.type)) {
 
             formMessage.textContent =
-                "Please choose an image file.";
+                "Please choose a PNG, JPG, or WEBP image.";
 
             avatarInput.value = "";
 
@@ -141,7 +173,10 @@ avatarInput.addEventListener(
         }
 
 
-        if (file.size > 5 * 1024 * 1024) {
+        if (
+            file.size >
+            5 * 1024 * 1024
+        ) {
 
             formMessage.textContent =
                 "Profile pictures must be 5 MB or smaller.";
@@ -152,7 +187,8 @@ avatarInput.addEventListener(
         }
 
 
-        selectedAvatarFile = file;
+        selectedAvatarFile =
+            file;
 
         avatarFileName.textContent =
             file.name;
@@ -164,11 +200,15 @@ avatarInput.addEventListener(
         avatarPreview.src =
             previewURL;
 
-        formMessage.textContent = "";
-
+        formMessage.textContent =
+            "";
     }
 );
 
+
+/* =========================================
+   SAVE PROFILE
+========================================= */
 
 editProfileForm.addEventListener(
     "submit",
@@ -182,134 +222,144 @@ editProfileForm.addEventListener(
         }
 
 
-        saveButton.disabled = true;
+        saveButton.disabled =
+            true;
 
         formMessage.textContent =
             "Saving changes...";
 
-const displayName =
-    displayNameInput.value.trim();
 
-const bio =
-    bioInput.value.trim();
+        const displayName =
+            displayNameInput.value.trim();
 
-
-let avatarUrl = null;
+        const bio =
+            bioInput.value.trim();
 
 
-/* =========================================
-   UPLOAD NEW AVATAR
-========================================= */
-
-if (selectedAvatarFile) {
-
-    formMessage.textContent =
-        "Uploading profile picture...";
+        let avatarUrl = null;
 
 
-    const fileExtension =
-        selectedAvatarFile.name
-            .split(".")
-            .pop()
-            .toLowerCase();
+        /* =================================
+           UPLOAD AVATAR
+        ================================= */
+
+        if (selectedAvatarFile) {
+
+            formMessage.textContent =
+                "Uploading profile picture...";
 
 
-    const avatarPath =
-        `${currentUser.id}/profile.${fileExtension}`;
+            const fileExtension =
+                selectedAvatarFile.name
+                    .split(".")
+                    .pop()
+                    .toLowerCase();
 
 
-    const {
-        error: uploadError
-    } = await supabaseClient
-        .storage
-        .from("avatars")
-        .upload(
-            avatarPath,
-            selectedAvatarFile,
-            {
-                upsert: true,
-                contentType:
-                    selectedAvatarFile.type
+            const avatarPath =
+                `${currentUser.id}/profile.${fileExtension}`;
+
+
+            const {
+                error: uploadError
+            } = await supabaseClient
+                .storage
+                .from("avatars")
+                .upload(
+                    avatarPath,
+                    selectedAvatarFile,
+                    {
+                        upsert: true,
+                        contentType:
+                            selectedAvatarFile.type
+                    }
+                );
+
+
+            if (uploadError) {
+
+                console.error(
+                    "Avatar upload failed:",
+                    uploadError
+                );
+
+                formMessage.textContent =
+                    "Upload failed: " +
+                    uploadError.message;
+
+                saveButton.disabled =
+                    false;
+
+                return;
             }
-        );
 
 
-    if (uploadError) {
-
-    console.error(uploadError);
-
-    formMessage.textContent =
-        "Upload failed: " + uploadError.message;
-
-    saveButton.disabled = false;
-
-    return;
-}
-    }
+            const {
+                data: publicUrlData
+            } = supabaseClient
+                .storage
+                .from("avatars")
+                .getPublicUrl(
+                    avatarPath
+                );
 
 
-    const {
-        data: publicUrlData
-    } = supabaseClient
-        .storage
-        .from("avatars")
-        .getPublicUrl(
-            avatarPath
-        );
+            avatarUrl =
+                publicUrlData.publicUrl +
+                `?v=${Date.now()}`;
+        }
 
 
-    /*
-       Add a cache value so a newly uploaded
-       picture appears immediately.
-    */
+        /* =================================
+           UPDATE PROFILE TABLE
+        ================================= */
 
-    avatarUrl =
-        publicUrlData.publicUrl +
-        `?v=${Date.now()}`;
-}
+        const profileChanges = {
 
+            display_name:
+                displayName || null,
 
-/* =========================================
-   UPDATE PROFILE
-========================================= */
+            bio:
+                bio || null,
 
-const profileChanges = {
-
-    display_name:
-        displayName || null,
-
-    bio:
-        bio || null,
-
-    updated_at:
-        new Date().toISOString()
-};
+            updated_at:
+                new Date().toISOString()
+        };
 
 
-if (avatarUrl) {
+        if (avatarUrl) {
 
-    profileChanges.avatar_url =
-        avatarUrl;
+            profileChanges.avatar_url =
+                avatarUrl;
+        }
 
-}
 
-
-const {
-    error
-} = await supabaseClient
-    .from("profiles")
-    .update(profileChanges)
-    .eq("id", currentUser.id);
+        const {
+            error
+        } = await supabaseClient
+            .from("profiles")
+            .update(
+                profileChanges
+            )
+            .eq(
+                "id",
+                currentUser.id
+            );
 
 
         if (error) {
 
+            console.error(
+                "Profile update failed:",
+                error
+            );
+
             formMessage.textContent =
-                "Unable to save profile.";
+                "Unable to save profile: " +
+                error.message;
 
-            console.error(error);
-
-            saveButton.disabled = false;
+            saveButton.disabled =
+                false;
 
             return;
         }
@@ -319,15 +369,21 @@ const {
             "Profile updated!";
 
 
-        setTimeout(() => {
+        setTimeout(
+            () => {
 
-            window.location.href =
-                "profile.html";
+                window.location.href =
+                    "profile.html";
 
-        }, 700);
-
+            },
+            600
+        );
     }
 );
 
+
+/* =========================================
+   START
+========================================= */
 
 loadEditProfile();
