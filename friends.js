@@ -50,6 +50,167 @@ await loadFriendsList();
     async function respondToRequest(
 
 }
+async function loadFriendsList() {
+
+    friendsList.innerHTML = `
+        <p class="empty-results">
+            Loading friends...
+        </p>
+    `;
+
+
+    const {
+        data: requests,
+        error
+    } = await supabaseClient
+        .from("friend_requests")
+        .select(`
+            id,
+            sender_id,
+            receiver_id,
+            status,
+            sender:profiles!friend_requests_sender_id_fkey (
+                id,
+                gamertag,
+                display_name,
+                avatar_url
+            ),
+            receiver:profiles!friend_requests_receiver_id_fkey (
+                id,
+                gamertag,
+                display_name,
+                avatar_url
+            )
+        `)
+        .eq(
+            "status",
+            "accepted"
+        )
+        .or(
+            `sender_id.eq.${currentUser.id},receiver_id.eq.${currentUser.id}`
+        );
+
+
+    if (error) {
+
+        console.error(
+            "Unable to load friends:",
+            error
+        );
+
+        friendsList.innerHTML = `
+            <p class="empty-results">
+                Unable to load friends.
+            </p>
+        `;
+
+        return;
+    }
+
+
+    if (!requests?.length) {
+
+        friendsList.innerHTML = `
+            <p class="empty-results">
+                You haven't added any friends yet.
+            </p>
+        `;
+
+        return;
+    }
+
+
+    friendsList.innerHTML = "";
+
+
+    requests.forEach(request => {
+
+        const friend =
+            request.sender_id === currentUser.id
+                ? request.receiver
+                : request.sender;
+
+
+        if (!friend) {
+            return;
+        }
+
+
+        const avatar =
+            friend.avatar_url ||
+            "Default Apex Games Profile Picture.png";
+
+
+        const displayName =
+            friend.display_name ||
+            friend.gamertag;
+
+
+        const card =
+            document.createElement(
+                "article"
+            );
+
+
+        card.className =
+            "friend-card";
+
+
+        card.innerHTML = `
+
+            <img
+                src="${avatar}"
+                alt="Profile Picture"
+            >
+
+            <div class="friend-card-info">
+
+                <h3>
+                    ${escapeHTML(displayName)}
+                </h3>
+
+                <p>
+                    @${escapeHTML(friend.gamertag)}
+                </p>
+
+            </div>
+
+            <div class="friend-card-actions">
+
+                <button
+                    class="message-friend-button"
+                    data-user-id="${friend.id}"
+                >
+                    Message
+                </button>
+
+            </div>
+
+        `;
+
+
+        const messageButton =
+            card.querySelector(
+                ".message-friend-button"
+            );
+
+
+        messageButton.addEventListener(
+            "click",
+            () => {
+
+                window.location.href =
+                    `chat.html?user=${friend.id}`;
+
+            }
+        );
+
+
+        friendsList.appendChild(
+            card
+        );
+    });
+}
 
 
 loadFriendsPage();
