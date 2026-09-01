@@ -1785,3 +1785,38 @@ footer {
 .logged-out-account[hidden] {
     display: none !important;
 }
+
+/* ========================================
+   LIBRARY POSITION FIX
+======================================== */
+
+.library-app {
+    position: fixed;
+    top: 82px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    height: auto;
+    margin-top: 0;
+
+    display: grid;
+    grid-template-columns: 290px minmax(0, 1fr);
+
+    overflow: hidden;
+}
+
+.library-sidebar {
+    height: 100%;
+    min-height: 0;
+    padding: 32px 18px 40px;
+    overflow-y: auto;
+    box-sizing: border-box;
+}
+
+.selected-game {
+    height: 100%;
+    min-height: 0;
+    overflow-y: auto;
+    box-sizing: border-box;
+}
