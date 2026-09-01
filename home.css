@@ -1755,14 +1755,18 @@ footer {
 .footer-links a:focus-visible {
     color: var(--apex-blue-bright);
 }
-/* ========================================
-   ACCOUNT VISIBILITY
-======================================== */
+/* APEX BLUE TEST */
 
-[hidden] {
-    display: none !important;
+.main-nav a.active::after {
+    background: #168CFF !important;
 }
 
-body {
-    border-top: 5px solid #168CFF !important;
+.create-account-button {
+    background: #168CFF !important;
+    border-color: #168CFF !important;
+    color: white !important;
+}
+
+.hero-branding h1 span {
+    color: #168CFF !important;
 }
