@@ -1,0 +1,226 @@
+body {
+    background: #05070b;
+}
+
+.friends-page {
+    max-width: 1100px;
+    min-height: 100vh;
+
+    margin: 0 auto;
+
+    padding:
+        130px
+        30px
+        80px;
+}
+
+
+/* HEADER */
+
+.friends-header {
+    margin-bottom: 35px;
+}
+
+.section-label {
+    color: #3ea1ff;
+
+    font-size: 10px;
+    font-weight: 900;
+
+    letter-spacing: 2px;
+}
+
+.friends-header h1 {
+    margin-top: 7px;
+
+    font-size: 50px;
+}
+
+.friends-header > p:last-child {
+    margin-top: 8px;
+
+    color: #8491a2;
+}
+
+
+/* SEARCH */
+
+.friend-search-card {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 30px;
+
+    padding: 28px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #0c121a,
+            #080c12
+        );
+
+    border:
+        1px solid rgba(255,255,255,.08);
+}
+
+.search-copy p {
+    color: #798697;
+
+    margin-top: 5px;
+}
+
+#friendSearchForm {
+    display: flex;
+
+    min-width: 420px;
+}
+
+#friendSearchInput {
+    flex: 1;
+
+    min-width: 0;
+
+    padding: 13px 15px;
+
+    border:
+        1px solid rgba(255,255,255,.10);
+
+    background: #05090e;
+
+    color: white;
+
+    outline: none;
+}
+
+#friendSearchInput:focus {
+    border-color:
+        rgba(22,140,255,.6);
+}
+
+#friendSearchForm button {
+    padding: 0 22px;
+
+    border: 0;
+
+    background: #168cff;
+
+    color: white;
+
+    font-weight: 800;
+
+    cursor: pointer;
+}
+
+#friendSearchForm button:hover {
+    background: #3ea1ff;
+}
+
+
+/* RESULTS */
+
+.search-results {
+    margin-top: 25px;
+}
+
+.empty-results {
+    padding: 35px;
+
+    color: #6f7b8b;
+
+    text-align: center;
+
+    border:
+        1px solid rgba(255,255,255,.06);
+
+    background: #080c12;
+}
+
+.player-result {
+    display: flex;
+
+    align-items: center;
+
+    padding: 20px;
+
+    background: #0a0f16;
+
+    border:
+        1px solid rgba(255,255,255,.08);
+}
+
+.player-result img {
+    width: 68px;
+    height: 68px;
+
+    object-fit: cover;
+
+    margin-right: 18px;
+}
+
+.player-result-info {
+    min-width: 0;
+}
+
+.player-result-info h3 {
+    font-size: 20px;
+}
+
+.player-result-info p {
+    margin-top: 4px;
+
+    color: #718095;
+}
+
+.send-request-button {
+    margin-left: auto;
+
+    min-height: 42px;
+
+    padding: 0 18px;
+
+    border: 0;
+
+    background: #168cff;
+
+    color: white;
+
+    font-weight: 800;
+
+    cursor: pointer;
+}
+
+.send-request-button:hover {
+    background: #3ea1ff;
+}
+
+.send-request-button:disabled {
+    opacity: .55;
+
+    cursor: default;
+}
+
+.friends-message {
+    min-height: 20px;
+
+    margin-top: 15px;
+
+    color: #8593a5;
+}
+
+
+@media (max-width: 750px) {
+
+    .friend-search-card {
+        align-items: stretch;
+
+        flex-direction: column;
+    }
+
+    #friendSearchForm {
+        min-width: 0;
+    }
+
+}
