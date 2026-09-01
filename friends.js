@@ -13,6 +13,11 @@ const friendsMessage =
 const incomingRequests =
     document.getElementById(
         "incomingRequests"
+
+        const friendsList =
+    document.getElementById(
+        "friendsList"
+    );
     );
 
 
