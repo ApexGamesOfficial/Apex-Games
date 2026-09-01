@@ -1770,3 +1770,18 @@ footer {
 .hero-branding h1 span {
     color: #168CFF !important;
 }
+
+/* ========================================
+   ACCOUNT VISIBILITY
+======================================== */
+
+[hidden] {
+    display: none !important;
+}
+.profile-widget[hidden] {
+    display: none !important;
+}
+
+.logged-out-account[hidden] {
+    display: none !important;
+}
