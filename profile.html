@@ -13,6 +13,10 @@
 
 <body>
 
+    <!-- ========================================
+         NAVIGATION
+    ========================================= -->
+
     <header class="topbar">
 
         <div class="nav-left">
@@ -33,6 +37,7 @@
         </div>
 
         <form class="nav-search" id="navSearch">
+
             <span class="search-icon">⌕</span>
 
             <input
@@ -42,6 +47,7 @@
                 autocomplete="off"
                 aria-label="Search Apex Games"
             >
+
         </form>
 
         <div class="nav-account">
@@ -51,6 +57,7 @@
                 class="profile-widget"
                 id="profileWidget"
             >
+
                 <img
                     src="Default Apex Games Profile Picture.png"
                     alt="Profile Picture"
@@ -60,6 +67,7 @@
                 <span id="profileGamertag">
                     Player
                 </span>
+
             </a>
 
         </div>
@@ -67,94 +75,422 @@
     </header>
 
 
+    <!-- ========================================
+         PROFILE
+    ========================================= -->
+
     <main class="profile-page">
 
-        <section class="profile-hero">
 
-            <img
-                src="Default Apex Games Profile Picture.png"
-                alt="Profile Picture"
-                class="profile-avatar"
-                id="profileAvatar"
-            >
+        <!-- PROFILE HEADER -->
 
-            <div class="profile-main-info">
+        <section class="profile-header">
 
-                <p class="profile-label">
-                    APEX GAMES PROFILE
-                </p>
+            <div class="profile-cover-glow"></div>
 
-                <h1 id="profileDisplayName">
-                    Player
-                </h1>
+            <div class="profile-header-inner">
 
-                <p class="profile-gamertag">
-                    @<span id="profilePageGamertag">player</span>
-                </p>
-
-                <p
-                    class="profile-bio"
-                    id="profileBio"
+                <img
+                    src="Default Apex Games Profile Picture.png"
+                    alt="Profile Picture"
+                    class="profile-avatar"
+                    id="profileAvatar"
                 >
-                    No bio yet.
-                </p>
+
+
+                <div class="profile-identity">
+
+                    <div class="profile-name-row">
+
+                        <h1 id="profileDisplayName">
+                            Player
+                        </h1>
+
+                        <span class="online-status">
+                            <span class="online-dot"></span>
+                            ONLINE
+                        </span>
+
+                    </div>
+
+                    <p class="profile-gamertag">
+                        @<span id="profilePageGamertag">player</span>
+                    </p>
+
+                    <p
+                        class="profile-bio"
+                        id="profileBio"
+                    >
+                        No bio yet.
+                    </p>
+
+                </div>
+
+
+                <div class="profile-header-actions">
+
+                    <a
+                        href="edit-profile.html"
+                        class="edit-profile-button"
+                    >
+                        Edit Profile
+                    </a>
+
+                </div>
 
             </div>
 
         </section>
 
 
-        <section class="profile-grid">
+        <!-- PROFILE BODY -->
 
-            <div class="profile-card">
+        <section class="profile-layout">
 
-                <p class="section-label">
-                    ACCOUNT
-                </p>
 
-                <h2>Profile Details</h2>
+            <!-- LEFT COLUMN -->
 
-                <div class="profile-detail-row">
-                    <span>Gamertag</span>
-                    <strong id="detailGamertag">—</strong>
-                </div>
+            <div class="profile-main-column">
 
-                <div class="profile-detail-row">
-                    <span>Display Name</span>
-                    <strong id="detailDisplayName">—</strong>
-                </div>
 
-                <div class="profile-detail-row">
-                    <span>Member Since</span>
-                    <strong id="memberSince">—</strong>
-                </div>
+                <!-- RECENT ACTIVITY -->
+
+                <section class="profile-panel">
+
+                    <div class="panel-heading">
+
+                        <div>
+                            <p class="panel-label">
+                                RECENT ACTIVITY
+                            </p>
+
+                            <h2>
+                                Recently Played
+                            </h2>
+                        </div>
+
+                    </div>
+
+
+                    <article class="activity-game">
+
+                        <div class="activity-game-art">
+                            A
+                        </div>
+
+
+                        <div class="activity-game-info">
+
+                            <h3>
+                                Apex Demo
+                            </h3>
+
+                            <p>
+                                Your recent game activity will appear here.
+                            </p>
+
+
+                            <div class="activity-stats">
+
+                                <span>
+                                    <strong>0</strong>
+                                    hours played
+                                </span>
+
+                                <span>
+                                    Last played: Never
+                                </span>
+
+                            </div>
+
+
+                            <div class="achievement-summary">
+
+                                <div class="achievement-top">
+
+                                    <span>
+                                        ACHIEVEMENTS
+                                    </span>
+
+                                    <span>
+                                        0 / 0
+                                    </span>
+
+                                </div>
+
+                                <div class="achievement-track">
+                                    <div class="achievement-fill"></div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                </section>
+
+
+
+                <!-- GAME SHOWCASE -->
+
+                <section class="profile-panel">
+
+                    <div class="panel-heading">
+
+                        <div>
+                            <p class="panel-label">
+                                SHOWCASE
+                            </p>
+
+                            <h2>
+                                Featured Game
+                            </h2>
+                        </div>
+
+                    </div>
+
+
+                    <div class="featured-game-showcase">
+
+                        <div class="featured-game-background"></div>
+
+
+                        <div class="featured-game-content">
+
+                            <p class="showcase-label">
+                                FEATURED GAME
+                            </p>
+
+                            <h3>
+                                No featured game yet
+                            </h3>
+
+                            <p>
+                                Choose a favorite game to showcase
+                                on your Apex Games profile.
+                            </p>
+
+                            <a href="library.html">
+                                View Library →
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+
+                <!-- ACHIEVEMENTS -->
+
+                <section class="profile-panel">
+
+                    <div class="panel-heading">
+
+                        <div>
+                            <p class="panel-label">
+                                ACHIEVEMENTS
+                            </p>
+
+                            <h2>
+                                Recent Unlocks
+                            </h2>
+                        </div>
+
+                    </div>
+
+
+                    <div class="empty-profile-section">
+
+                        <div class="empty-icon">
+                            ★
+                        </div>
+
+                        <p>
+                            Your latest achievements will appear here.
+                        </p>
+
+                    </div>
+
+                </section>
+
 
             </div>
 
 
-            <div class="profile-card">
 
-                <p class="section-label">
-                    PROFILE
-                </p>
+            <!-- RIGHT SIDEBAR -->
 
-                <h2>Customize</h2>
+            <aside class="profile-sidebar">
 
-                <a
-                    href="edit-profile.html"
-                    class="profile-action primary"
-                >
-                    Edit Profile
-                </a>
+
+                <!-- LEVEL -->
+
+                <section class="profile-panel compact-panel">
+
+                    <p class="panel-label">
+                        APEX LEVEL
+                    </p>
+
+                    <div class="level-display">
+
+                        <div class="level-ring">
+                            1
+                        </div>
+
+                        <div>
+                            <strong>
+                                Level 1
+                            </strong>
+
+                            <span>
+                                New Player
+                            </span>
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+
+                <!-- FRIENDS -->
+
+                <section class="profile-panel compact-panel">
+
+                    <div class="sidebar-heading">
+
+                        <div>
+                            <p class="panel-label">
+                                FRIENDS
+                            </p>
+
+                            <h3>
+                                0 Friends
+                            </h3>
+                        </div>
+
+                        <a href="chat.html">
+                            View
+                        </a>
+
+                    </div>
+
+
+                    <div class="friend-placeholder-row">
+
+                        <div class="friend-placeholder"></div>
+                        <div class="friend-placeholder"></div>
+                        <div class="friend-placeholder"></div>
+                        <div class="friend-placeholder"></div>
+
+                    </div>
+
+                </section>
+
+
+
+                <!-- BADGES -->
+
+                <section class="profile-panel compact-panel">
+
+                    <p class="panel-label">
+                        BADGES
+                    </p>
+
+                    <h3>
+                        Your Badges
+                    </h3>
+
+
+                    <div class="badge-row">
+
+                        <div class="badge-placeholder">
+                            ★
+                        </div>
+
+                        <div class="badge-placeholder">
+                            ◆
+                        </div>
+
+                        <div class="badge-placeholder">
+                            A
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+
+                <!-- PROFILE INFO -->
+
+                <section class="profile-panel compact-panel">
+
+                    <p class="panel-label">
+                        PROFILE INFO
+                    </p>
+
+                    <h3>
+                        Account
+                    </h3>
+
+
+                    <div class="profile-detail-row">
+
+                        <span>
+                            Gamertag
+                        </span>
+
+                        <strong id="detailGamertag">
+                            —
+                        </strong>
+
+                    </div>
+
+
+                    <div class="profile-detail-row">
+
+                        <span>
+                            Display Name
+                        </span>
+
+                        <strong id="detailDisplayName">
+                            —
+                        </strong>
+
+                    </div>
+
+
+                    <div class="profile-detail-row">
+
+                        <span>
+                            Member Since
+                        </span>
+
+                        <strong id="memberSince">
+                            —
+                        </strong>
+
+                    </div>
+
+                </section>
+
+
+
+                <!-- LOGOUT -->
 
                 <button
-                    class="profile-action danger"
+                    class="logout-button"
                     id="logoutButton"
                 >
                     Log Out
                 </button>
 
-            </div>
+
+            </aside>
 
         </section>
 
