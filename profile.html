@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Profile | Apex Games</title>
+
+    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="profile.css">
+</head>
+
+<body>
+
+    <header class="topbar">
+
+        <div class="nav-left">
+
+            <a href="index.html" class="brand">
+                <img src="apex-logo.png" alt="Apex Games">
+            </a>
+
+            <nav class="main-nav">
+                <a href="index.html">Home</a>
+                <a href="library.html">Library</a>
+                <a href="chat.html">Chat</a>
+                <a href="store.html">Store</a>
+                <a href="news.html">News</a>
+                <a href="about.html">About</a>
+            </nav>
+
+        </div>
+
+        <form class="nav-search" id="navSearch">
+            <span class="search-icon">⌕</span>
+
+            <input
+                type="search"
+                id="navSearchInput"
+                placeholder="Search Apex Games"
+                autocomplete="off"
+                aria-label="Search Apex Games"
+            >
+        </form>
+
+        <div class="nav-account">
+
+            <a
+                href="profile.html"
+                class="profile-widget"
+                id="profileWidget"
+            >
+                <img
+                    src="Default Apex Games Profile Picture.png"
+                    alt="Profile Picture"
+                    id="profilePicture"
+                >
+
+                <span id="profileGamertag">
+                    Player
+                </span>
+            </a>
+
+        </div>
+
+    </header>
+
+
+    <main class="profile-page">
+
+        <section class="profile-hero">
+
+            <img
+                src="Default Apex Games Profile Picture.png"
+                alt="Profile Picture"
+                class="profile-avatar"
+                id="profileAvatar"
+            >
+
+            <div class="profile-main-info">
+
+                <p class="profile-label">
+                    APEX GAMES PROFILE
+                </p>
+
+                <h1 id="profileDisplayName">
+                    Player
+                </h1>
+
+                <p class="profile-gamertag">
+                    @<span id="profilePageGamertag">player</span>
+                </p>
+
+                <p
+                    class="profile-bio"
+                    id="profileBio"
+                >
+                    No bio yet.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <section class="profile-grid">
+
+            <div class="profile-card">
+
+                <p class="section-label">
+                    ACCOUNT
+                </p>
+
+                <h2>Profile Details</h2>
+
+                <div class="profile-detail-row">
+                    <span>Gamertag</span>
+                    <strong id="detailGamertag">—</strong>
+                </div>
+
+                <div class="profile-detail-row">
+                    <span>Display Name</span>
+                    <strong id="detailDisplayName">—</strong>
+                </div>
+
+                <div class="profile-detail-row">
+                    <span>Member Since</span>
+                    <strong id="memberSince">—</strong>
+                </div>
+
+            </div>
+
+
+            <div class="profile-card">
+
+                <p class="section-label">
+                    PROFILE
+                </p>
+
+                <h2>Customize</h2>
+
+                <a
+                    href="edit-profile.html"
+                    class="profile-action primary"
+                >
+                    Edit Profile
+                </a>
+
+                <button
+                    class="profile-action danger"
+                    id="logoutButton"
+                >
+                    Log Out
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="auth.js"></script>
+    <script src="profile.js"></script>
+
+</body>
+
+</html>
