@@ -315,3 +315,71 @@ body {
 .decline-request-button:hover {
     background: rgba(255,255,255,.12);
 }
+.friends-list-section {
+    margin-top: 45px;
+}
+
+.friend-card {
+    display: flex;
+    align-items: center;
+
+    gap: 18px;
+
+    padding: 20px;
+
+    margin-bottom: 12px;
+
+    background: #0a0f16;
+
+    border:
+        1px solid rgba(255,255,255,.08);
+}
+
+.friend-card img {
+    width: 62px;
+    height: 62px;
+
+    object-fit: cover;
+}
+
+.friend-card-info {
+    min-width: 0;
+}
+
+.friend-card-info h3 {
+    font-size: 19px;
+}
+
+.friend-card-info p {
+    margin-top: 4px;
+
+    color: #718095;
+}
+
+.friend-card-actions {
+    display: flex;
+
+    gap: 10px;
+
+    margin-left: auto;
+}
+
+.message-friend-button {
+    min-height: 40px;
+
+    padding: 0 16px;
+
+    border: 0;
+
+    background: #168cff;
+
+    color: white;
+
+    font-weight: 800;
+
+    cursor: pointer;
+}
+
+.message-friend-button:hover {
+    background: #3ea1ff;
+}
