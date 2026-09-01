@@ -1825,3 +1825,14 @@ footer {
     display: none !important;
 }
 }
+/* ========================================
+   ACCOUNT STATE FIX
+======================================== */
+
+.logged-out-account[hidden] {
+    display: none !important;
+}
+
+.profile-widget[hidden] {
+    display: none !important;
+}
