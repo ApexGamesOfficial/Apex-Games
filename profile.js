@@ -78,9 +78,9 @@ async function loadProfile() {
     const { data: profile, error } =
         await supabaseClient
             .from("profiles")
-            .select(
-                "gamertag, display_name, avatar_url, bio, created_at"
-            )
+           .select(
+    "gamertag, display_name, avatar_url, bio, created_at, status"
+)
             .eq("id", session.user.id)
             .single();
 
@@ -175,6 +175,69 @@ statusButton.addEventListener(
 
 statusMenu
     .querySelectorAll("button")
+    statusMenu
+    .querySelectorAll("[data-status]")
+    .forEach(button => {
+
+        button.addEventListener(
+            "click",
+            async (event) => {
+
+                event.preventDefault();
+                event.stopPropagation();
+
+                const newStatus =
+                    button.dataset.status;
+
+                /* Change it immediately */
+                updateStatusDisplay(newStatus);
+
+                statusMenu.hidden = true;
+
+
+                const {
+                    data: { session }
+                } =
+                    await supabaseClient.auth.getSession();
+
+
+                if (!session?.user) {
+                    return;
+                }
+
+
+                const { error } =
+                    await supabaseClient
+                        .from("profiles")
+                        .update({
+                            status: newStatus,
+                            updated_at:
+                                new Date().toISOString()
+                        })
+                        .eq(
+                            "id",
+                            session.user.id
+                        );
+
+
+                if (error) {
+
+                    console.error(
+                        "Status update failed:",
+                        error
+                    );
+
+                    alert(
+                        "Could not save status: " +
+                        error.message
+                    );
+
+                }
+
+            }
+        );
+
+    });
     .forEach(button => {
 
         button.addEventListener(
