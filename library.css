@@ -3,7 +3,14 @@
 ========================================= */
 
 .library-app {
-    height: calc(100vh - 82px);
+    height: calc(100vh - 78px);
+    margin-top: 78px;
+
+    display: grid;
+    grid-template-columns: 290px 1fr;
+
+    background: #05070b;
+}
     display: grid;
     grid-template-columns: 290px 1fr;
     background: #05070b;
@@ -447,4 +454,215 @@
         flex-wrap: wrap;
     }
 
+}
+
+/* ========================================
+   NEW APEX GAMES LIBRARY SHELL
+======================================== */
+
+body {
+    background: #05070b;
+}
+
+/* Library sidebar */
+
+.library-sidebar {
+    background:
+        linear-gradient(
+            180deg,
+            #080d14 0%,
+            #06090e 100%
+        );
+
+    border-right: 1px solid rgba(62, 161, 255, 0.12);
+}
+
+
+/* Library search */
+
+.library-search input {
+    background: rgba(255, 255, 255, 0.035);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    transition:
+        border-color .2s ease,
+        background .2s ease,
+        box-shadow .2s ease;
+}
+
+.library-search input:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.library-search input:focus {
+    border-color: #168cff;
+
+    box-shadow:
+        0 0 0 3px rgba(22, 140, 255, 0.08);
+}
+
+
+/* Filters */
+
+.filter-button {
+    transition:
+        background .18s ease,
+        color .18s ease;
+}
+
+.filter-button:hover {
+    background: rgba(255, 255, 255, 0.045);
+}
+
+.filter-button.active {
+    background: rgba(22, 140, 255, 0.12);
+    color: #ffffff;
+}
+
+
+/* Selected game */
+
+.game-banner {
+    min-height: 360px;
+
+    background:
+        radial-gradient(
+            circle at 70% 30%,
+            rgba(22, 140, 255, 0.30),
+            transparent 32%
+        ),
+
+        radial-gradient(
+            circle at 40% 100%,
+            rgba(22, 140, 255, 0.10),
+            transparent 35%
+        ),
+
+        linear-gradient(
+            125deg,
+            #071524 0%,
+            #050b12 50%,
+            #030609 100%
+        );
+}
+
+
+/* Main game title */
+
+.banner-overlay h2 {
+    font-size: clamp(38px, 4vw, 58px);
+    letter-spacing: -2px;
+}
+
+
+/* Action area */
+
+.game-actions-panel {
+    background: rgba(7, 11, 17, 0.96);
+}
+
+
+/* Play button */
+
+.play-game-button {
+    background: #168cff;
+    border-radius: 5px;
+
+    box-shadow:
+        0 8px 28px rgba(22, 140, 255, 0.15);
+}
+
+.play-game-button:hover {
+    background: #3ea1ff;
+
+    box-shadow:
+        0 10px 34px rgba(22, 140, 255, 0.25);
+}
+
+
+/* Dashboard */
+
+.game-dashboard {
+    background:
+        radial-gradient(
+            circle at 80% 0%,
+            rgba(22, 140, 255, 0.04),
+            transparent 30%
+        );
+}
+
+
+/* Cards */
+
+.dashboard-card {
+    background:
+        linear-gradient(
+            145deg,
+            rgba(14, 20, 29, 0.96),
+            rgba(7, 11, 17, 0.96)
+        );
+
+    border:
+        1px solid rgba(255, 255, 255, 0.07);
+
+    border-radius: 6px;
+
+    transition:
+        border-color .2s ease,
+        transform .2s ease;
+}
+
+.dashboard-card:hover {
+    border-color: rgba(22, 140, 255, 0.16);
+}
+
+
+/* Blue labels */
+
+.section-label {
+    color: #3ea1ff;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+
+/* Favorite */
+
+.favorite-game-button {
+    border-radius: 5px;
+
+    transition:
+        background .2s ease,
+        border-color .2s ease,
+        transform .2s ease;
+}
+
+.favorite-game-button:hover {
+    background: rgba(22, 140, 255, 0.10);
+    border-color: rgba(22, 140, 255, 0.35);
+    transform: translateY(-2px);
+}
+
+
+/* Better scrollbar */
+
+.library-sidebar::-webkit-scrollbar,
+.selected-game::-webkit-scrollbar {
+    width: 7px;
+}
+
+.library-sidebar::-webkit-scrollbar-track,
+.selected-game::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.library-sidebar::-webkit-scrollbar-thumb,
+.selected-game::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 10px;
+}
+
+.library-sidebar::-webkit-scrollbar-thumb:hover,
+.selected-game::-webkit-scrollbar-thumb:hover {
+    background: rgba(22, 140, 255, 0.45);
 }
