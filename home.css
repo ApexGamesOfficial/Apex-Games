@@ -1820,3 +1820,7 @@ footer {
     overflow-y: auto;
     box-sizing: border-box;
 }
+.profile-widget[hidden],
+.logged-out-account[hidden] {
+    display: none !important;
+}
