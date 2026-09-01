@@ -7,34 +7,77 @@
 
     <title>Library | Apex Games</title>
 
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="library.css">
+<link rel="stylesheet" href="home.css">
+<link rel="stylesheet" href="library.css">
 </head>
 
 <body>
 
-    <!-- NAVIGATION -->
+<!-- ========================================
+     APEX GAMES NAVIGATION
+======================================== -->
 
-    <header class="navbar">
+<header class="topbar">
+
+    <div class="nav-left">
 
         <a href="index.html" class="brand">
-            <img src="assets/apex-logo.png" alt="Apex Games">
+            <img src="apex-logo.png" alt="Apex Games">
         </a>
 
-        <nav>
+        <nav class="main-nav">
             <a href="index.html">Home</a>
-            <a href="games.html">Games</a>
             <a href="library.html" class="active">Library</a>
+            <a href="chat.html">Chat</a>
             <a href="store.html">Store</a>
             <a href="news.html">News</a>
             <a href="about.html">About</a>
         </nav>
 
-        <a href="login.html" class="discord-button">
-            Log In
-        </a>
+    </div>
 
-    </header>
+
+    <form class="nav-search" id="navSearch">
+
+        <span class="search-icon">⌕</span>
+
+        <input
+            type="search"
+            id="navSearchInput"
+            placeholder="Search Apex Games"
+            autocomplete="off"
+            aria-label="Search Apex Games"
+        >
+
+    </form>
+
+
+    <div class="nav-account">
+
+        <div
+            class="logged-out-account"
+            id="loggedOutAccount"
+        >
+
+            <a
+                href="login.html"
+                class="login-link"
+            >
+                Log In
+            </a>
+
+            <a
+                href="signup.html"
+                class="create-account-button"
+            >
+                Create Account
+            </a>
+
+        </div>
+
+    </div>
+
+</header>
 
 
     <!-- LIBRARY -->
