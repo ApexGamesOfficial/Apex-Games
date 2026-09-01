@@ -1,0 +1,312 @@
+body {
+    background: #05070b;
+}
+
+.edit-profile-page {
+    min-height: 100vh;
+
+    padding:
+        125px
+        25px
+        80px;
+
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(22, 140, 255, 0.10),
+            transparent 30%
+        ),
+        #05070b;
+}
+
+.edit-profile-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.edit-profile-heading {
+    margin-bottom: 30px;
+}
+
+.edit-profile-heading p {
+    color: #3ea1ff;
+
+    font-size: 10px;
+    font-weight: 900;
+
+    letter-spacing: 2px;
+}
+
+.edit-profile-heading h1 {
+    font-size: 46px;
+
+    margin:
+        5px
+        0
+        8px;
+}
+
+.edit-profile-heading span {
+    color: #8592a3;
+}
+
+.edit-card {
+    background:
+        linear-gradient(
+            145deg,
+            #0c121a,
+            #080c12
+        );
+
+    border:
+        1px solid rgba(255,255,255,.08);
+
+    padding: 28px;
+
+    margin-bottom: 22px;
+}
+
+
+/* PROFILE PICTURE */
+
+.avatar-section {
+    display: flex;
+    align-items: center;
+
+    gap: 28px;
+}
+
+.avatar-preview {
+    width: 150px;
+    height: 150px;
+
+    object-fit: cover;
+
+    background: #090d13;
+
+    border:
+        2px solid rgba(255,255,255,.10);
+}
+
+.avatar-info h2 {
+    margin-bottom: 7px;
+}
+
+.avatar-info p {
+    color: #8592a3;
+
+    max-width: 470px;
+
+    line-height: 1.6;
+}
+
+.upload-button {
+    display: inline-flex;
+
+    min-height: 42px;
+
+    align-items: center;
+    justify-content: center;
+
+    margin-top: 18px;
+
+    padding:
+        0
+        18px;
+
+    background: #168cff;
+
+    color: white;
+
+    font-weight: 800;
+
+    cursor: pointer;
+}
+
+.upload-button:hover {
+    background: #3ea1ff;
+}
+
+.avatar-file-name {
+    display: block;
+
+    margin-top: 10px;
+
+    color: #6f7b8b;
+
+    font-size: 11px;
+}
+
+
+/* FIELDS */
+
+.field-group {
+    position: relative;
+
+    margin-bottom: 26px;
+}
+
+.field-group:last-child {
+    margin-bottom: 0;
+}
+
+.field-group label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: #dce4ed;
+
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.field-group input,
+.field-group textarea {
+    width: 100%;
+
+    box-sizing: border-box;
+
+    padding:
+        13px
+        14px;
+
+    border:
+        1px solid rgba(255,255,255,.09);
+
+    background: #070b10;
+
+    color: white;
+
+    outline: none;
+
+    font: inherit;
+}
+
+.field-group input:focus,
+.field-group textarea:focus {
+    border-color:
+        rgba(22,140,255,.6);
+}
+
+.field-group input:disabled {
+    color: #687587;
+
+    cursor: not-allowed;
+}
+
+.field-group textarea {
+    min-height: 130px;
+
+    resize: vertical;
+
+    line-height: 1.6;
+}
+
+.field-help {
+    display: block;
+
+    margin-top: 7px;
+
+    color: #657184;
+
+    font-size: 11px;
+}
+
+.bio-counter {
+    position: absolute;
+
+    right: 10px;
+    bottom: 8px;
+
+    color: #667386;
+
+    font-size: 10px;
+}
+
+
+/* FORM MESSAGE */
+
+.form-message {
+    min-height: 20px;
+
+    margin-bottom: 15px;
+
+    color: #8ea0b5;
+
+    font-size: 13px;
+}
+
+
+/* ACTIONS */
+
+.edit-actions {
+    display: flex;
+
+    justify-content: flex-end;
+
+    gap: 12px;
+}
+
+.cancel-button,
+.save-button {
+    min-height: 46px;
+
+    padding:
+        0
+        22px;
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-weight: 800;
+}
+
+.cancel-button {
+    border:
+        1px solid rgba(255,255,255,.10);
+
+    color: #cbd3dc;
+
+    text-decoration: none;
+
+    background:
+        rgba(255,255,255,.025);
+}
+
+.save-button {
+    border: 0;
+
+    background: #168cff;
+
+    color: white;
+
+    cursor: pointer;
+}
+
+.save-button:hover {
+    background: #3ea1ff;
+}
+
+.save-button:disabled {
+    opacity: .6;
+
+    cursor: not-allowed;
+}
+
+
+@media (max-width: 650px) {
+
+    .avatar-section {
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+    .edit-profile-heading h1 {
+        font-size: 38px;
+    }
+
+}
