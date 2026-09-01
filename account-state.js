@@ -20,8 +20,11 @@ async function updateAccountNavbar() {
 
     if (!session?.user) {
 
-        loggedOutAccount.hidden = false;
-        profileWidget.hidden = true;
+       loggedOutAccount.hidden = false;
+loggedOutAccount.style.display = "flex";
+
+profileWidget.hidden = true;
+profileWidget.style.display = "none";
 
         return;
     }
@@ -42,8 +45,11 @@ async function updateAccountNavbar() {
 
     if (error || !profile) {
 
-        loggedOutAccount.hidden = false;
-        profileWidget.hidden = true;
+       loggedOutAccount.hidden = false;
+loggedOutAccount.style.display = "flex";
+
+profileWidget.hidden = true;
+profileWidget.style.display = "none";
 
         return;
     }
