@@ -1,6 +1,3 @@
-const profileWidget =
-    document.getElementById("profileWidget");
-
 const profilePicture =
     document.getElementById("profilePicture");
 
@@ -40,13 +37,18 @@ const statusText =
 const statusMenu =
     document.getElementById("statusMenu");
 
+
+/* =========================================
+   STATUS DISPLAY
+========================================= */
+
 function updateStatusDisplay(status) {
 
     const statusNames = {
         online: "ONLINE",
         away: "AWAY",
         dnd: "DO NOT DISTURB",
-        offline: "OFFLINE"
+        offline: "APPEAR OFFLINE"
     };
 
     statusButton.classList.remove(
@@ -62,6 +64,11 @@ function updateStatusDisplay(status) {
         statusNames[status] || "ONLINE";
 }
 
+
+/* =========================================
+   LOAD PROFILE
+========================================= */
+
 async function loadProfile() {
 
     const {
@@ -70,23 +77,41 @@ async function loadProfile() {
 
 
     if (!session?.user) {
-        window.location.href = "login.html";
+
+        window.location.href =
+            "login.html";
+
         return;
     }
 
 
-    const { data: profile, error } =
-        await supabaseClient
-            .from("profiles")
-           .select(
-    "gamertag, display_name, avatar_url, bio, created_at, status"
-)
-            .eq("id", session.user.id)
-            .single();
+    const {
+        data: profile,
+        error
+    } = await supabaseClient
+        .from("profiles")
+        .select(`
+            gamertag,
+            display_name,
+            avatar_url,
+            bio,
+            created_at,
+            status
+        `)
+        .eq(
+            "id",
+            session.user.id
+        )
+        .single();
 
 
     if (error || !profile) {
-        console.error(error);
+
+        console.error(
+            "Unable to load profile:",
+            error
+        );
+
         return;
     }
 
@@ -100,11 +125,19 @@ async function loadProfile() {
         profile.gamertag;
 
 
-    profilePicture.src = avatar;
-    profileAvatar.src = avatar;
+    /* NAVBAR */
+
+    profilePicture.src =
+        avatar;
 
     profileGamertag.textContent =
         profile.gamertag;
+
+
+    /* PROFILE HEADER */
+
+    profileAvatar.src =
+        avatar;
 
     profileDisplayName.textContent =
         displayName;
@@ -113,7 +146,11 @@ async function loadProfile() {
         profile.gamertag;
 
     profileBio.textContent =
-        profile.bio || "No bio yet.";
+        profile.bio ||
+        "No bio yet.";
+
+
+    /* PROFILE INFO */
 
     detailGamertag.textContent =
         profile.gamertag;
@@ -121,15 +158,22 @@ async function loadProfile() {
     detailDisplayName.textContent =
         displayName;
 
-    updateStatusDisplay(
-    profile.status || "online"
-);
 
+    /* STATUS */
+
+    updateStatusDisplay(
+        profile.status || "online"
+    );
+
+
+    /* MEMBER SINCE */
 
     if (profile.created_at) {
 
         const created =
-            new Date(profile.created_at);
+            new Date(
+                profile.created_at
+            );
 
         memberSince.textContent =
             created.toLocaleDateString(
@@ -139,43 +183,27 @@ async function loadProfile() {
                     month: "long"
                 }
             );
-
     }
-
 }
 
 
-logoutButton.addEventListener(
-    "click",
-    async () => {
-
-        const { error } =
-            await supabaseClient.auth.signOut();
-
-        if (error) {
-            console.error(error);
-            return;
-        }
-
-        window.location.href =
-            "index.html";
-    }
-);
+/* =========================================
+   STATUS MENU
+========================================= */
 
 statusButton.addEventListener(
     "click",
-    () => {
+    (event) => {
+
+        event.stopPropagation();
 
         statusMenu.hidden =
             !statusMenu.hidden;
-
     }
 );
 
 
 statusMenu
-    .querySelectorAll("button")
-    statusMenu
     .querySelectorAll("[data-status]")
     .forEach(button => {
 
@@ -186,13 +214,9 @@ statusMenu
                 event.preventDefault();
                 event.stopPropagation();
 
+
                 const newStatus =
                     button.dataset.status;
-
-                /* Change it immediately */
-                updateStatusDisplay(newStatus);
-
-                statusMenu.hidden = true;
 
 
                 const {
@@ -206,79 +230,35 @@ statusMenu
                 }
 
 
-                const { error } =
-                    await supabaseClient
-                        .from("profiles")
-                        .update({
-                            status: newStatus,
-                            updated_at:
-                                new Date().toISOString()
-                        })
-                        .eq(
-                            "id",
-                            session.user.id
-                        );
+                const {
+                    error
+                } = await supabaseClient
+                    .from("profiles")
+                    .update({
+                        status:
+                            newStatus,
+
+                        updated_at:
+                            new Date()
+                                .toISOString()
+                    })
+                    .eq(
+                        "id",
+                        session.user.id
+                    );
 
 
                 if (error) {
 
                     console.error(
-                        "Status update failed:",
+                        "Unable to save status:",
                         error
                     );
 
                     alert(
-                        "Could not save status: " +
+                        "Unable to save your status: " +
                         error.message
                     );
-
-                }
-
-            }
-        );
-
-    });
-    .forEach(button => {
-
-        button.addEventListener(
-            "click",
-            async () => {
-
-                const newStatus =
-                    button.dataset.status;
-
-
-                const {
-                    data: { session }
-                } =
-                    await supabaseClient
-                        .auth
-                        .getSession();
-
-
-                if (!session?.user) {
-                    return;
-                }
-
-
-                const { error } =
-                    await supabaseClient
-                        .from("profiles")
-                        .update({
-                            status: newStatus,
-                            updated_at:
-                                new Date()
-                                    .toISOString()
-                        })
-                        .eq(
-                            "id",
-                            session.user.id
-                        );
-
-
-                if (error) {
-
-                    console.error(error);
 
                     return;
                 }
@@ -290,24 +270,65 @@ statusMenu
 
                 statusMenu.hidden =
                     true;
-
             }
         );
-
     });
 
+
+/* Close menu when clicking elsewhere */
 
 document.addEventListener(
     "click",
     (event) => {
 
         if (
-            !statusButton.contains(event.target) &&
-            !statusMenu.contains(event.target)
+            !statusButton.contains(
+                event.target
+            ) &&
+            !statusMenu.contains(
+                event.target
+            )
         ) {
-            statusMenu.hidden = true;
-        }
 
+            statusMenu.hidden =
+                true;
+        }
     }
 );
+
+
+/* =========================================
+   LOG OUT
+========================================= */
+
+logoutButton.addEventListener(
+    "click",
+    async () => {
+
+        const {
+            error
+        } = await supabaseClient.auth.signOut();
+
+
+        if (error) {
+
+            console.error(
+                "Unable to log out:",
+                error
+            );
+
+            return;
+        }
+
+
+        window.location.href =
+            "index.html";
+    }
+);
+
+
+/* =========================================
+   START
+========================================= */
+
 loadProfile();
