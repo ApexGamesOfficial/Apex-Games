@@ -224,3 +224,94 @@ body {
     }
 
 }
+.requests-section {
+    margin-top: 45px;
+}
+
+.section-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 18px;
+}
+
+.section-heading h2 {
+    margin-top: 5px;
+    font-size: 28px;
+}
+
+.friend-request-card {
+    display: flex;
+    align-items: center;
+
+    gap: 18px;
+
+    padding: 20px;
+
+    margin-bottom: 12px;
+
+    background: #0a0f16;
+
+    border:
+        1px solid rgba(255,255,255,.08);
+}
+
+.friend-request-card img {
+    width: 62px;
+    height: 62px;
+
+    object-fit: cover;
+}
+
+.friend-request-info {
+    min-width: 0;
+}
+
+.friend-request-info h3 {
+    font-size: 19px;
+}
+
+.friend-request-info p {
+    margin-top: 4px;
+    color: #718095;
+}
+
+.friend-request-actions {
+    display: flex;
+
+    gap: 10px;
+
+    margin-left: auto;
+}
+
+.accept-request-button,
+.decline-request-button {
+    min-height: 40px;
+
+    padding: 0 16px;
+
+    border: 0;
+
+    font-weight: 800;
+
+    cursor: pointer;
+}
+
+.accept-request-button {
+    background: #168cff;
+    color: white;
+}
+
+.accept-request-button:hover {
+    background: #3ea1ff;
+}
+
+.decline-request-button {
+    background: rgba(255,255,255,.07);
+    color: white;
+}
+
+.decline-request-button:hover {
+    background: rgba(255,255,255,.12);
+}
