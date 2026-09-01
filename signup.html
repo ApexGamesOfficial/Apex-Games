@@ -7,35 +7,62 @@
 
     <title>Create Account | Apex Games</title>
 
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="account.css">
+    <link rel="stylesheet" href="home.css">
+<link rel="stylesheet" href="account.css">
 </head>
 
 <body>
 
     <!-- NAVIGATION -->
 
-    <header class="navbar">
+   <header class="topbar">
+
+    <div class="nav-left">
 
         <a href="index.html" class="brand">
-            <img src="assets/apex-logo.png" alt="Apex Games">
+            <img src="apex-logo.png" alt="Apex Games">
         </a>
 
-        <nav>
+        <nav class="main-nav">
             <a href="index.html">Home</a>
-            <a href="games.html">Games</a>
             <a href="library.html">Library</a>
+            <a href="chat.html">Chat</a>
             <a href="store.html">Store</a>
             <a href="news.html">News</a>
             <a href="about.html">About</a>
         </nav>
 
-        <a href="login.html" class="discord-button">
-            Log In
-        </a>
+    </div>
 
-    </header>
 
+    <form class="nav-search" id="navSearch">
+
+        <span class="search-icon">⌕</span>
+
+        <input
+            type="search"
+            id="navSearchInput"
+            placeholder="Search Apex Games"
+            autocomplete="off"
+            aria-label="Search Apex Games"
+        >
+
+    </form>
+
+
+    <div class="nav-account">
+
+        <div class="logged-out-account">
+
+            <a href="login.html" class="login-link">
+                Log In
+            </a>
+
+        </div>
+
+    </div>
+
+</header>
 
     <!-- CREATE ACCOUNT -->
 
@@ -63,17 +90,35 @@
 
                 <div class="form-group">
 
-                    <label for="username">
-                        USERNAME
-                    </label>
+<label for="gamertag">
+    GAMERTAG
+</label>
 
-                    <input
-                        type="text"
-                        id="username"
-                        autocomplete="username"
-                        placeholder="Choose a username"
-                        required
-                    >
+<input
+    type="text"
+    id="gamertag"
+    autocomplete="username"
+    placeholder="Choose your gamertag"
+    minlength="3"
+    maxlength="20"
+    required
+>
+                    <div class="form-group">
+
+    <label for="displayName">
+        DISPLAY NAME
+    </label>
+
+    <input
+        type="text"
+        id="displayName"
+        autocomplete="name"
+        placeholder="Your display name"
+        maxlength="32"
+        required
+    >
+
+</div>
 
                 </div>
 
@@ -158,7 +203,9 @@
     </main>
 
 
-    <script src="signup.js"></script>
+ <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="auth.js"></script>
+<script src="signup.js"></script>
 
 </body>
 
