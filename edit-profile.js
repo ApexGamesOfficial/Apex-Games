@@ -187,17 +187,118 @@ editProfileForm.addEventListener(
         formMessage.textContent =
             "Saving changes...";
 
+const displayName =
+    displayNameInput.value.trim();
 
-        const displayName =
-            displayNameInput.value.trim();
-
-        const bio =
-            bioInput.value.trim();
+const bio =
+    bioInput.value.trim();
 
 
-        const {
-            error
-        } = await supabaseClient
+let avatarUrl = null;
+
+
+/* =========================================
+   UPLOAD NEW AVATAR
+========================================= */
+
+if (selectedAvatarFile) {
+
+    formMessage.textContent =
+        "Uploading profile picture...";
+
+
+    const fileExtension =
+        selectedAvatarFile.name
+            .split(".")
+            .pop()
+            .toLowerCase();
+
+
+    const avatarPath =
+        `${currentUser.id}/profile.${fileExtension}`;
+
+
+    const {
+        error: uploadError
+    } = await supabaseClient
+        .storage
+        .from("avatars")
+        .upload(
+            avatarPath,
+            selectedAvatarFile,
+            {
+                upsert: true,
+                contentType:
+                    selectedAvatarFile.type
+            }
+        );
+
+
+    if (uploadError) {
+
+        console.error(uploadError);
+
+        formMessage.textContent =
+            "Unable to upload profile picture.";
+
+        saveButton.disabled = false;
+
+        return;
+    }
+
+
+    const {
+        data: publicUrlData
+    } = supabaseClient
+        .storage
+        .from("avatars")
+        .getPublicUrl(
+            avatarPath
+        );
+
+
+    /*
+       Add a cache value so a newly uploaded
+       picture appears immediately.
+    */
+
+    avatarUrl =
+        publicUrlData.publicUrl +
+        `?v=${Date.now()}`;
+}
+
+
+/* =========================================
+   UPDATE PROFILE
+========================================= */
+
+const profileChanges = {
+
+    display_name:
+        displayName || null,
+
+    bio:
+        bio || null,
+
+    updated_at:
+        new Date().toISOString()
+};
+
+
+if (avatarUrl) {
+
+    profileChanges.avatar_url =
+        avatarUrl;
+
+}
+
+
+const {
+    error
+} = await supabaseClient
+    .from("profiles")
+    .update(profileChanges)
+    .eq("id", currentUser.id);
             .from("profiles")
             .update({
                 display_name:
