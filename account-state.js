@@ -1,6 +1,3 @@
-const loggedOutAccount =
-    document.getElementById("loggedOutAccount");
-
 const profileWidget =
     document.getElementById("profileWidget");
 
@@ -11,6 +8,41 @@ const profileGamertag =
     document.getElementById("profileGamertag");
 
 
+function showLoggedOut() {
+
+    document
+        .querySelectorAll(".login-link, .create-account-button")
+        .forEach(button => {
+            button.style.display = "";
+        });
+
+    if (profileWidget) {
+        profileWidget.style.display = "none";
+        profileWidget.hidden = true;
+    }
+}
+
+
+function showLoggedIn(profile) {
+
+    document
+        .querySelectorAll(".login-link, .create-account-button")
+        .forEach(button => {
+            button.style.display = "none";
+        });
+
+    profileGamertag.textContent =
+        profile.gamertag;
+
+    profilePicture.src =
+        profile.avatar_url ||
+        "Default Apex Games Profile Picture.png";
+
+    profileWidget.hidden = false;
+    profileWidget.style.display = "flex";
+}
+
+
 async function updateAccountNavbar() {
 
     const {
@@ -19,18 +51,9 @@ async function updateAccountNavbar() {
 
 
     if (!session?.user) {
-
-       loggedOutAccount.hidden = false;
-loggedOutAccount.style.display = "flex";
-
-profileWidget.hidden = true;
-profileWidget.style.display = "none";
-
+        showLoggedOut();
         return;
     }
-
-
-    const user = session.user;
 
 
     const {
@@ -39,34 +62,17 @@ profileWidget.style.display = "none";
     } = await supabaseClient
         .from("profiles")
         .select("gamertag, avatar_url")
-        .eq("id", user.id)
+        .eq("id", session.user.id)
         .single();
 
 
     if (error || !profile) {
-
-       loggedOutAccount.hidden = false;
-loggedOutAccount.style.display = "flex";
-
-profileWidget.hidden = true;
-profileWidget.style.display = "none";
-
+        showLoggedOut();
         return;
     }
 
 
-    profileGamertag.textContent =
-        profile.gamertag;
-
-profilePicture.src =
-    profile.avatar_url || "Default Apex Games Profile Picture.png";
-
-
-   loggedOutAccount.hidden = true;
-loggedOutAccount.style.display = "none";
-
-profileWidget.hidden = false;
-profileWidget.style.display = "flex";
+    showLoggedIn(profile);
 }
 
 
