@@ -108,9 +108,67 @@
 
 </div>
 
-<div class="profile-status online">
-    <span class="status-dot"></span>
-    <span class="status-text">ONLINE</span>
+<div class="status-wrapper">
+
+    <button
+        class="profile-status online"
+        id="statusButton"
+        type="button"
+    >
+        <span class="status-dot"></span>
+        <span
+            class="status-text"
+            id="statusText"
+        >
+            ONLINE
+        </span>
+
+        <span class="status-arrow">
+            ▾
+        </span>
+    </button>
+
+
+    <div
+        class="status-menu"
+        id="statusMenu"
+        hidden
+    >
+
+        <button
+            type="button"
+            data-status="online"
+        >
+            <span class="status-choice-dot online"></span>
+            Online
+        </button>
+
+        <button
+            type="button"
+            data-status="away"
+        >
+            <span class="status-choice-dot away"></span>
+            Away
+        </button>
+
+        <button
+            type="button"
+            data-status="dnd"
+        >
+            <span class="status-choice-dot dnd"></span>
+            Do Not Disturb
+        </button>
+
+        <button
+            type="button"
+            data-status="offline"
+        >
+            <span class="status-choice-dot offline"></span>
+            Appear Offline
+        </button>
+
+    </div>
+
 </div>
 
 <p class="profile-gamertag">
