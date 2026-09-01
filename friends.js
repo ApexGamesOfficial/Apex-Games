@@ -10,6 +10,11 @@ const searchResults =
 const friendsMessage =
     document.getElementById("friendsMessage");
 
+const incomingRequests =
+    document.getElementById(
+        "incomingRequests"
+    );
+
 
 let currentUser = null;
 
