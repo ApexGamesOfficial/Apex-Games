@@ -236,14 +236,15 @@ if (selectedAvatarFile) {
 
     if (uploadError) {
 
-        console.error(uploadError);
+    console.error(uploadError);
 
-        formMessage.textContent =
-            "Unable to upload profile picture.";
+    formMessage.textContent =
+        "Upload failed: " + uploadError.message;
 
-        saveButton.disabled = false;
+    saveButton.disabled = false;
 
-        return;
+    return;
+}
     }
 
 
