@@ -45,7 +45,8 @@ body {
             #05080c 100%
         );
 
-    overflow: hidden;
+   overflow: visible;
+z-index: 20;
 }
 
 
@@ -1015,4 +1016,24 @@ body {
 
 .status-choice-dot.offline {
     background: #7d8998;
+}
+.status-wrapper {
+    position: relative;
+    z-index: 100;
+}
+
+.status-menu {
+    z-index: 200;
+    pointer-events: auto;
+}
+
+.status-menu button {
+    position: relative;
+    z-index: 201;
+    pointer-events: auto;
+}
+
+.profile-layout {
+    position: relative;
+    z-index: 1;
 }
