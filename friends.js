@@ -40,6 +40,7 @@ async function loadFriendsPage() {
 
 
     currentUser = session.user;
+    await loadIncomingRequests();
 
 }
 
