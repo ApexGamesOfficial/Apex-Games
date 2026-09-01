@@ -56,8 +56,11 @@ profilePicture.src =
     profile.avatar_url || "Default Apex Games Profile Picture.png";
 
 
-    loggedOutAccount.hidden = true;
-    profileWidget.hidden = false;
+   loggedOutAccount.hidden = true;
+loggedOutAccount.style.display = "none";
+
+profileWidget.hidden = false;
+profileWidget.style.display = "flex";
 }
 
 
