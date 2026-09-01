@@ -1,3 +1,177 @@
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Log In | Apex Games</title>
+
+  <link rel="stylesheet" href="home.css">
+<link rel="stylesheet" href="account.css">
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+
+ <header class="topbar">
+
+    <div class="nav-left">
+
+        <a href="index.html" class="brand">
+            <img src="apex-logo.png" alt="Apex Games">
+        </a>
+
+        <nav class="main-nav">
+            <a href="index.html">Home</a>
+            <a href="library.html">Library</a>
+            <a href="chat.html">Chat</a>
+            <a href="store.html">Store</a>
+            <a href="news.html">News</a>
+            <a href="about.html">About</a>
+        </nav>
+
+    </div>
+
+    <form class="nav-search" id="navSearch">
+        <span class="search-icon">⌕</span>
+
+        <input
+            type="search"
+            id="navSearchInput"
+            placeholder="Search Apex Games"
+            autocomplete="off"
+            aria-label="Search Apex Games"
+        >
+    </form>
+
+    <div class="nav-account">
+        <div class="logged-out-account">
+            <a href="signup.html" class="create-account-button">
+                Create Account
+            </a>
+        </div>
+    </div>
+
+</header>
+
+
+    <!-- LOGIN -->
+
+    <main class="account-page">
+
+        <section class="account-box">
+
+            <div class="account-heading">
+
+                <p class="account-label">
+                    APEX GAMES ACCOUNT
+                </p>
+
+                <h1>Welcome Back</h1>
+
+                <p>
+                    Log in to access your Apex Games Library,
+                    ratings, favorites, and connected experiences.
+                </p>
+
+            </div>
+
+
+            <form id="loginForm">
+
+                <div class="form-group">
+
+                    <label for="email">
+                        EMAIL
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        autocomplete="email"
+                        placeholder="Enter your email"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="password">
+                        PASSWORD
+                    </label>
+
+                    <input
+                        type="password"
+                        id="password"
+                        autocomplete="current-password"
+                        placeholder="Enter your password"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="login-options">
+
+                    <label class="remember-me">
+
+                        <input
+                            type="checkbox"
+                            id="rememberMe"
+                        >
+
+                        <span>Remember me</span>
+
+                    </label>
+
+                    <a href="#" class="forgot-password">
+                        Forgot password?
+                    </a>
+
+                </div>
+
+
+                <p
+                    class="form-message"
+                    id="formMessage"
+                ></p>
+
+
+                <button
+                    type="submit"
+                    class="account-submit"
+                >
+                    LOG IN
+                </button>
+
+            </form>
+
+
+            <div class="account-bottom">
+
+                <p>
+                    Don't have an Apex Games account?
+                </p>
+
+                <a href="signup.html">
+                    Create Account
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+ <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="auth.js"></script>
 <script src="login.js"></script>
+
+</body>
+
+</html>
