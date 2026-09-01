@@ -807,3 +807,6 @@ body {
     }
 
 }
+.profile-identity > .online-status {
+    margin-top: 10px;
+}
