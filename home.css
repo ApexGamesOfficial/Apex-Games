@@ -1836,3 +1836,10 @@ footer {
 .profile-widget[hidden] {
     display: none !important;
 }
+#loggedOutAccount[hidden] {
+    display: none !important;
+}
+
+#profileWidget[hidden] {
+    display: none !important;
+}
