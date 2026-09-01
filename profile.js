@@ -31,6 +31,36 @@ const memberSince =
 const logoutButton =
     document.getElementById("logoutButton");
 
+const statusButton =
+    document.getElementById("statusButton");
+
+const statusText =
+    document.getElementById("statusText");
+
+const statusMenu =
+    document.getElementById("statusMenu");
+
+function updateStatusDisplay(status) {
+
+    const statusNames = {
+        online: "ONLINE",
+        away: "AWAY",
+        dnd: "DO NOT DISTURB",
+        offline: "OFFLINE"
+    };
+
+    statusButton.classList.remove(
+        "online",
+        "away",
+        "dnd",
+        "offline"
+    );
+
+    statusButton.classList.add(status);
+
+    statusText.textContent =
+        statusNames[status] || "ONLINE";
+}
 
 async function loadProfile() {
 
@@ -91,6 +121,10 @@ async function loadProfile() {
     detailDisplayName.textContent =
         displayName;
 
+    updateStatusDisplay(
+    profile.status || "online"
+);
+
 
     if (profile.created_at) {
 
@@ -128,5 +162,89 @@ logoutButton.addEventListener(
     }
 );
 
+statusButton.addEventListener(
+    "click",
+    () => {
 
+        statusMenu.hidden =
+            !statusMenu.hidden;
+
+    }
+);
+
+
+statusMenu
+    .querySelectorAll("button")
+    .forEach(button => {
+
+        button.addEventListener(
+            "click",
+            async () => {
+
+                const newStatus =
+                    button.dataset.status;
+
+
+                const {
+                    data: { session }
+                } =
+                    await supabaseClient
+                        .auth
+                        .getSession();
+
+
+                if (!session?.user) {
+                    return;
+                }
+
+
+                const { error } =
+                    await supabaseClient
+                        .from("profiles")
+                        .update({
+                            status: newStatus,
+                            updated_at:
+                                new Date()
+                                    .toISOString()
+                        })
+                        .eq(
+                            "id",
+                            session.user.id
+                        );
+
+
+                if (error) {
+
+                    console.error(error);
+
+                    return;
+                }
+
+
+                updateStatusDisplay(
+                    newStatus
+                );
+
+                statusMenu.hidden =
+                    true;
+
+            }
+        );
+
+    });
+
+
+document.addEventListener(
+    "click",
+    (event) => {
+
+        if (
+            !statusButton.contains(event.target) &&
+            !statusMenu.contains(event.target)
+        ) {
+            statusMenu.hidden = true;
+        }
+
+    }
+);
 loadProfile();
