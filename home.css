@@ -1498,3 +1498,267 @@ footer {
     }
 
 }
+/* ========================================
+   APEX GAMES BLUE + WHITE THEME
+======================================== */
+
+:root {
+    --apex-blue: #168CFF;
+    --apex-blue-bright: #3EA1FF;
+    --apex-blue-dark: #0B5FB8;
+    --apex-blue-soft: rgba(22, 140, 255, .18);
+}
+
+
+/* NAVIGATION */
+
+.main-nav a:hover,
+.main-nav a:focus-visible,
+.main-nav a.active {
+    color: white;
+}
+
+.main-nav a.active::after {
+    background: var(--apex-blue);
+}
+
+.nav-search:focus-within {
+    border-color: var(--apex-blue);
+
+    box-shadow:
+        0 0 0 1px rgba(22, 140, 255, .35),
+        0 0 22px rgba(22, 140, 255, .16);
+}
+
+.search-icon {
+    color: var(--apex-blue-bright);
+}
+
+
+/* ACCOUNT */
+
+.create-account-button {
+    border-color: var(--apex-blue);
+    background: var(--apex-blue);
+    color: white;
+}
+
+.create-account-button:hover,
+.create-account-button:focus-visible {
+    background: transparent;
+    color: var(--apex-blue-bright);
+    border-color: var(--apex-blue-bright);
+}
+
+.profile-widget:hover,
+.profile-widget:focus-visible {
+    border-color: var(--apex-blue);
+
+    background:
+        rgba(22, 140, 255, .10);
+
+    box-shadow:
+        0 0 22px rgba(22, 140, 255, .12);
+}
+
+
+/* HERO */
+
+.eyebrow,
+.section-label,
+.card-label {
+    color: var(--apex-blue-bright);
+}
+
+.hero-branding h1 span {
+    color: var(--apex-blue-bright);
+}
+
+.hero-background {
+    background:
+        radial-gradient(
+            circle at 18% 45%,
+            rgba(22, 140, 255, .38),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 85% 20%,
+            rgba(0, 100, 255, .24),
+            transparent 35%
+        ),
+        linear-gradient(
+            125deg,
+            #04070b,
+            #071522 45%,
+            #020407
+        ),
+        url("assets/apex-hero.jpg")
+        center / cover no-repeat;
+}
+
+
+/* HERO BUTTONS */
+
+.hero-button.primary {
+    background: var(--apex-blue);
+    color: white;
+}
+
+.hero-button.primary:hover,
+.hero-button.primary:focus-visible {
+    background: var(--apex-blue-bright);
+    border-color: var(--apex-blue-bright);
+
+    box-shadow:
+        0 0 28px rgba(22, 140, 255, .32);
+}
+
+.hero-button.secondary:hover,
+.hero-button.secondary:focus-visible {
+    border-color: var(--apex-blue);
+
+    box-shadow:
+        0 0 25px rgba(22, 140, 255, .18);
+}
+
+
+/* NEWS SPOTLIGHT */
+
+.news-spotlight:hover {
+    border-color: var(--apex-blue);
+
+    box-shadow:
+        0 36px 90px rgba(0,0,0,.58),
+        0 0 30px rgba(22, 140, 255, .14);
+}
+
+.spotlight-badge {
+    border-color: rgba(22, 140, 255, .5);
+
+    background:
+        rgba(5, 18, 34, .82);
+
+    color: var(--apex-blue-bright);
+}
+
+.spotlight-meta {
+    color: var(--apex-blue-bright);
+}
+
+.meta-dot {
+    background: var(--apex-blue);
+}
+
+.spotlight-link {
+    color: var(--apex-blue-bright);
+}
+
+
+/* SCROLL INDICATOR */
+
+.scroll-line {
+    background:
+        linear-gradient(
+            var(--apex-blue),
+            transparent
+        );
+}
+
+
+/* DISCOVER CARDS */
+
+.discover-card:hover,
+.discover-card:focus-visible {
+    border-color: var(--apex-blue);
+
+    box-shadow:
+        0 24px 60px rgba(0,0,0,.38),
+        0 0 28px rgba(22, 140, 255, .10);
+}
+
+.featured-release {
+    background:
+        radial-gradient(
+            circle at 75% 30%,
+            rgba(22, 140, 255, .27),
+            transparent 35%
+        ),
+        linear-gradient(
+            140deg,
+            #0b1b2c,
+            #07090c 65%
+        );
+}
+
+.community-card {
+    background:
+        radial-gradient(
+            circle at 85% 20%,
+            rgba(22, 140, 255, .15),
+            transparent 40%
+        ),
+        #0a0d11;
+}
+
+.library-card {
+    background:
+        radial-gradient(
+            circle at 20% 10%,
+            rgba(22, 140, 255, .12),
+            transparent 42%
+        ),
+        #090c10;
+}
+
+.discover-link {
+    color: var(--apex-blue-bright);
+}
+
+
+/* LATEST NEWS */
+
+.view-all:hover,
+.view-all:focus-visible {
+    color: var(--apex-blue-bright);
+}
+
+.news-card:hover,
+.news-card:focus-visible {
+    border-color: var(--apex-blue);
+
+    box-shadow:
+        0 25px 55px rgba(0,0,0,.35),
+        0 0 24px rgba(22, 140, 255, .12);
+}
+
+.news-card-meta {
+    color: var(--apex-blue-bright);
+}
+
+
+/* YOUR APEX */
+
+.your-apex {
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(22, 140, 255, .10),
+            transparent 40%
+        ),
+        #07090c;
+}
+
+
+/* FOOTER */
+
+.footer-links a:hover,
+.footer-links a:focus-visible {
+    color: var(--apex-blue-bright);
+}
+/* ========================================
+   ACCOUNT VISIBILITY
+======================================== */
+
+[hidden] {
+    display: none !important;
+}
