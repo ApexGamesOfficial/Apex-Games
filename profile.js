@@ -40,6 +40,11 @@ const statusMenu =
 const friendCount =
     document.getElementById(
         "friendCount"
+
+        const friendPreviewRow =
+    document.getElementById(
+        "friendPreviewRow"
+    );
     );
 
 
@@ -379,10 +384,170 @@ logoutButton.addEventListener(
     }
 );
 
+async function loadFriendPreviews() {
 
+    const {
+        data: { session }
+    } = await supabaseClient.auth.getSession();
+
+
+    if (!session?.user) {
+        return;
+    }
+
+
+    const {
+        data: friendships,
+        error
+    } = await supabaseClient
+        .from("friend_requests")
+        .select(`
+            sender_id,
+            receiver_id,
+            sender:profiles!friend_requests_sender_id_fkey (
+                id,
+                gamertag,
+                display_name,
+                avatar_url,
+                status
+            ),
+            receiver:profiles!friend_requests_receiver_id_fkey (
+                id,
+                gamertag,
+                display_name,
+                avatar_url,
+                status
+            )
+        `)
+        .eq(
+            "status",
+            "accepted"
+        )
+        .or(
+            `sender_id.eq.${session.user.id},receiver_id.eq.${session.user.id}`
+        );
+
+
+    if (error) {
+
+        console.error(
+            "Unable to load friend previews:",
+            error
+        );
+
+        friendPreviewRow.innerHTML = `
+            <p class="friend-preview-empty">
+                Unable to load friends.
+            </p>
+        `;
+
+        return;
+    }
+
+
+    if (!friendships?.length) {
+
+        friendPreviewRow.innerHTML = `
+            <p class="friend-preview-empty">
+                No friends yet.
+            </p>
+        `;
+
+        return;
+    }
+
+
+    friendPreviewRow.innerHTML = "";
+
+
+    friendships
+        .slice(0, 4)
+        .forEach(friendship => {
+
+            const friend =
+                friendship.sender_id === session.user.id
+                    ? friendship.receiver
+                    : friendship.sender;
+
+
+            if (!friend) {
+                return;
+            }
+
+
+            const avatar =
+                friend.avatar_url ||
+                "Default Apex Games Profile Picture.png";
+
+
+            const displayName =
+                friend.display_name ||
+                friend.gamertag;
+
+
+            const status =
+                friend.status ||
+                "offline";
+
+
+            const friendCard =
+                document.createElement(
+                    "a"
+                );
+
+
+            friendCard.href =
+                `friends.html`;
+
+            friendCard.className =
+                "friend-preview";
+
+
+            friendCard.innerHTML = `
+
+                <div class="friend-preview-avatar-wrap">
+
+                    <img
+                        src="${avatar}"
+                        alt="${escapeHTML(displayName)}"
+                        class="friend-preview-avatar"
+                    >
+
+                    <span
+                        class="friend-preview-status ${status}"
+                        title="${escapeHTML(status)}"
+                    ></span>
+
+                </div>
+
+                <span class="friend-preview-name">
+                    ${escapeHTML(friend.gamertag)}
+                </span>
+
+            `;
+
+
+            friendPreviewRow.appendChild(
+                friendCard
+            );
+        });
+}
+function escapeHTML(value) {
+
+    const element =
+        document.createElement(
+            "div"
+        );
+
+    element.textContent =
+        value || "";
+
+    return element.innerHTML;
+}
 /* =========================================
    START
 ========================================= */
 
 loadProfile();
 loadFriendCount();
+loadFriendPreviews();
