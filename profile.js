@@ -37,6 +37,11 @@ const statusText =
 const statusMenu =
     document.getElementById("statusMenu");
 
+const friendCount =
+    document.getElementById(
+        "friendCount"
+    );
+
 
 /* =========================================
    STATUS DISPLAY
@@ -64,7 +69,55 @@ function updateStatusDisplay(status) {
         statusNames[status] || "ONLINE";
 }
 
+async function loadFriendCount() {
 
+    const {
+        data: { session }
+    } = await supabaseClient.auth.getSession();
+
+
+    if (!session?.user) {
+        return;
+    }
+
+
+    const {
+        data: friendships,
+        error
+    } = await supabaseClient
+        .from("friend_requests")
+        .select("id")
+        .eq(
+            "status",
+            "accepted"
+        )
+        .or(
+            `sender_id.eq.${session.user.id},receiver_id.eq.${session.user.id}`
+        );
+
+
+    if (error) {
+
+        console.error(
+            "Unable to load friend count:",
+            error
+        );
+
+        return;
+    }
+
+
+    const count =
+        friendships?.length || 0;
+
+
+    friendCount.textContent =
+        `${count} ${
+            count === 1
+                ? "Friend"
+                : "Friends"
+        }`;
+}
 /* =========================================
    LOAD PROFILE
 ========================================= */
@@ -332,3 +385,4 @@ logoutButton.addEventListener(
 ========================================= */
 
 loadProfile();
+loadFriendCount();
