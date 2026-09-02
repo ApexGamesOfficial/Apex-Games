@@ -1,3 +1,12 @@
+/* =========================================
+   APEX GAMES — PROFILE
+========================================= */
+
+
+/* =========================================
+   DOM ELEMENTS
+========================================= */
+
 const profilePicture =
     document.getElementById("profilePicture");
 
@@ -42,8 +51,25 @@ const friendCount =
 
 const friendPreviewRow =
     document.getElementById("friendPreviewRow");
-    );
-    );
+
+
+let currentUser = null;
+
+
+/* =========================================
+   SAFE TEXT
+========================================= */
+
+function escapeHTML(value) {
+
+    const element =
+        document.createElement("div");
+
+    element.textContent =
+        value || "";
+
+    return element.innerHTML;
+}
 
 
 /* =========================================
@@ -52,12 +78,21 @@ const friendPreviewRow =
 
 function updateStatusDisplay(status) {
 
+    if (
+        !statusButton ||
+        !statusText
+    ) {
+        return;
+    }
+
+
     const statusNames = {
         online: "ONLINE",
         away: "AWAY",
         dnd: "DO NOT DISTURB",
         offline: "APPEAR OFFLINE"
     };
+
 
     statusButton.classList.remove(
         "online",
@@ -66,80 +101,23 @@ function updateStatusDisplay(status) {
         "offline"
     );
 
-    statusButton.classList.add(status);
+
+    statusButton.classList.add(
+        status
+    );
+
 
     statusText.textContent =
-        statusNames[status] || "ONLINE";
+        statusNames[status] ||
+        "ONLINE";
 }
 
-async function loadFriendCount() {
 
-    const {
-        data: { session }
-    } = await supabaseClient.auth.getSession();
-
-
-    if (!session?.user) {
-        return;
-    }
-
-
-    const {
-        data: friendships,
-        error
-    } = await supabaseClient
-        .from("friend_requests")
-        .select("id")
-        .eq(
-            "status",
-            "accepted"
-        )
-        .or(
-            `sender_id.eq.${session.user.id},receiver_id.eq.${session.user.id}`
-        );
-
-
-    if (error) {
-
-        console.error(
-            "Unable to load friend count:",
-            error
-        );
-
-        return;
-    }
-
-
-    const count =
-        friendships?.length || 0;
-
-
-    friendCount.textContent =
-        `${count} ${
-            count === 1
-                ? "Friend"
-                : "Friends"
-        }`;
-}
 /* =========================================
    LOAD PROFILE
 ========================================= */
 
 async function loadProfile() {
-
-    const {
-        data: { session }
-    } = await supabaseClient.auth.getSession();
-
-
-    if (!session?.user) {
-
-        window.location.href =
-            "login.html";
-
-        return;
-    }
-
 
     const {
         data: profile,
@@ -156,7 +134,7 @@ async function loadProfile() {
         `)
         .eq(
             "id",
-            session.user.id
+            currentUser.id
         )
         .single();
 
@@ -176,6 +154,7 @@ async function loadProfile() {
         profile.avatar_url ||
         "Default Apex Games Profile Picture.png";
 
+
     const displayName =
         profile.display_name ||
         profile.gamertag;
@@ -183,53 +162,74 @@ async function loadProfile() {
 
     /* NAVBAR */
 
-    profilePicture.src =
-        avatar;
+    if (profilePicture) {
+        profilePicture.src =
+            avatar;
+    }
 
-    profileGamertag.textContent =
-        profile.gamertag;
+    if (profileGamertag) {
+        profileGamertag.textContent =
+            profile.gamertag;
+    }
 
 
     /* PROFILE HEADER */
 
-    profileAvatar.src =
-        avatar;
+    if (profileAvatar) {
+        profileAvatar.src =
+            avatar;
+    }
 
-    profileDisplayName.textContent =
-        displayName;
+    if (profileDisplayName) {
+        profileDisplayName.textContent =
+            displayName;
+    }
 
-    profilePageGamertag.textContent =
-        profile.gamertag;
+    if (profilePageGamertag) {
+        profilePageGamertag.textContent =
+            profile.gamertag;
+    }
 
-    profileBio.textContent =
-        profile.bio ||
-        "No bio yet.";
+    if (profileBio) {
+        profileBio.textContent =
+            profile.bio ||
+            "No bio yet.";
+    }
 
 
     /* PROFILE INFO */
 
-    detailGamertag.textContent =
-        profile.gamertag;
+    if (detailGamertag) {
+        detailGamertag.textContent =
+            profile.gamertag;
+    }
 
-    detailDisplayName.textContent =
-        displayName;
+    if (detailDisplayName) {
+        detailDisplayName.textContent =
+            displayName;
+    }
 
 
     /* STATUS */
 
     updateStatusDisplay(
-        profile.status || "online"
+        profile.status ||
+        "online"
     );
 
 
     /* MEMBER SINCE */
 
-    if (profile.created_at) {
+    if (
+        memberSince &&
+        profile.created_at
+    ) {
 
         const created =
             new Date(
                 profile.created_at
             );
+
 
         memberSince.textContent =
             created.toLocaleDateString(
@@ -244,152 +244,16 @@ async function loadProfile() {
 
 
 /* =========================================
-   STATUS MENU
+   LOAD FRIENDS
+   ONE QUERY = COUNT + PREVIEWS
 ========================================= */
 
-statusButton.addEventListener(
-    "click",
-    (event) => {
+async function loadFriendsProfileData() {
 
-        event.stopPropagation();
-
-        statusMenu.hidden =
-            !statusMenu.hidden;
-    }
-);
-
-
-statusMenu
-    .querySelectorAll("[data-status]")
-    .forEach(button => {
-
-        button.addEventListener(
-            "click",
-            async (event) => {
-
-                event.preventDefault();
-                event.stopPropagation();
-
-
-                const newStatus =
-                    button.dataset.status;
-
-
-                const {
-                    data: { session }
-                } =
-                    await supabaseClient.auth.getSession();
-
-
-                if (!session?.user) {
-                    return;
-                }
-
-
-                const {
-                    error
-                } = await supabaseClient
-                    .from("profiles")
-                    .update({
-                        status:
-                            newStatus,
-
-                        updated_at:
-                            new Date()
-                                .toISOString()
-                    })
-                    .eq(
-                        "id",
-                        session.user.id
-                    );
-
-
-                if (error) {
-
-                    console.error(
-                        "Unable to save status:",
-                        error
-                    );
-
-                    alert(
-                        "Unable to save your status: " +
-                        error.message
-                    );
-
-                    return;
-                }
-
-
-                updateStatusDisplay(
-                    newStatus
-                );
-
-                statusMenu.hidden =
-                    true;
-            }
-        );
-    });
-
-
-/* Close menu when clicking elsewhere */
-
-document.addEventListener(
-    "click",
-    (event) => {
-
-        if (
-            !statusButton.contains(
-                event.target
-            ) &&
-            !statusMenu.contains(
-                event.target
-            )
-        ) {
-
-            statusMenu.hidden =
-                true;
-        }
-    }
-);
-
-
-/* =========================================
-   LOG OUT
-========================================= */
-
-logoutButton.addEventListener(
-    "click",
-    async () => {
-
-        const {
-            error
-        } = await supabaseClient.auth.signOut();
-
-
-        if (error) {
-
-            console.error(
-                "Unable to log out:",
-                error
-            );
-
-            return;
-        }
-
-
-        window.location.href =
-            "index.html";
-    }
-);
-
-async function loadFriendPreviews() {
-
-    const {
-        data: { session }
-    } = await supabaseClient.auth.getSession();
-
-
-    if (!session?.user) {
+    if (
+        !friendCount ||
+        !friendPreviewRow
+    ) {
         return;
     }
 
@@ -400,8 +264,10 @@ async function loadFriendPreviews() {
     } = await supabaseClient
         .from("friend_requests")
         .select(`
+            id,
             sender_id,
             receiver_id,
+
             sender:profiles!friend_requests_sender_id_fkey (
                 id,
                 gamertag,
@@ -409,6 +275,7 @@ async function loadFriendPreviews() {
                 avatar_url,
                 status
             ),
+
             receiver:profiles!friend_requests_receiver_id_fkey (
                 id,
                 gamertag,
@@ -422,16 +289,21 @@ async function loadFriendPreviews() {
             "accepted"
         )
         .or(
-            `sender_id.eq.${session.user.id},receiver_id.eq.${session.user.id}`
+            `sender_id.eq.${currentUser.id},receiver_id.eq.${currentUser.id}`
         );
 
 
     if (error) {
 
         console.error(
-            "Unable to load friend previews:",
+            "Unable to load friends:",
             error
         );
+
+
+        friendCount.textContent =
+            "Friends";
+
 
         friendPreviewRow.innerHTML = `
             <p class="friend-preview-empty">
@@ -439,11 +311,44 @@ async function loadFriendPreviews() {
             </p>
         `;
 
+
         return;
     }
 
 
-    if (!friendships?.length) {
+    const friends =
+        (friendships || [])
+            .map(friendship => {
+
+                if (
+                    friendship.sender_id ===
+                    currentUser.id
+                ) {
+                    return friendship.receiver;
+                }
+
+                return friendship.sender;
+            })
+            .filter(Boolean);
+
+
+    /* FRIEND COUNT */
+
+    const count =
+        friends.length;
+
+
+    friendCount.textContent =
+        `${count} ${
+            count === 1
+                ? "Friend"
+                : "Friends"
+        }`;
+
+
+    /* NO FRIENDS */
+
+    if (count === 0) {
 
         friendPreviewRow.innerHTML = `
             <p class="friend-preview-empty">
@@ -455,23 +360,15 @@ async function loadFriendPreviews() {
     }
 
 
-    friendPreviewRow.innerHTML = "";
+    /* FRIEND PREVIEWS */
+
+    friendPreviewRow.innerHTML =
+        "";
 
 
-    friendships
+    friends
         .slice(0, 4)
-        .forEach(friendship => {
-
-            const friend =
-                friendship.sender_id === session.user.id
-                    ? friendship.receiver
-                    : friendship.sender;
-
-
-            if (!friend) {
-                return;
-            }
-
+        .forEach(friend => {
 
             const avatar =
                 friend.avatar_url ||
@@ -484,8 +381,31 @@ async function loadFriendPreviews() {
 
 
             const status =
-                friend.status ||
-                "offline";
+                [
+                    "online",
+                    "away",
+                    "dnd",
+                    "offline"
+                ].includes(
+                    friend.status
+                )
+                    ? friend.status
+                    : "offline";
+
+
+            const statusNames = {
+                online:
+                    "Online",
+
+                away:
+                    "Away",
+
+                dnd:
+                    "Do Not Disturb",
+
+                offline:
+                    "Appear Offline"
+            };
 
 
             const friendCard =
@@ -495,7 +415,8 @@ async function loadFriendPreviews() {
 
 
             friendCard.href =
-                `friends.html`;
+                "friends.html";
+
 
             friendCard.className =
                 "friend-preview";
@@ -503,22 +424,26 @@ async function loadFriendPreviews() {
 
             friendCard.innerHTML = `
 
-                <div class="friend-preview-avatar-wrap">
+                <div
+                    class="friend-preview-avatar-wrap"
+                >
 
                     <img
-                        src="${avatar}"
+                        src="${escapeHTML(avatar)}"
                         alt="${escapeHTML(displayName)}"
                         class="friend-preview-avatar"
                     >
 
                     <span
                         class="friend-preview-status ${status}"
-                        title="${escapeHTML(status)}"
+                        title="${statusNames[status]}"
                     ></span>
 
                 </div>
 
-                <span class="friend-preview-name">
+                <span
+                    class="friend-preview-name"
+                >
                     ${escapeHTML(friend.gamertag)}
                 </span>
 
@@ -530,22 +455,212 @@ async function loadFriendPreviews() {
             );
         });
 }
-function escapeHTML(value) {
 
-    const element =
-        document.createElement(
-            "div"
-        );
 
-    element.textContent =
-        value || "";
-
-    return element.innerHTML;
-}
 /* =========================================
-   START
+   STATUS MENU
 ========================================= */
 
-loadProfile();
-loadFriendCount();
-loadFriendPreviews();
+if (
+    statusButton &&
+    statusMenu
+) {
+
+    statusButton.addEventListener(
+        "click",
+        (event) => {
+
+            event.preventDefault();
+            event.stopPropagation();
+
+
+            statusMenu.hidden =
+                !statusMenu.hidden;
+        }
+    );
+
+
+    statusMenu
+        .querySelectorAll(
+            "[data-status]"
+        )
+        .forEach(button => {
+
+            button.addEventListener(
+                "click",
+                async (event) => {
+
+                    event.preventDefault();
+                    event.stopPropagation();
+
+
+                    if (!currentUser) {
+                        return;
+                    }
+
+
+                    const newStatus =
+                        button.dataset.status;
+
+
+                    if (
+                        ![
+                            "online",
+                            "away",
+                            "dnd",
+                            "offline"
+                        ].includes(
+                            newStatus
+                        )
+                    ) {
+                        return;
+                    }
+
+
+                    const {
+                        error
+                    } = await supabaseClient
+                        .from("profiles")
+                        .update({
+                            status:
+                                newStatus,
+
+                            updated_at:
+                                new Date()
+                                    .toISOString()
+                        })
+                        .eq(
+                            "id",
+                            currentUser.id
+                        );
+
+
+                    if (error) {
+
+                        console.error(
+                            "Unable to save status:",
+                            error
+                        );
+
+
+                        alert(
+                            "Unable to save your status: " +
+                            error.message
+                        );
+
+
+                        return;
+                    }
+
+
+                    updateStatusDisplay(
+                        newStatus
+                    );
+
+
+                    statusMenu.hidden =
+                        true;
+                }
+            );
+        });
+
+
+    document.addEventListener(
+        "click",
+        (event) => {
+
+            if (
+                !statusButton.contains(
+                    event.target
+                ) &&
+                !statusMenu.contains(
+                    event.target
+                )
+            ) {
+
+                statusMenu.hidden =
+                    true;
+            }
+        }
+    );
+}
+
+
+/* =========================================
+   LOG OUT
+========================================= */
+
+if (logoutButton) {
+
+    logoutButton.addEventListener(
+        "click",
+        async () => {
+
+            const {
+                error
+            } =
+                await supabaseClient
+                    .auth
+                    .signOut();
+
+
+            if (error) {
+
+                console.error(
+                    "Unable to log out:",
+                    error
+                );
+
+                return;
+            }
+
+
+            window.location.href =
+                "index.html";
+        }
+    );
+}
+
+
+/* =========================================
+   START PROFILE PAGE
+========================================= */
+
+async function startProfilePage() {
+
+    const {
+        data: { session }
+    } =
+        await supabaseClient
+            .auth
+            .getSession();
+
+
+    if (!session?.user) {
+
+        window.location.href =
+            "login.html";
+
+        return;
+    }
+
+
+    currentUser =
+        session.user;
+
+
+    /*
+        Start these together.
+
+        Profile data does NOT need to
+        finish before friends can load.
+    */
+
+    await Promise.all([
+        loadProfile(),
+        loadFriendsProfileData()
+    ]);
+}
+
+
+startProfilePage();
