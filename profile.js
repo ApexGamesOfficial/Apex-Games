@@ -38,12 +38,10 @@ const statusMenu =
     document.getElementById("statusMenu");
 
 const friendCount =
-    document.getElementById(
-        "friendCount"
+    document.getElementById("friendCount");
 
-        const friendPreviewRow =
-    document.getElementById(
-        "friendPreviewRow"
+const friendPreviewRow =
+    document.getElementById("friendPreviewRow");
     );
     );
 
