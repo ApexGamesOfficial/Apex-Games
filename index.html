@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
 
     <meta
@@ -11,10 +12,21 @@
 
     <title>Apex Games</title>
 
-    <link rel="stylesheet" href="home.css">
+    <link
+        rel="stylesheet"
+        href="home.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="mobile-nav.css?v=1"
+    >
+
 </head>
 
+
 <body>
+
 
     <!-- ========================================
          NAVIGATION
@@ -22,18 +34,29 @@
 
     <header class="topbar">
 
+
         <div class="nav-left">
 
-            <a href="index.html" class="brand">
+            <a
+                href="index.html"
+                class="brand"
+                aria-label="Apex Games Home"
+            >
+
                 <img
-                   src="apex-logo.png"
+                    src="apex-logo.png"
                     alt="Apex Games"
                 >
+
             </a>
+
 
             <nav class="main-nav">
 
-                <a href="index.html" class="active">
+                <a
+                    href="index.html"
+                    class="active"
+                >
                     Home
                 </a>
 
@@ -62,7 +85,8 @@
         </div>
 
 
-        <!-- SEARCH -->
+
+        <!-- DESKTOP SEARCH -->
 
         <form
             class="nav-search"
@@ -84,57 +108,290 @@
         </form>
 
 
-       <!-- ACCOUNT -->
 
-<div class="nav-account">
+        <!-- DESKTOP ACCOUNT -->
+
+        <div class="nav-account">
+
+            <div
+                class="logged-out-account"
+                id="loggedOutAccount"
+            >
+
+                <a
+                    href="login.html"
+                    class="login-link"
+                >
+                    Log In
+                </a>
+
+                <a
+                    href="signup.html"
+                    class="create-account-button"
+                >
+                    Create Account
+                </a>
+
+            </div>
+
+
+            <a
+                href="profile.html"
+                class="profile-widget"
+                id="profileWidget"
+                hidden
+            >
+
+                <img
+                    src="Default Apex Games Profile Picture.png"
+                    alt="Profile Picture"
+                    id="profilePicture"
+                >
+
+                <span id="profileGamertag">
+                    Player
+                </span>
+
+            </a>
+
+        </div>
+
+
+
+        <!-- ========================================
+             MOBILE NAV BUTTONS
+        ========================================= -->
+
+        <div class="mobile-nav-actions">
+
+            <button
+                class="mobile-nav-button"
+                id="mobileSearchButton"
+                type="button"
+                aria-label="Search Apex Games"
+            >
+
+                <span
+                    class="mobile-search-icon"
+                    aria-hidden="true"
+                ></span>
+
+            </button>
+
+
+            <button
+                class="mobile-nav-button"
+                id="mobileMenuButton"
+                type="button"
+                aria-label="Open navigation menu"
+                aria-expanded="false"
+                aria-controls="mobileMenu"
+            >
+
+                <span
+                    class="mobile-menu-icon"
+                    aria-hidden="true"
+                >
+
+                    <span></span>
+                    <span></span>
+                    <span></span>
+
+                </span>
+
+            </button>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- ========================================
+         MOBILE MENU BACKDROP
+    ========================================= -->
 
     <div
-        class="logged-out-account"
-        id="loggedOutAccount"
+        class="mobile-menu-backdrop"
+        id="mobileMenuBackdrop"
+        aria-hidden="true"
+    ></div>
+
+
+
+    <!-- ========================================
+         MOBILE MENU
+    ========================================= -->
+
+    <aside
+        class="mobile-menu"
+        id="mobileMenu"
+        aria-hidden="true"
     >
 
-        <a
-            href="login.html"
-            class="login-link"
+
+        <div class="mobile-menu-header">
+
+            <div>
+
+                <p class="mobile-menu-label">
+                    APEX GAMES
+                </p>
+
+                <h2 class="mobile-menu-title">
+                    Navigation
+                </h2>
+
+            </div>
+
+
+            <button
+                class="mobile-menu-close"
+                id="mobileMenuClose"
+                type="button"
+                aria-label="Close navigation menu"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+
+        <!-- MOBILE SEARCH -->
+
+        <form
+            class="mobile-search"
+            id="mobileSearch"
         >
-            Log In
-        </a>
 
-        <a
-            href="signup.html"
-            class="create-account-button"
-        >
-            Create Account
-        </a>
+            <span class="mobile-search-symbol">
+                ⌕
+            </span>
 
-    </div>
+            <input
+                type="search"
+                id="mobileSearchInput"
+                placeholder="Search Apex Games"
+                autocomplete="off"
+                aria-label="Search Apex Games"
+            >
 
-
-    <a
-        href="profile.html"
-        class="profile-widget"
-        id="profileWidget"
-        hidden
-    >
-
-        <img
-            src="Default Apex Games Profile Picture.png"
-            alt="Profile Picture"
-            id="profilePicture"
-        >
-
-        <span id="profileGamertag">
-            Player
-        </span>
-
-    </a>
-
-</div>
-
-</header>
+        </form>
 
 
-<main>
+
+        <!-- MOBILE LINKS -->
+
+        <nav class="mobile-links">
+
+            <a
+                href="index.html"
+                class="active"
+            >
+                HOME
+            </a>
+
+            <a href="library.html">
+                LIBRARY
+            </a>
+
+            <a href="chat.html">
+                CHAT
+            </a>
+
+            <a href="store.html">
+                STORE
+            </a>
+
+            <a href="news.html">
+                NEWS
+            </a>
+
+            <a href="about.html">
+                ABOUT
+            </a>
+
+        </nav>
+
+
+
+        <!-- MOBILE ACCOUNT -->
+
+        <div class="mobile-account">
+
+            <p class="mobile-account-label">
+                APEX ACCOUNT
+            </p>
+
+
+            <div
+                class="mobile-logged-out"
+                id="mobileLoggedOutAccount"
+            >
+
+                <a
+                    href="login.html"
+                    class="mobile-login"
+                >
+                    Log In
+                </a>
+
+                <a
+                    href="signup.html"
+                    class="mobile-create-account"
+                >
+                    Create Account
+                </a>
+
+            </div>
+
+
+
+            <a
+                href="profile.html"
+                class="mobile-profile"
+                id="mobileProfileWidget"
+                hidden
+            >
+
+                <img
+                    src="Default Apex Games Profile Picture.png"
+                    alt="Profile Picture"
+                    id="mobileProfilePicture"
+                >
+
+
+                <span class="mobile-profile-copy">
+
+                    <span
+                        class="mobile-profile-gamertag"
+                        id="mobileProfileGamertag"
+                    >
+                        Player
+                    </span>
+
+                    <span class="mobile-profile-subtitle">
+                        View Profile
+                    </span>
+
+                </span>
+
+
+                <span class="mobile-profile-arrow">
+                    ›
+                </span>
+
+            </a>
+
+        </div>
+
+    </aside>
+
+
+
+    <main>
+
 
         <!-- ========================================
              HERO
@@ -149,8 +406,6 @@
             <div class="hero-layout">
 
 
-                <!-- LEFT HERO -->
-
                 <div class="hero-branding">
 
                     <p class="eyebrow">
@@ -158,16 +413,23 @@
                     </p>
 
                     <h1>
+
                         Creating Worlds.
+
                         <span>
                             Elevating Reality.
                         </span>
+
                     </h1>
 
+
                     <p class="hero-description">
+
                         Games, experiences, and worlds
                         built to go beyond the screen.
+
                     </p>
+
 
                     <div class="hero-actions">
 
@@ -191,7 +453,7 @@
 
 
 
-                <!-- RIGHT HERO: NEWS SPOTLIGHT -->
+                <!-- NEWS SPOTLIGHT -->
 
                 <article
                     class="news-spotlight"
@@ -233,8 +495,10 @@
 
 
                         <p id="spotlightDescription">
+
                             Discover the latest announcements,
                             updates, and releases from Apex Games.
+
                         </p>
 
 
@@ -243,8 +507,13 @@
                             id="spotlightLink"
                             class="spotlight-link"
                         >
+
                             Read Story
-                            <span>→</span>
+
+                            <span>
+                                →
+                            </span>
+
                         </a>
 
                     </div>
@@ -288,9 +557,12 @@
 
                 </div>
 
+
                 <p class="section-description">
+
                     Explore what's happening across
                     Apex Games.
+
                 </p>
 
             </div>
@@ -299,8 +571,6 @@
 
             <div class="discover-grid">
 
-
-                <!-- FEATURED RELEASE -->
 
                 <a
                     href="games.html"
@@ -321,8 +591,10 @@
                         </h3>
 
                         <p>
+
                             Discover games currently being
                             developed by Apex Games.
+
                         </p>
 
                         <span class="discover-link">
@@ -334,8 +606,6 @@
                 </a>
 
 
-
-                <!-- COMMUNITY -->
 
                 <a
                     href="chat.html"
@@ -354,8 +624,10 @@
                         </h3>
 
                         <p>
+
                             Connect with friends, see what
                             they're playing, and stay connected.
+
                         </p>
 
                         <span class="discover-link">
@@ -367,8 +639,6 @@
                 </a>
 
 
-
-                <!-- LIBRARY -->
 
                 <a
                     href="library.html"
@@ -387,8 +657,10 @@
                         </h3>
 
                         <p>
+
                             Access your games and experiences
                             across Apex Games.
+
                         </p>
 
                         <span class="discover-link">
@@ -406,7 +678,6 @@
 
 
         <!-- ========================================
-             SECOND SCROLL AREA
              LATEST AT APEX
         ========================================= -->
 
@@ -437,15 +708,10 @@
             </div>
 
 
-
             <div
                 class="latest-news-grid"
                 id="latestNewsGrid"
-            >
-
-                <!-- Filled automatically by home.js -->
-
-            </div>
+            ></div>
 
         </section>
 
@@ -471,9 +737,11 @@
                     </h2>
 
                     <p>
+
                         Your library, friends, profile,
                         activity, and games — connected
                         through your Apex Games Account.
+
                     </p>
 
                 </div>
@@ -516,7 +784,7 @@
             <div class="footer-brand">
 
                 <img
-                   src="apex-logo.png"
+                    src="apex-logo.png"
                     alt="Apex Games"
                 >
 
@@ -566,12 +834,16 @@
 
 
 
-   <script src="news-data.js"></script>
+    <script src="news-data.js"></script>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="auth.js"></script>
-<script src="account-state.js"></script>
-<script src="home.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <script src="auth.js"></script>
+
+    <script src="account-state.js"></script>
+
+    <script src="home.js?v=2"></script>
+
 </body>
 
 </html>
