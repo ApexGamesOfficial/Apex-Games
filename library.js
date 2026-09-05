@@ -1516,9 +1516,58 @@ async function startLibrary() {
 
     renderWebLibrary();
 
+   const device =
+    window.detectApexDevice
+        ? window.detectApexDevice()
+        : {
+            deviceType: "unknown",
+            os: "unknown",
+            clientSupported: false
+        };
+
+
+const deviceName =
+    window.getApexDeviceName
+        ? window.getApexDeviceName(
+            device
+        )
+        : "Unknown Device";
+
+
+if (
+    device.clientSupported
+) {
+
+    const client =
+        $("clientLibrary");
+
+    const unsupported =
+        $("unsupportedLibrary");
+
+
+    if (
+        unsupported
+    ) {
+
+        unsupported.hidden =
+            true;
+    }
+
+
+    if (
+        client
+    ) {
+
+        client.hidden =
+            false;
+    }
+
+} else {
+
     showUnsupportedLibrary(
-        "ChromeOS"
+        deviceName
     );
+}
 
 
     /*
