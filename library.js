@@ -2480,3 +2480,37 @@ p:not(.section-label) {
         flex-direction: column;
     }
 }
+/* =========================================================
+   START
+========================================================= */
+
+async function startLibrary() {
+
+    updateClientIndicator();
+
+    await loadAccount();
+
+    if (
+        !findGame(
+            selectedGameId
+        )
+    ) {
+
+        selectedGameId =
+            libraryGames[0]?.id ||
+            null;
+    }
+
+    renderGameList();
+
+    renderSelectedGame();
+
+    renderWebGameList();
+
+    showUnsupportedLibrary(
+        "ChromeOS"
+    );
+}
+
+
+startLibrary();
