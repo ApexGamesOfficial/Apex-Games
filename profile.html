@@ -2,16 +2,31 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>Profile | Apex Games</title>
 
-    <link rel="stylesheet" href="home.css">
-<link rel="stylesheet" href="./profile.css?v=7">
+    <link
+        rel="stylesheet"
+        href="home.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="./profile.css?v=10"
+    >
+
 </head>
 
+
 <body>
+
 
     <!-- ========================================
          NAVIGATION
@@ -21,24 +36,56 @@
 
         <div class="nav-left">
 
-            <a href="index.html" class="brand">
-                <img src="apex-logo.png" alt="Apex Games">
+            <a
+                href="index.html"
+                class="brand"
+            >
+                <img
+                    src="apex-logo.png"
+                    alt="Apex Games"
+                >
             </a>
 
+
             <nav class="main-nav">
-                <a href="index.html">Home</a>
-                <a href="library.html">Library</a>
-                <a href="chat.html">Chat</a>
-                <a href="store.html">Store</a>
-                <a href="news.html">News</a>
-                <a href="about.html">About</a>
+
+                <a href="index.html">
+                    Home
+                </a>
+
+                <a href="library.html">
+                    Library
+                </a>
+
+                <a href="chat.html">
+                    Chat
+                </a>
+
+                <a href="store.html">
+                    Store
+                </a>
+
+                <a href="news.html">
+                    News
+                </a>
+
+                <a href="about.html">
+                    About
+                </a>
+
             </nav>
 
         </div>
 
-        <form class="nav-search" id="navSearch">
 
-            <span class="search-icon">⌕</span>
+        <form
+            class="nav-search"
+            id="navSearch"
+        >
+
+            <span class="search-icon">
+                ⌕
+            </span>
 
             <input
                 type="search"
@@ -49,6 +96,7 @@
             >
 
         </form>
+
 
         <div class="nav-account">
 
@@ -75,6 +123,7 @@
     </header>
 
 
+
     <!-- ========================================
          PROFILE
     ========================================= -->
@@ -82,11 +131,14 @@
     <main class="profile-page">
 
 
-        <!-- PROFILE HEADER -->
+        <!-- ====================================
+             PROFILE HEADER
+        ===================================== -->
 
         <section class="profile-header">
 
             <div class="profile-cover-glow"></div>
+
 
             <div class="profile-header-inner">
 
@@ -100,80 +152,103 @@
 
                 <div class="profile-identity">
 
-                   <div class="profile-name-row">
+                    <div class="profile-name-row">
 
-    <h1 id="profileDisplayName">
-        Player
-    </h1>
+                        <h1 id="profileDisplayName">
+                            Player
+                        </h1>
 
-</div>
-
-<div class="status-wrapper">
-
-    <button
-        class="profile-status online"
-        id="statusButton"
-        type="button"
-    >
-        <span class="status-dot"></span>
-        <span
-            class="status-text"
-            id="statusText"
-        >
-            ONLINE
-        </span>
-
-        <span class="status-arrow">
-            ▾
-        </span>
-    </button>
+                    </div>
 
 
-    <div
-        class="status-menu"
-        id="statusMenu"
-        hidden
-    >
+                    <!-- STATUS -->
 
-        <button
-            type="button"
-            data-status="online"
-        >
-            <span class="status-choice-dot online"></span>
-            Online
-        </button>
+                    <div class="status-wrapper">
 
-        <button
-            type="button"
-            data-status="away"
-        >
-            <span class="status-choice-dot away"></span>
-            Away
-        </button>
+                        <button
+                            class="profile-status online"
+                            id="statusButton"
+                            type="button"
+                        >
 
-        <button
-            type="button"
-            data-status="dnd"
-        >
-            <span class="status-choice-dot dnd"></span>
-            Do Not Disturb
-        </button>
+                            <span class="status-dot"></span>
 
-        <button
-            type="button"
-            data-status="offline"
-        >
-            <span class="status-choice-dot offline"></span>
-            Appear Offline
-        </button>
+                            <span
+                                class="status-text"
+                                id="statusText"
+                            >
+                                ONLINE
+                            </span>
 
-    </div>
+                            <span class="status-arrow">
+                                ▾
+                            </span>
 
-</div>
+                        </button>
 
-<p class="profile-gamertag">
-    @<span id="profilePageGamertag">player</span>
-</p>
+
+                        <div
+                            class="status-menu"
+                            id="statusMenu"
+                            hidden
+                        >
+
+                            <button
+                                type="button"
+                                data-status="online"
+                            >
+                                <span
+                                    class="status-choice-dot online"
+                                ></span>
+
+                                Online
+                            </button>
+
+
+                            <button
+                                type="button"
+                                data-status="away"
+                            >
+                                <span
+                                    class="status-choice-dot away"
+                                ></span>
+
+                                Away
+                            </button>
+
+
+                            <button
+                                type="button"
+                                data-status="dnd"
+                            >
+                                <span
+                                    class="status-choice-dot dnd"
+                                ></span>
+
+                                Do Not Disturb
+                            </button>
+
+
+                            <button
+                                type="button"
+                                data-status="offline"
+                            >
+                                <span
+                                    class="status-choice-dot offline"
+                                ></span>
+
+                                Appear Offline
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <p class="profile-gamertag">
+                        @<span id="profilePageGamertag">player</span>
+                    </p>
+
 
                     <p
                         class="profile-bio"
@@ -201,12 +276,17 @@
         </section>
 
 
-        <!-- PROFILE BODY -->
+
+        <!-- ====================================
+             PROFILE BODY
+        ===================================== -->
 
         <section class="profile-layout">
 
 
-            <!-- LEFT COLUMN -->
+            <!-- =================================
+                 LEFT COLUMN
+            ================================== -->
 
             <div class="profile-main-column">
 
@@ -218,6 +298,7 @@
                     <div class="panel-heading">
 
                         <div>
+
                             <p class="panel-label">
                                 RECENT ACTIVITY
                             </p>
@@ -225,6 +306,7 @@
                             <h2>
                                 Recently Played
                             </h2>
+
                         </div>
 
                     </div>
@@ -276,8 +358,11 @@
 
                                 </div>
 
+
                                 <div class="achievement-track">
+
                                     <div class="achievement-fill"></div>
+
                                 </div>
 
                             </div>
@@ -297,6 +382,7 @@
                     <div class="panel-heading">
 
                         <div>
+
                             <p class="panel-label">
                                 SHOWCASE
                             </p>
@@ -304,6 +390,7 @@
                             <h2>
                                 Featured Game
                             </h2>
+
                         </div>
 
                     </div>
@@ -314,7 +401,7 @@
                         <div class="featured-game-background"></div>
 
 
-                        <div class="Featured-game-content">
+                        <div class="featured-game-content">
 
                             <p class="showcase-label">
                                 FEATURED GAME
@@ -348,6 +435,7 @@
                     <div class="panel-heading">
 
                         <div>
+
                             <p class="panel-label">
                                 ACHIEVEMENTS
                             </p>
@@ -355,6 +443,7 @@
                             <h2>
                                 Recent Unlocks
                             </h2>
+
                         </div>
 
                     </div>
@@ -374,12 +463,13 @@
 
                 </section>
 
-
             </div>
 
 
 
-            <!-- RIGHT SIDEBAR -->
+            <!-- =================================
+                 RIGHT SIDEBAR
+            ================================== -->
 
             <aside class="profile-sidebar">
 
@@ -392,13 +482,16 @@
                         APEX LEVEL
                     </p>
 
+
                     <div class="level-display">
 
                         <div class="level-ring">
                             1
                         </div>
 
+
                         <div>
+
                             <strong>
                                 Level 1
                             </strong>
@@ -406,6 +499,7 @@
                             <span>
                                 New Player
                             </span>
+
                         </div>
 
                     </div>
@@ -421,25 +515,35 @@
                     <div class="sidebar-heading">
 
                         <div>
+
                             <p class="panel-label">
                                 FRIENDS
                             </p>
 
-                            <h3 id="friendCount">0 Friends</h3>
+                            <h3 id="friendCount">
+                                0 Friends
+                            </h3>
+
                         </div>
 
-                        <a href="friends.html">
-    View
-</a>
 
-                   <div
-    class="friend-preview-row"
-    id="friendPreviewRow"
->
-    <p class="friend-preview-empty">
-        Loading friends...
-    </p>
-</div>
+                        <a href="friends.html">
+                            View
+                        </a>
+
+                    </div>
+
+
+                    <div
+                        class="friend-preview-list"
+                        id="friendPreviewRow"
+                    >
+
+                        <p class="friend-preview-empty">
+                            Loading friends...
+                        </p>
+
+                    </div>
 
                 </section>
 
@@ -453,24 +557,20 @@
                         BADGES
                     </p>
 
+
                     <h3>
                         Your Badges
                     </h3>
 
 
-                    <div class="badge-row">
+                    <div
+                        class="profile-badges"
+                        id="profileBadges"
+                    >
 
-                        <div class="badge-placeholder">
-                            ★
-                        </div>
-
-                        <div class="badge-placeholder">
-                            ◆
-                        </div>
-
-                        <div class="badge-placeholder">
-                            A
-                        </div>
+                        <p class="badge-empty">
+                            Loading badges...
+                        </p>
 
                     </div>
 
@@ -485,6 +585,7 @@
                     <p class="panel-label">
                         PROFILE INFO
                     </p>
+
 
                     <h3>
                         Account
@@ -538,10 +639,10 @@
                 <button
                     class="logout-button"
                     id="logoutButton"
+                    type="button"
                 >
                     Log Out
                 </button>
-
 
             </aside>
 
@@ -550,9 +651,20 @@
     </main>
 
 
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <!-- ========================================
+         SCRIPTS
+    ========================================= -->
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
+    ></script>
+
     <script src="auth.js"></script>
-    <script src="./profile.js?v=9"></script>
+
+    <script src="./presence.js?v=1"></script>
+
+    <script src="./profile.js?v=10"></script>
 
 </body>
 
