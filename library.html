@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
 
     <meta
@@ -19,13 +18,11 @@
 
     <link
         rel="stylesheet"
-        href="library.css?v=10"
+        href="library.css?v=20"
     >
-
 </head>
 
 <body>
-
 
     <!-- ========================================
          NAVIGATION
@@ -44,7 +41,6 @@
                     alt="Apex Games"
                 >
             </a>
-
 
             <nav class="main-nav">
 
@@ -150,18 +146,19 @@
 
 
     <!-- ========================================
-         LIBRARY CLIENT
+         WINDOWS CLIENT LIBRARY
+
+         Phase 3 will show this automatically
+         on supported Windows desktop devices.
     ========================================= -->
 
     <main
         class="library-app"
-        id="libraryApp"
+        id="clientLibrary"
+        hidden
     >
 
-
-        <!-- ====================================
-             SIDEBAR
-        ===================================== -->
+        <!-- SIDEBAR -->
 
         <aside class="library-sidebar">
 
@@ -286,17 +283,12 @@
 
 
 
-        <!-- ====================================
-             SELECTED GAME
-        ===================================== -->
+        <!-- SELECTED GAME -->
 
         <section
             class="selected-game"
             id="selectedGame"
         >
-
-
-            <!-- BANNER -->
 
             <div
                 class="game-banner"
@@ -318,10 +310,7 @@
                         Apex Demo
                     </h2>
 
-                    <div
-                        class="banner-meta"
-                        id="bannerMeta"
-                    >
+                    <div class="banner-meta">
 
                         <span id="selectedGenre">
                             Action
@@ -339,9 +328,6 @@
 
             </div>
 
-
-
-            <!-- ACTION BAR -->
 
             <div class="game-actions-panel">
 
@@ -406,9 +392,6 @@
             </div>
 
 
-
-            <!-- INSTALL / CLIENT MESSAGE -->
-
             <div
                 class="client-action-message"
                 id="clientActionMessage"
@@ -437,18 +420,9 @@
             </div>
 
 
-
-            <!-- DASHBOARD -->
-
             <div class="game-dashboard">
 
-
-                <!-- LEFT -->
-
                 <div class="game-main-info">
-
-
-                    <!-- ABOUT -->
 
                     <section class="dashboard-card">
 
@@ -466,9 +440,6 @@
 
                     </section>
 
-
-
-                    <!-- ACHIEVEMENTS -->
 
                     <section class="dashboard-card">
 
@@ -512,9 +483,6 @@
 
                     </section>
 
-
-
-                    <!-- CLIENT MANAGEMENT -->
 
                     <section class="dashboard-card">
 
@@ -577,13 +545,7 @@
                 </div>
 
 
-
-                <!-- RIGHT -->
-
                 <aside class="game-side-info">
-
-
-                    <!-- RATINGS -->
 
                     <section class="dashboard-card rating-card">
 
@@ -680,9 +642,6 @@
                     </section>
 
 
-
-                    <!-- DETAILS -->
-
                     <section class="dashboard-card">
 
                         <p class="section-label">
@@ -756,12 +715,317 @@
 
                     </section>
 
-
                 </aside>
 
             </div>
 
         </section>
+
+    </main>
+
+
+
+    <!-- ========================================
+         UNSUPPORTED DEVICE / WEB LIBRARY
+
+         FOR THIS PHASE WE FORCE THIS VIEW ON.
+         device.js will automate it next.
+    ========================================= -->
+
+    <main
+        class="unsupported-library"
+        id="unsupportedLibrary"
+    >
+
+        <div class="unsupported-shell">
+
+
+            <!-- ====================================
+                 PAGE HEADER
+            ===================================== -->
+
+            <section class="unsupported-heading">
+
+                <p class="unsupported-eyebrow">
+                    APEX GAMES
+                </p>
+
+                <h1>
+                    Your Library
+                </h1>
+
+                <p>
+                    Your games stay with your Apex Games Account,
+                    even when you're away from a supported gaming PC.
+                </p>
+
+            </section>
+
+
+
+            <!-- ====================================
+                 DEVICE COMPATIBILITY
+            ===================================== -->
+
+            <section class="compatibility-panel">
+
+                <div class="compatibility-glow"></div>
+
+
+                <div class="compatibility-icon" aria-hidden="true">
+
+                    <div class="device-screen">
+
+                        <span class="device-apex-mark">
+                            A
+                        </span>
+
+                    </div>
+
+                    <div class="device-base"></div>
+
+                    <span class="device-warning">
+                        !
+                    </span>
+
+                </div>
+
+
+                <div class="compatibility-copy">
+
+                    <p class="unsupported-eyebrow">
+                        CLIENT AVAILABILITY
+                    </p>
+
+                    <h2>
+                        Apex Games Client isn't available
+                        on this device yet
+                    </h2>
+
+                    <p>
+                        You can still browse your Apex Games Library,
+                        view your games, check progress, and manage
+                        favorites from the web.
+                    </p>
+
+                    <p class="compatibility-note">
+                        Downloading, installing, and launching PC games
+                        requires the Apex Games Client on a supported
+                        Windows PC.
+                    </p>
+
+
+                    <div class="compatibility-actions">
+
+                        <a
+                            href="store.html"
+                            class="unsupported-primary-button"
+                        >
+                            BROWSE STORE
+                        </a>
+
+                        <a
+                            href="#webGames"
+                            class="unsupported-secondary-button"
+                        >
+                            VIEW MY GAMES
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <div class="compatibility-status">
+
+                    <div class="compatibility-status-row">
+
+                        <div>
+
+                            <span>
+                                THIS DEVICE
+                            </span>
+
+                            <strong id="unsupportedDeviceName">
+                                ChromeOS
+                            </strong>
+
+                        </div>
+
+                        <span class="support-pill unsupported">
+                            NOT SUPPORTED
+                        </span>
+
+                    </div>
+
+
+                    <div class="compatibility-status-row">
+
+                        <div>
+
+                            <span>
+                                APEX GAMES CLIENT
+                            </span>
+
+                            <strong>
+                                Windows PC
+                            </strong>
+
+                        </div>
+
+                        <span class="support-pill supported">
+                            SUPPORTED
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- ====================================
+                 WEB GAMES TOOLBAR
+            ===================================== -->
+
+            <section
+                class="web-library-section"
+                id="webGames"
+            >
+
+                <div class="web-library-heading">
+
+                    <div>
+
+                        <p class="unsupported-eyebrow">
+                            YOUR COLLECTION
+                        </p>
+
+                        <h2>
+                            Your Games
+                        </h2>
+
+                        <span
+                            class="web-game-count"
+                            id="webGameCount"
+                        >
+                            0 games
+                        </span>
+
+                    </div>
+
+
+                    <div class="web-library-search">
+
+                        <span aria-hidden="true">
+                            ⌕
+                        </span>
+
+                        <input
+                            type="search"
+                            id="webLibrarySearch"
+                            placeholder="Search your games..."
+                            autocomplete="off"
+                            aria-label="Search your games"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="web-library-filters"
+                    id="webLibraryFilters"
+                >
+
+                    <button
+                        class="web-filter-button active"
+                        type="button"
+                        data-web-filter="all"
+                    >
+                        All Games
+                    </button>
+
+                    <button
+                        class="web-filter-button"
+                        type="button"
+                        data-web-filter="favorites"
+                    >
+                        Favorites
+                    </button>
+
+                    <button
+                        class="web-filter-button"
+                        type="button"
+                        data-web-filter="recent"
+                    >
+                        Recently Played
+                    </button>
+
+                </div>
+
+
+
+                <!-- GAME ROWS GENERATED BY JS -->
+
+                <div
+                    class="web-game-list"
+                    id="webGameList"
+                ></div>
+
+
+                <div
+                    class="web-library-empty"
+                    id="webLibraryEmpty"
+                    hidden
+                >
+
+                    <div class="web-library-empty-icon">
+                        A
+                    </div>
+
+                    <h3>
+                        No games found
+                    </h3>
+
+                    <p>
+                        Try another search or choose a different filter.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- ====================================
+                 FOOTER NOTE
+            ===================================== -->
+
+            <section class="web-library-footer">
+
+                <div>
+
+                    <strong>
+                        Want to play?
+                    </strong>
+
+                    <span>
+                        Sign in to Apex Games on a supported Windows PC
+                        with the Apex Games Client.
+                    </span>
+
+                </div>
+
+                <span class="web-library-footer-platform">
+                    WINDOWS PC
+                </span>
+
+            </section>
+
+        </div>
 
     </main>
 
@@ -777,7 +1041,7 @@
 
     <script src="presence.js?v=1"></script>
 
-    <script src="library.js?v=10"></script>
+    <script src="library.js?v=20"></script>
 
 </body>
 
