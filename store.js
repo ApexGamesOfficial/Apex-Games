@@ -1,14 +1,5 @@
 /* =========================================================
-   APEX GAMES STORE v0.1
-========================================================= */
-
-const DEFAULT_AVATAR =
-    "Default Apex Games Profile Picture.png";
-
-
-
-/* =========================================================
-   STORE DATA
+   APEX GAMES STORE v0.2
 ========================================================= */
 
 const STORE_GAMES = [
@@ -18,14 +9,28 @@ const STORE_GAMES = [
 
         title: "Apex Demo",
 
-        bannerTitle: "APEX DEMO",
+        artTitle: "APEX DEMO",
 
         developer: "Apex Games",
 
         description:
-            "Step into the Apex ecosystem with the official Apex Games demonstration title.",
+            "Enter the Apex Games ecosystem with the official demonstration experience.",
+
+        longDescription:
+            "Apex Demo is the official demonstration title for the Apex Games platform, built to test the future Apex Client, Library, game delivery, updates, and the complete Apex ecosystem.",
 
         genre: "Action",
+
+        categories: [
+            "action",
+            "apex"
+        ],
+
+        tags: [
+            "Action",
+            "Singleplayer",
+            "Apex Games"
+        ],
 
         release: "2026",
 
@@ -33,17 +38,7 @@ const STORE_GAMES = [
 
         status: "Available",
 
-        accent: "blue",
-
-        filters: [
-            "action"
-        ],
-
-        tags: [
-            "Action",
-            "Windows",
-            "Apex Games"
-        ]
+        accent: "blue"
     },
 
 
@@ -52,43 +47,50 @@ const STORE_GAMES = [
 
         title: "Project Unknown",
 
-        bannerTitle:
-            "PROJECT UNKNOWN",
+        artTitle: "PROJECT UNKNOWN",
 
-        developer:
-            "Apex Games",
+        developer: "Apex Games",
 
         description:
-            "An upcoming Apex Games adventure currently in development. More information will be revealed in the future.",
+            "An upcoming Apex Games adventure currently in development.",
 
-        genre:
-            "Adventure",
+        longDescription:
+            "Project Unknown is an upcoming Apex Games title. More information about the experience, gameplay, and release will be revealed in the future.",
 
-        release:
-            "TBA",
+        genre: "Adventure",
 
-        platform:
-            "Windows",
-
-        status:
-            "Coming Soon",
-
-        accent:
-            "dark",
-
-        filters: [
+        categories: [
             "adventure",
-            "coming-soon"
+            "coming-soon",
+            "apex"
         ],
 
         tags: [
             "Adventure",
-            "Windows",
+            "Singleplayer",
             "Coming Soon"
-        ]
+        ],
+
+        release: "TBA",
+
+        platform: "Windows",
+
+        status: "Coming Soon",
+
+        accent: "dark"
     }
 
 ];
+
+
+
+/* =========================================================
+   STATE
+========================================================= */
+
+let activeCategory = "all";
+
+let featuredIndex = 0;
 
 
 
@@ -97,375 +99,153 @@ const STORE_GAMES = [
 ========================================================= */
 
 const storeSearch =
-    document.getElementById(
-        "storeSearch"
-    );
+    document.getElementById("storeSearch");
 
-const clearSearchButton =
-    document.getElementById(
-        "clearSearchButton"
-    );
+const clearStoreSearch =
+    document.getElementById("clearStoreSearch");
 
-const filters =
-    document.getElementById(
-        "filters"
-    );
+const categoryTabs =
+    document.getElementById("categoryTabs");
 
-const gameGrid =
-    document.getElementById(
-        "gameGrid"
-    );
+const gameList =
+    document.getElementById("gameList");
 
-const resultCount =
-    document.getElementById(
-        "resultCount"
-    );
+const gameCount =
+    document.getElementById("gameCount");
 
-const storeEmpty =
-    document.getElementById(
-        "storeEmpty"
-    );
+const nothingFound =
+    document.getElementById("nothingFound");
 
-const resetStoreButton =
-    document.getElementById(
-        "resetStoreButton"
-    );
+const resetStore =
+    document.getElementById("resetStore");
 
 
-const gameModal =
-    document.getElementById(
-        "gameModal"
-    );
+const previewArt =
+    document.getElementById("previewArt");
 
-const modalBackdrop =
-    document.getElementById(
-        "modalBackdrop"
-    );
+const previewArtTitle =
+    document.getElementById("previewArtTitle");
 
-const modalClose =
-    document.getElementById(
-        "modalClose"
-    );
+const previewTitle =
+    document.getElementById("previewTitle");
 
-const modalBanner =
-    document.getElementById(
-        "modalBanner"
-    );
+const previewDescription =
+    document.getElementById("previewDescription");
 
-const modalBannerTitle =
-    document.getElementById(
-        "modalBannerTitle"
-    );
+const previewRelease =
+    document.getElementById("previewRelease");
 
-const modalDeveloper =
-    document.getElementById(
-        "modalDeveloper"
-    );
+const previewDeveloper =
+    document.getElementById("previewDeveloper");
 
-const modalRelease =
-    document.getElementById(
-        "modalRelease"
-    );
-
-const modalGameTitle =
-    document.getElementById(
-        "modalGameTitle"
-    );
-
-const modalDescription =
-    document.getElementById(
-        "modalDescription"
-    );
-
-const modalTags =
-    document.getElementById(
-        "modalTags"
-    );
-
-const modalPlatform =
-    document.getElementById(
-        "modalPlatform"
-    );
-
-const modalReleaseInfo =
-    document.getElementById(
-        "modalReleaseInfo"
-    );
-
-const modalDeveloperInfo =
-    document.getElementById(
-        "modalDeveloperInfo"
-    );
+const previewTags =
+    document.getElementById("previewTags");
 
 
-const accountAvatar =
-    document.getElementById(
-        "accountAvatar"
-    );
+const featuredMainLink =
+    document.getElementById("featuredMainLink");
 
-const accountGamertag =
-    document.getElementById(
-        "accountGamertag"
-    );
+const featuredMainBackground =
+    document.getElementById("featuredMainBackground");
 
-const accountPresence =
-    document.getElementById(
-        "accountPresence"
-    );
+const featuredArtTitle =
+    document.getElementById("featuredArtTitle");
+
+const featuredDeveloper =
+    document.getElementById("featuredDeveloper");
+
+const featuredTitle =
+    document.getElementById("featuredTitle");
+
+const featuredDescription =
+    document.getElementById("featuredDescription");
+
+const featuredTags =
+    document.getElementById("featuredTags");
+
+const featuredStatus =
+    document.getElementById("featuredStatus");
+
+const featuredPlatform =
+    document.getElementById("featuredPlatform");
+
+const featuredDots =
+    document.getElementById("featuredDots");
 
 
 
 /* =========================================================
-   STATE
+   STORE RENDER
 ========================================================= */
 
-let activeFilter =
-    "all";
+function getVisibleGames() {
 
-let currentUser =
-    null;
-
-
-
-/* =========================================================
-   START
-========================================================= */
-
-async function startStore() {
-
-    renderStore();
-
-
-    try {
-
-        const {
-            data: {
-                session
-            }
-        } =
-            await supabaseClient
-                .auth
-                .getSession();
-
-
-        if (!session?.user) {
-
-            setAvatar(
-                accountAvatar,
-                null
-            );
-
-
-            accountGamertag.textContent =
-                "Sign In";
-
-
-            return;
-        }
-
-
-        currentUser =
-            session.user;
-
-
-        await loadAccount();
-
-
-        updateAccountPresence();
-
-    } catch (error) {
-
-        console.error(
-            "Unable to load Store account:",
-            error
-        );
-    }
-}
-
-
-
-/* =========================================================
-   ACCOUNT
-========================================================= */
-
-async function loadAccount() {
-
-    const {
-        data: profile,
-        error
-    } =
-        await supabaseClient
-            .from("profiles")
-            .select(`
-                gamertag,
-                avatar_url
-            `)
-            .eq(
-                "id",
-                currentUser.id
-            )
-            .single();
-
-
-    if (
-        error ||
-        !profile
-    ) {
-
-        console.error(
-            "Unable to load profile:",
-            error
-        );
-
-
-        return;
-    }
-
-
-    accountGamertag.textContent =
-        profile.gamertag ||
-        "Account";
-
-
-    setAvatar(
-        accountAvatar,
-        profile.avatar_url
-    );
-}
-
-
-function setAvatar(
-    image,
-    url
-) {
-
-    image.onerror =
-        () => {
-
-            image.onerror =
-                null;
-
-
-            image.src =
-                DEFAULT_AVATAR;
-        };
-
-
-    image.src =
-        url ||
-        DEFAULT_AVATAR;
-}
-
-
-
-/* =========================================================
-   PRESENCE
-========================================================= */
-
-function updateAccountPresence() {
-
-    if (
-        !currentUser ||
-        typeof window.getLiveStatus !==
-            "function"
-    ) {
-
-        return;
-    }
-
-
-    const status =
-        window.getLiveStatus(
-            currentUser.id
-        );
-
-
-    accountPresence.className =
-        `account-presence ${
-            status === "online"
-                ? "online"
-                : "offline"
-        }`;
-}
-
-
-window.addEventListener(
-    "apex-presence-updated",
-    updateAccountPresence
-);
-
-
-
-/* =========================================================
-   RENDER STORE
-========================================================= */
-
-function renderStore() {
-
-    const search =
+    const query =
         storeSearch
             .value
             .trim()
             .toLowerCase();
 
 
-    const games =
-        STORE_GAMES.filter(
-            game => {
+    return STORE_GAMES.filter(
+        game => {
 
-                const matchesFilter =
-                    activeFilter === "all" ||
-                    game.filters.includes(
-                        activeFilter
-                    );
-
-
-                const searchable =
-                    [
-                        game.title,
-                        game.developer,
-                        game.description,
-                        game.genre,
-                        game.platform,
-                        game.release,
-                        ...game.tags
-                    ]
-                        .join(" ")
-                        .toLowerCase();
-
-
-                const matchesSearch =
-                    !search ||
-                    searchable.includes(
-                        search
-                    );
-
-
-                return (
-                    matchesFilter &&
-                    matchesSearch
+            const categoryMatch =
+                activeCategory === "all" ||
+                game.categories.includes(
+                    activeCategory
                 );
-            }
-        );
 
 
-    gameGrid.innerHTML =
-        "";
+            const text =
+                [
+                    game.title,
+                    game.developer,
+                    game.description,
+                    game.genre,
+                    game.platform,
+                    game.release,
+                    ...game.tags
+                ]
+                    .join(" ")
+                    .toLowerCase();
+
+
+            const searchMatch =
+                !query ||
+                text.includes(query);
+
+
+            return (
+                categoryMatch &&
+                searchMatch
+            );
+        }
+    );
+}
+
+
+
+function renderGames() {
+
+    const games =
+        getVisibleGames();
+
+
+    gameList.innerHTML = "";
 
 
     games.forEach(
         game => {
 
-            gameGrid.appendChild(
-                createGameCard(
-                    game
-                )
+            gameList.appendChild(
+                createGameRow(game)
             );
         }
     );
 
 
-    resultCount.textContent =
+    gameCount.textContent =
         `${games.length} ${
             games.length === 1
                 ? "game"
@@ -473,290 +253,208 @@ function renderStore() {
         }`;
 
 
-    storeEmpty.hidden =
+    nothingFound.hidden =
         games.length !== 0;
 
 
-    gameGrid.hidden =
-        games.length === 0;
+    clearStoreSearch.hidden =
+        storeSearch.value.length === 0;
 
 
-    clearSearchButton.hidden =
-        storeSearch.value.length ===
-        0;
+    if (games.length > 0) {
+        showPreview(games[0]);
+    }
 }
 
 
 
 /* =========================================================
-   GAME CARD
+   GAME ROW
 ========================================================= */
 
-function createGameCard(
-    game
-) {
+function createGameRow(game) {
 
-    const card =
-        document.createElement(
-            "article"
-        );
+    const row =
+        document.createElement("a");
 
 
-    card.className =
-        "game-card";
+    row.className =
+        "game-row";
 
 
-    card.dataset.accent =
+    row.href =
+        `game.html?id=${encodeURIComponent(game.id)}`;
+
+
+    row.dataset.gameId =
+        game.id;
+
+
+    row.dataset.accent =
         game.accent;
 
 
-    card.tabIndex =
-        0;
+    row.innerHTML = `
 
+        <div class="game-row-art">
 
-    card.setAttribute(
-        "role",
-        "button"
-    );
+            <img
+                src="apex-logo.png"
+                alt=""
+            >
 
+            <span>
+                ${escapeHTML(game.artTitle)}
+            </span>
 
-    card.setAttribute(
-        "aria-label",
-        `View ${game.title}`
-    );
+        </div>
 
 
-    const banner =
-        document.createElement(
-            "div"
-        );
+        <div class="game-row-info">
 
+            <h3>
+                ${escapeHTML(game.title)}
+            </h3>
 
-    banner.className =
-        "game-card-banner";
+            <p>
+                ${escapeHTML(game.developer)}
+            </p>
 
+            <div class="game-row-tags">
 
-    const logo =
-        document.createElement(
-            "img"
-        );
+                ${game.tags
+                    .map(
+                        tag =>
+                            `<span>${escapeHTML(tag)}</span>`
+                    )
+                    .join("")}
 
+            </div>
 
-    logo.src =
-        "apex-logo.png";
+        </div>
 
 
-    logo.alt =
-        "";
+        <div class="game-row-right">
 
+            <span class="row-status">
+                ${escapeHTML(game.status)}
+            </span>
 
-    const bannerTitle =
-        document.createElement(
-            "span"
-        );
+            <span class="row-release">
+                ${escapeHTML(game.release)}
+            </span>
 
+        </div>
 
-    bannerTitle.className =
-        "game-card-banner-title";
+    `;
 
 
-    bannerTitle.textContent =
-        game.bannerTitle;
-
-
-    const status =
-        document.createElement(
-            "span"
-        );
-
-
-    status.className =
-        "game-status";
-
-
-    status.textContent =
-        game.status;
-
-
-    banner.append(
-        logo,
-        bannerTitle,
-        status
-    );
-
-
-    const content =
-        document.createElement(
-            "div"
-        );
-
-
-    content.className =
-        "game-card-content";
-
-
-    const developer =
-        document.createElement(
-            "span"
-        );
-
-
-    developer.className =
-        "game-developer";
-
-
-    developer.textContent =
-        game.developer;
-
-
-    const title =
-        document.createElement(
-            "h3"
-        );
-
-
-    title.className =
-        "game-title";
-
-
-    title.textContent =
-        game.title;
-
-
-    const footer =
-        document.createElement(
-            "div"
-        );
-
-
-    footer.className =
-        "game-card-footer";
-
-
-    const genre =
-        document.createElement(
-            "span"
-        );
-
-
-    genre.className =
-        "game-genre";
-
-
-    genre.textContent =
-        game.genre;
-
-
-    const release =
-        document.createElement(
-            "span"
-        );
-
-
-    release.className =
-        "game-release";
-
-
-    release.textContent =
-        game.release;
-
-
-    footer.append(
-        genre,
-        release
-    );
-
-
-    content.append(
-        developer,
-        title,
-        footer
-    );
-
-
-    card.append(
-        banner,
-        content
-    );
-
-
-    card.addEventListener(
-        "click",
+    row.addEventListener(
+        "mouseenter",
         () => {
 
-            openGame(
-                game.id
+            setActivePreviewRow(
+                row
+            );
+
+
+            showPreview(
+                game
             );
         }
     );
 
 
-    card.addEventListener(
-        "keydown",
-        event => {
+    row.addEventListener(
+        "focus",
+        () => {
 
-            if (
-                event.key === "Enter" ||
-                event.key === " "
-            ) {
-
-                event.preventDefault();
+            setActivePreviewRow(
+                row
+            );
 
 
-                openGame(
-                    game.id
-                );
-            }
+            showPreview(
+                game
+            );
         }
     );
 
 
-    return card;
+    return row;
+}
+
+
+
+function setActivePreviewRow(row) {
+
+    document
+        .querySelectorAll(".game-row")
+        .forEach(
+            item => {
+
+                item.classList.toggle(
+                    "preview-active",
+                    item === row
+                );
+            }
+        );
 }
 
 
 
 /* =========================================================
-   FILTERS
+   BIG HOVER PREVIEW
 ========================================================= */
 
-filters.addEventListener(
-    "click",
-    event => {
+function showPreview(game) {
 
-        const button =
-            event.target.closest(
-                ".filter"
+    previewArt.classList.toggle(
+        "dark",
+        game.accent === "dark"
+    );
+
+
+    previewArtTitle.textContent =
+        game.artTitle;
+
+
+    previewTitle.textContent =
+        game.title;
+
+
+    previewDescription.textContent =
+        game.description;
+
+
+    previewRelease.textContent =
+        game.release;
+
+
+    previewDeveloper.textContent =
+        game.developer;
+
+
+    previewTags.innerHTML = "";
+
+
+    game.tags.forEach(
+        tag => {
+
+            const span =
+                document.createElement("span");
+
+
+            span.textContent =
+                tag;
+
+
+            previewTags.appendChild(
+                span
             );
-
-
-        if (!button) {
-            return;
         }
-
-
-        activeFilter =
-            button.dataset.filter;
-
-
-        document
-            .querySelectorAll(
-                ".filter"
-            )
-            .forEach(
-                item => {
-
-                    item.classList.toggle(
-                        "active",
-                        item === button
-                    );
-                }
-            );
-
-
-        renderStore();
-    }
-);
+    );
+}
 
 
 
@@ -766,180 +464,54 @@ filters.addEventListener(
 
 storeSearch.addEventListener(
     "input",
-    renderStore
+    renderGames
 );
 
 
-clearSearchButton.addEventListener(
+clearStoreSearch.addEventListener(
     "click",
     () => {
 
-        storeSearch.value =
-            "";
-
+        storeSearch.value = "";
 
         storeSearch.focus();
 
-
-        renderStore();
+        renderGames();
     }
 );
 
 
 
 /* =========================================================
-   RESET
+   CATEGORIES
 ========================================================= */
 
-resetStoreButton.addEventListener(
+categoryTabs.addEventListener(
     "click",
-    () => {
+    event => {
 
-        activeFilter =
-            "all";
-
-
-        storeSearch.value =
-            "";
-
-
-        document
-            .querySelectorAll(
-                ".filter"
-            )
-            .forEach(
-                button => {
-
-                    button.classList.toggle(
-                        "active",
-                        button.dataset.filter ===
-                            "all"
-                    );
-                }
+        const button =
+            event.target.closest(
+                "[data-category]"
             );
 
 
-        renderStore();
+        if (!button) {
+            return;
+        }
+
+
+        setCategory(
+            button.dataset.category
+        );
     }
 );
 
 
-
-/* =========================================================
-   GAME DETAILS
-========================================================= */
-
-function openGame(
-    gameId
-) {
-
-    const game =
-        STORE_GAMES.find(
-            item =>
-                item.id ===
-                gameId
-        );
-
-
-    if (!game) {
-        return;
-    }
-
-
-    modalBanner.classList.toggle(
-        "dark",
-        game.accent ===
-            "dark"
-    );
-
-
-    modalBannerTitle.textContent =
-        game.bannerTitle;
-
-
-    modalDeveloper.textContent =
-        game.developer;
-
-
-    modalRelease.textContent =
-        game.release;
-
-
-    modalGameTitle.textContent =
-        game.title;
-
-
-    modalDescription.textContent =
-        game.description;
-
-
-    modalPlatform.textContent =
-        game.platform;
-
-
-    modalReleaseInfo.textContent =
-        game.release;
-
-
-    modalDeveloperInfo.textContent =
-        game.developer;
-
-
-    modalTags.innerHTML =
-        "";
-
-
-    game.tags.forEach(
-        tag => {
-
-            const element =
-                document.createElement(
-                    "span"
-                );
-
-
-            element.textContent =
-                tag;
-
-
-            modalTags.appendChild(
-                element
-            );
-        }
-    );
-
-
-    gameModal.hidden =
-        false;
-
-
-    document.body.style.overflow =
-        "hidden";
-
-
-    modalClose.focus();
-}
-
-
-function closeGame() {
-
-    gameModal.hidden =
-        true;
-
-
-    document.body.style.overflow =
-        "";
-}
-
-
-
-/* =========================================================
-   FEATURED BUTTON
-========================================================= */
 
 document
     .querySelectorAll(
-        "[data-open-game]"
+        "[data-category-jump]"
     )
     .forEach(
         button => {
@@ -948,9 +520,17 @@ document
                 "click",
                 () => {
 
-                    openGame(
-                        button.dataset.openGame
+                    setCategory(
+                        button.dataset.categoryJump
                     );
+
+
+                    document
+                        .querySelector(".browse-games")
+                        ?.scrollIntoView({
+                            behavior: "smooth",
+                            block: "start"
+                        });
                 }
             );
         }
@@ -958,40 +538,294 @@ document
 
 
 
+document
+    .querySelectorAll(
+        "[data-filter-button]"
+    )
+    .forEach(
+        button => {
+
+            button.addEventListener(
+                "click",
+                () => {
+
+                    setCategory(
+                        button.dataset.filterButton
+                    );
+
+
+                    document
+                        .querySelector(".browse-games")
+                        ?.scrollIntoView({
+                            behavior: "smooth",
+                            block: "start"
+                        });
+                }
+            );
+        }
+    );
+
+
+
+function setCategory(category) {
+
+    activeCategory =
+        category;
+
+
+    document
+        .querySelectorAll(
+            "[data-category]"
+        )
+        .forEach(
+            button => {
+
+                button.classList.toggle(
+                    "active",
+                    button.dataset.category ===
+                        category
+                );
+            }
+        );
+
+
+    renderGames();
+}
+
+
+
 /* =========================================================
-   MODAL EVENTS
+   RESET
 ========================================================= */
 
-modalClose.addEventListener(
+resetStore.addEventListener(
     "click",
-    closeGame
-);
+    () => {
 
+        storeSearch.value = "";
 
-modalBackdrop.addEventListener(
-    "click",
-    closeGame
-);
-
-
-document.addEventListener(
-    "keydown",
-    event => {
-
-        if (
-            event.key === "Escape" &&
-            !gameModal.hidden
-        ) {
-
-            closeGame();
-        }
+        setCategory("all");
     }
 );
 
 
 
 /* =========================================================
-   GO
+   FEATURED
 ========================================================= */
 
-startStore();
+function renderFeatured() {
+
+    featuredDots.innerHTML =
+        "";
+
+
+    STORE_GAMES.forEach(
+        (game, index) => {
+
+            const button =
+                document.createElement("button");
+
+
+            button.type =
+                "button";
+
+
+            button.setAttribute(
+                "aria-label",
+                `Show ${game.title}`
+            );
+
+
+            button.classList.toggle(
+                "active",
+                index === featuredIndex
+            );
+
+
+            button.addEventListener(
+                "click",
+                () => {
+
+                    featuredIndex =
+                        index;
+
+
+                    updateFeatured();
+                }
+            );
+
+
+            featuredDots.appendChild(
+                button
+            );
+        }
+    );
+
+
+    updateFeatured();
+}
+
+
+
+function updateFeatured() {
+
+    const game =
+        STORE_GAMES[
+            featuredIndex
+        ];
+
+
+    featuredMainLink.href =
+        `game.html?id=${encodeURIComponent(game.id)}`;
+
+
+    featuredMainBackground.style.background =
+        game.accent === "dark"
+
+            ? `
+                radial-gradient(
+                    circle at 50% 50%,
+                    rgba(120, 136, 157, .18),
+                    transparent 31%
+                ),
+                linear-gradient(
+                    135deg,
+                    #141920,
+                    #06080b 70%
+                )
+            `
+
+            : `
+                radial-gradient(
+                    circle at 50% 50%,
+                    rgba(22, 140, 255, .30),
+                    transparent 31%
+                ),
+                linear-gradient(
+                    135deg,
+                    #101c2b,
+                    #06090e 70%
+                )
+            `;
+
+
+    featuredArtTitle.textContent =
+        game.artTitle;
+
+
+    featuredDeveloper.textContent =
+        game.developer.toUpperCase();
+
+
+    featuredTitle.textContent =
+        game.title;
+
+
+    featuredDescription.textContent =
+        game.description;
+
+
+    featuredStatus.textContent =
+        game.status;
+
+
+    featuredPlatform.textContent =
+        game.platform;
+
+
+    featuredTags.innerHTML =
+        "";
+
+
+    game.tags.forEach(
+        tag => {
+
+            const span =
+                document.createElement("span");
+
+
+            span.textContent =
+                tag;
+
+
+            featuredTags.appendChild(
+                span
+            );
+        }
+    );
+
+
+    [...featuredDots.children]
+        .forEach(
+            (dot, index) => {
+
+                dot.classList.toggle(
+                    "active",
+                    index === featuredIndex
+                );
+            }
+        );
+}
+
+
+
+/* =========================================================
+   GLOBAL NAV SEARCH
+========================================================= */
+
+const navSearch =
+    document.getElementById("navSearch");
+
+const navSearchInput =
+    document.getElementById("navSearchInput");
+
+
+navSearch?.addEventListener(
+    "submit",
+    event => {
+
+        event.preventDefault();
+
+
+        const query =
+            navSearchInput
+                .value
+                .trim();
+
+
+        if (!query) {
+            return;
+        }
+
+
+        window.location.href =
+            `search.html?q=${encodeURIComponent(query)}`;
+    }
+);
+
+
+
+/* =========================================================
+   SAFETY
+========================================================= */
+
+function escapeHTML(value) {
+
+    return String(value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+}
+
+
+
+/* =========================================================
+   START
+========================================================= */
+
+renderGames();
+
+renderFeatured();
