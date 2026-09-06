@@ -72,6 +72,394 @@ textarea {
 
 
 /* =========================================================
+   CHAT LOADING SCREEN
+========================================================= */
+
+.chat-loader {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 1000;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    background:
+        #040609;
+
+    opacity: 1;
+
+    visibility: visible;
+
+    transition:
+        opacity 0.42s ease,
+        visibility 0.42s ease;
+}
+
+
+.chat-loader.hidden {
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+}
+
+
+.chat-loader-background {
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        radial-gradient(
+            circle at 50% 42%,
+            rgba(22, 119, 255, 0.13),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 15% 85%,
+            rgba(22, 119, 255, 0.035),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 88% 10%,
+            rgba(22, 119, 255, 0.035),
+            transparent 30%
+        );
+
+    pointer-events: none;
+}
+
+
+.chat-loader-content {
+    position: relative;
+
+    width: min(90vw, 420px);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    text-align: center;
+}
+
+
+.chat-loader-logo-wrap {
+    position: relative;
+
+    width: 100px;
+    height: 100px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 26px;
+}
+
+
+.chat-loader-ring {
+    position: absolute;
+
+    inset: 0;
+
+    border:
+        1px solid rgba(255, 255, 255, 0.055);
+
+    border-top-color:
+        rgba(22, 119, 255, 0.9);
+
+    border-right-color:
+        rgba(22, 119, 255, 0.24);
+
+    border-radius: 50%;
+
+    animation:
+        apexLoaderSpin 2.4s linear infinite;
+}
+
+
+.chat-loader-logo-wrap::before {
+    content: "";
+
+    position: absolute;
+
+    width: 125px;
+    height: 125px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(22, 119, 255, 0.12);
+
+    filter:
+        blur(38px);
+
+    animation:
+        apexLoaderGlow 2s ease-in-out infinite;
+}
+
+
+.chat-loader-logo {
+    position: relative;
+
+    width: 56px;
+    height: 56px;
+
+    object-fit: contain;
+
+    animation:
+        apexLoaderLogo 1.8s ease-in-out infinite;
+}
+
+
+.chat-loader-brand {
+    margin-bottom: 8px;
+
+    color: var(--blue);
+
+    font-size: 9px;
+    font-weight: 900;
+
+    letter-spacing:
+        0.24em;
+}
+
+
+.chat-loader h1 {
+    margin: 0;
+
+    color: white;
+
+    font-size: 27px;
+    font-weight: 900;
+
+    letter-spacing:
+        -0.04em;
+}
+
+
+.chat-loader p {
+    margin:
+        9px 0 0;
+
+    color: #697587;
+
+    font-size: 10px;
+    font-weight: 650;
+}
+
+
+.chat-loader-dots {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 5px;
+
+    margin-top: 15px;
+}
+
+
+.chat-loader-dots span {
+    width: 4px;
+    height: 4px;
+
+    border-radius: 50%;
+
+    background:
+        #536071;
+
+    animation:
+        apexLoaderDot 1.25s ease-in-out infinite;
+}
+
+
+.chat-loader-dots span:nth-child(2) {
+    animation-delay:
+        0.16s;
+}
+
+
+.chat-loader-dots span:nth-child(3) {
+    animation-delay:
+        0.32s;
+}
+
+
+.chat-loader-progress {
+    width: 160px;
+    height: 2px;
+
+    margin-top: 26px;
+
+    overflow: hidden;
+
+    border-radius: 999px;
+
+    background:
+        rgba(255, 255, 255, 0.055);
+}
+
+
+.chat-loader-progress span {
+    display: block;
+
+    width: 45%;
+    height: 100%;
+
+    border-radius: 999px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--blue),
+            #68a8ff,
+            transparent
+        );
+
+    animation:
+        apexLoaderProgress 1.45s ease-in-out infinite;
+}
+
+
+.chat-loader-retry {
+    min-width: 100px;
+    height: 38px;
+
+    margin-top: 24px;
+
+    padding:
+        0 18px;
+
+    border:
+        1px solid rgba(22, 119, 255, 0.45);
+
+    border-radius: 8px;
+
+    background:
+        rgba(22, 119, 255, 0.12);
+
+    color: white;
+
+    font-size: 10px;
+    font-weight: 800;
+
+    cursor: pointer;
+
+    transition:
+        background 0.15s ease,
+        border-color 0.15s ease;
+}
+
+
+.chat-loader-retry:hover {
+    background:
+        rgba(22, 119, 255, 0.22);
+
+    border-color:
+        rgba(22, 119, 255, 0.8);
+}
+
+
+.chat-loader-retry[hidden] {
+    display: none;
+}
+
+
+@keyframes apexLoaderSpin {
+
+    to {
+        transform:
+            rotate(360deg);
+    }
+
+}
+
+
+@keyframes apexLoaderGlow {
+
+    0%,
+    100% {
+        opacity: 0.55;
+
+        transform:
+            scale(0.9);
+    }
+
+    50% {
+        opacity: 1;
+
+        transform:
+            scale(1.08);
+    }
+
+}
+
+
+@keyframes apexLoaderLogo {
+
+    0%,
+    100% {
+        transform:
+            scale(0.96);
+
+        opacity: 0.78;
+    }
+
+    50% {
+        transform:
+            scale(1.03);
+
+        opacity: 1;
+    }
+
+}
+
+
+@keyframes apexLoaderDot {
+
+    0%,
+    100% {
+        opacity: 0.25;
+
+        transform:
+            translateY(0);
+    }
+
+    50% {
+        opacity: 1;
+
+        transform:
+            translateY(-3px);
+    }
+
+}
+
+
+@keyframes apexLoaderProgress {
+
+    0% {
+        transform:
+            translateX(-130%);
+    }
+
+    100% {
+        transform:
+            translateX(330%);
+    }
+
+}
+
+
+
+/* =========================================================
    TOPBAR
 ========================================================= */
 
