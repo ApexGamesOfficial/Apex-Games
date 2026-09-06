@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="theme-color"
+        content="#05070a"
+    >
+
+    <title>Game | Apex Games</title>
+
+    <link rel="stylesheet" href="game.css?v=1">
+</head>
+
+<body>
+
+    <!-- =====================================================
+         APEX GAMES NAVBAR
+    ====================================================== -->
+
+    <header class="topbar">
+
+        <div class="nav-left">
+
+            <a
+                href="index.html"
+                class="brand"
+                aria-label="Apex Games Home"
+            >
+                <img
+                    src="apex-logo.png"
+                    alt="Apex Games"
+                >
+            </a>
+
+            <nav class="main-nav" aria-label="Main navigation">
+
+                <a href="index.html">Home</a>
+                <a href="library.html">Library</a>
+                <a href="chat.html">Chat</a>
+                <a href="store.html" class="active">Store</a>
+                <a href="news.html">News</a>
+                <a href="about.html">About</a>
+
+            </nav>
+
+        </div>
+
+
+        <form
+            class="nav-search"
+            id="navSearch"
+            role="search"
+        >
+            <span class="search-icon">⌕</span>
+
+            <input
+                id="navSearchInput"
+                type="search"
+                placeholder="Search Apex Games"
+                autocomplete="off"
+            >
+        </form>
+
+
+        <div class="nav-account">
+
+            <div
+                id="loggedOutAccount"
+                class="logged-out-account"
+                hidden
+            >
+                <a
+                    href="login.html"
+                    class="login-link"
+                >
+                    Sign In
+                </a>
+
+                <a
+                    href="signup.html"
+                    class="create-account-button"
+                >
+                    Create Account
+                </a>
+            </div>
+
+
+            <a
+                id="profileWidget"
+                class="profile-widget"
+                href="profile.html"
+                hidden
+            >
+                <img
+                    id="profilePicture"
+                    src="Default Apex Games Profile Picture.png"
+                    alt=""
+                >
+
+                <span id="profileGamertag">
+                    Apex User
+                </span>
+            </a>
+
+        </div>
+
+    </header>
+
+
+    <!-- =====================================================
+         STORE SUBNAV
+    ====================================================== -->
+
+    <div class="store-nav-wrap">
+
+        <nav class="store-nav">
+
+            <div class="store-nav-links">
+
+                <a href="store.html">
+                    Store Home
+                </a>
+
+                <a href="store.html#featured">
+                    Featured
+                </a>
+
+                <a href="store.html#browse">
+                    Browse
+                </a>
+
+                <a href="store.html#categories">
+                    Categories
+                </a>
+
+                <a href="store.html#upcoming">
+                    Upcoming
+                </a>
+
+            </div>
+
+            <form
+                class="store-search"
+                id="storeSearch"
+            >
+                <input
+                    id="storeSearchInput"
+                    type="search"
+                    placeholder="Search the Store"
+                    autocomplete="off"
+                >
+
+                <button type="submit">
+                    Search
+                </button>
+            </form>
+
+        </nav>
+
+    </div>
+
+
+    <!-- =====================================================
+         GAME PAGE
+    ====================================================== -->
+
+    <main class="game-page">
+
+        <!-- Back -->
+
+        <div class="game-back-row">
+
+            <a
+                href="store.html"
+                class="back-store-link"
+            >
+                ← Back to Store
+            </a>
+
+        </div>
+
+
+        <!-- =================================================
+             GAME HEADER
+        ================================================== -->
+
+        <section class="game-heading">
+
+            <div>
+
+                <p
+                    class="game-developer"
+                    id="gameDeveloper"
+                >
+                    Apex Games
+                </p>
+
+                <h1 id="gameTitle">
+                    Loading...
+                </h1>
+
+            </div>
+
+            <div
+                class="game-heading-tags"
+                id="headingTags"
+            ></div>
+
+        </section>
+
+
+        <!-- =================================================
+             MEDIA / HERO
+        ================================================== -->
+
+        <section class="game-showcase">
+
+            <div class="game-main-media">
+
+                <div
+                    class="game-hero-art"
+                    id="gameHeroArt"
+                >
+                    <div class="hero-grid"></div>
+
+                    <div class="hero-glow"></div>
+
+                    <div class="hero-art-content">
+
+                        <span class="hero-apex-label">
+                            APEX GAMES
+                        </span>
+
+                        <strong id="heroGameTitle">
+                            GAME
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="screenshot-strip"
+                    id="screenshotStrip"
+                >
+                    <button
+                        class="screenshot-card active"
+                        type="button"
+                        data-media="0"
+                    >
+                        <span>01</span>
+                        <strong>Overview</strong>
+                    </button>
+
+                    <button
+                        class="screenshot-card"
+                        type="button"
+                        data-media="1"
+                    >
+                        <span>02</span>
+                        <strong>Gameplay</strong>
+                    </button>
+
+                    <button
+                        class="screenshot-card"
+                        type="button"
+                        data-media="2"
+                    >
+                        <span>03</span>
+                        <strong>World</strong>
+                    </button>
+
+                    <button
+                        class="screenshot-card"
+                        type="button"
+                        data-media="3"
+                    >
+                        <span>04</span>
+                        <strong>More</strong>
+                    </button>
+                </div>
+
+            </div>
+
+
+            <!-- =============================================
+                 GAME SUMMARY
+            ============================================== -->
+
+            <aside class="game-summary">
+
+                <div
+                    class="summary-art"
+                    id="summaryArt"
+                >
+                    <span>APEX GAMES</span>
+
+                    <strong id="summaryTitle">
+                        GAME
+                    </strong>
+                </div>
+
+
+                <p
+                    class="summary-description"
+                    id="summaryDescription"
+                >
+                    Loading game information...
+                </p>
+
+
+                <div class="summary-details">
+
+                    <div>
+                        <span>Developer</span>
+                        <strong id="summaryDeveloper">
+                            —
+                        </strong>
+                    </div>
+
+                    <div>
+                        <span>Publisher</span>
+                        <strong id="summaryPublisher">
+                            —
+                        </strong>
+                    </div>
+
+                    <div>
+                        <span>Release</span>
+                        <strong id="summaryRelease">
+                            —
+                        </strong>
+                    </div>
+
+                    <div>
+                        <span>Platform</span>
+                        <strong id="summaryPlatform">
+                            —
+                        </strong>
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="game-tags"
+                    id="gameTags"
+                ></div>
+
+            </aside>
+
+        </section>
+
+
+        <!-- =================================================
+             LOWER PAGE
+        ================================================== -->
+
+        <div class="game-content-grid">
+
+            <div class="game-content-main">
+
+
+                <!-- =========================================
+                     ACQUIRE PANEL
+                ========================================== -->
+
+                <section class="purchase-panel">
+
+                    <div class="purchase-copy">
+
+                        <span class="purchase-label">
+                            APEX GAMES
+                        </span>
+
+                        <h2 id="purchaseTitle">
+                            Get this game
+                        </h2>
+
+                        <p id="purchaseDescription">
+                            Add this title to your Apex Games Library.
+                        </p>
+
+                    </div>
+
+
+                    <div class="purchase-actions">
+
+                        <div
+                            class="game-price"
+                            id="gamePrice"
+                        >
+                            Free
+                        </div>
+
+                        <button
+                            id="acquireButton"
+                            class="acquire-button"
+                            type="button"
+                        >
+                            Add to Library
+                        </button>
+
+                    </div>
+
+                </section>
+
+
+                <div
+                    id="acquireNotice"
+                    class="acquire-notice"
+                    hidden
+                ></div>
+
+
+                <!-- =========================================
+                     ABOUT
+                ========================================== -->
+
+                <section class="content-section">
+
+                    <div class="section-title-row">
+
+                        <div>
+
+                            <span class="section-kicker">
+                                ABOUT
+                            </span>
+
+                            <h2 id="aboutTitle">
+                                About this game
+                            </h2>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="about-card">
+
+                        <p id="aboutDescription">
+                            Loading...
+                        </p>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =========================================
+                     FEATURES
+                ========================================== -->
+
+                <section class="content-section">
+
+                    <div class="section-title-row">
+
+                        <div>
+
+                            <span class="section-kicker">
+                                FEATURES
+                            </span>
+
+                            <h2>
+                                Game Features
+                            </h2>
+
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        class="feature-grid"
+                        id="featureGrid"
+                    ></div>
+
+                </section>
+
+
+                <!-- =========================================
+                     MEDIA
+                ========================================== -->
+
+                <section class="content-section">
+
+                    <div class="section-title-row">
+
+                        <div>
+
+                            <span class="section-kicker">
+                                MEDIA
+                            </span>
+
+                            <h2>
+                                Screenshots
+                            </h2>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="media-grid">
+
+                        <div class="media-placeholder">
+                            <span>01</span>
+                            <strong>GAMEPLAY</strong>
+                        </div>
+
+                        <div class="media-placeholder">
+                            <span>02</span>
+                            <strong>WORLD</strong>
+                        </div>
+
+                        <div class="media-placeholder">
+                            <span>03</span>
+                            <strong>EXPERIENCE</strong>
+                        </div>
+
+                        <div class="media-placeholder">
+                            <span>04</span>
+                            <strong>MORE</strong>
+                        </div>
+
+                    </div>
+
+                </section>
+
+            </div>
+
+
+            <!-- =================================================
+                 SIDEBAR
+            ================================================== -->
+
+            <aside class="game-info-sidebar">
+
+                <section class="info-card">
+
+                    <span class="info-card-kicker">
+                        GAME DETAILS
+                    </span>
+
+                    <div class="info-list">
+
+                        <div>
+                            <span>Title</span>
+                            <strong id="infoTitle">—</strong>
+                        </div>
+
+                        <div>
+                            <span>Genre</span>
+                            <strong id="infoGenre">—</strong>
+                        </div>
+
+                        <div>
+                            <span>Developer</span>
+                            <strong id="infoDeveloper">—</strong>
+                        </div>
+
+                        <div>
+                            <span>Publisher</span>
+                            <strong id="infoPublisher">—</strong>
+                        </div>
+
+                        <div>
+                            <span>Release</span>
+                            <strong id="infoRelease">—</strong>
+                        </div>
+
+                        <div>
+                            <span>Platform</span>
+                            <strong id="infoPlatform">—</strong>
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <section class="info-card">
+
+                    <span class="info-card-kicker">
+                        APEX LIBRARY
+                    </span>
+
+                    <h3>
+                        Your games. One place.
+                    </h3>
+
+                    <p>
+                        Games you own on Apex Games will appear in your Library.
+                    </p>
+
+                    <a
+                        href="library.html"
+                        class="sidebar-link-button"
+                    >
+                        Open Library
+                    </a>
+
+                </section>
+
+
+                <section class="info-card">
+
+                    <span class="info-card-kicker">
+                        PLATFORM
+                    </span>
+
+                    <div class="platform-badge">
+                        <span class="windows-mark">
+                            ⊞
+                        </span>
+
+                        <div>
+                            <strong>Windows</strong>
+                            <span>Apex Games Client</span>
+                        </div>
+                    </div>
+
+                </section>
+
+            </aside>
+
+        </div>
+
+
+        <!-- =================================================
+             NOT FOUND
+        ================================================== -->
+
+        <section
+            class="game-not-found"
+            id="gameNotFound"
+            hidden
+        >
+
+            <span class="not-found-code">
+                404
+            </span>
+
+            <h1>
+                Game not found
+            </h1>
+
+            <p>
+                This game doesn't appear to exist in the Apex Games Store.
+            </p>
+
+            <a href="store.html">
+                Return to Store
+            </a>
+
+        </section>
+
+    </main>
+
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <footer class="site-footer">
+
+        <div>
+
+            <img
+                src="apex-logo.png"
+                alt="Apex Games"
+            >
+
+            <p>
+                Creating Worlds. Elevating Reality.
+            </p>
+
+        </div>
+
+        <span>
+            © 2026 Apex Games. All Rights Reserved.
+        </span>
+
+    </footer>
+
+
+    <!-- =====================================================
+         SCRIPTS
+    ====================================================== -->
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <script src="auth.js"></script>
+    <script src="account-state.js"></script>
+    <script src="presence.js?v=1"></script>
+
+    <script src="game.js?v=1"></script>
+
+</body>
+</html>
