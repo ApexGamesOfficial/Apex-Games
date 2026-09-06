@@ -18,11 +18,85 @@
 
     <link
         rel="stylesheet"
-        href="chat.css?v=1"
+        href="chat.css?v=2"
     >
 </head>
 
-<body>
+<body class="chat-loading">
+
+    <!-- =====================================================
+         CHAT LOADING SCREEN
+    ====================================================== -->
+
+    <div
+        class="chat-loader"
+        id="chatLoader"
+        role="status"
+        aria-live="polite"
+    >
+
+        <div class="chat-loader-background"></div>
+
+        <div class="chat-loader-content">
+
+            <div class="chat-loader-logo-wrap">
+
+                <div class="chat-loader-ring"></div>
+
+                <img
+                    src="apex-logo.png"
+                    alt="Apex Games"
+                    class="chat-loader-logo"
+                >
+
+            </div>
+
+
+            <div class="chat-loader-brand">
+                APEX GAMES
+            </div>
+
+            <h1>
+                Apex Chat
+            </h1>
+
+            <p id="chatLoaderStatus">
+                Loading Apex Chat
+            </p>
+
+
+            <div
+                class="chat-loader-dots"
+                aria-hidden="true"
+            >
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+
+            <div
+                class="chat-loader-progress"
+                aria-hidden="true"
+            >
+                <span></span>
+            </div>
+
+
+            <button
+                type="button"
+                id="chatLoaderRetry"
+                class="chat-loader-retry"
+                hidden
+            >
+                Retry
+            </button>
+
+        </div>
+
+    </div>
+
+
 
     <!-- =====================================================
          TOP NAVIGATION
@@ -35,6 +109,7 @@
             class="brand"
             aria-label="Apex Games Home"
         >
+
             <img
                 src="apex-logo.png"
                 alt=""
@@ -44,6 +119,7 @@
             <span class="brand-name">
                 APEX GAMES
             </span>
+
         </a>
 
 
@@ -106,6 +182,7 @@
 
                 </div>
 
+
                 <span
                     id="accountGamertag"
                     class="account-gamertag"
@@ -129,7 +206,6 @@
         class="chat-shell"
         id="chatShell"
     >
-
 
         <!-- =================================================
              CONVERSATIONS / FRIENDS
@@ -229,7 +305,6 @@
 
         <section class="conversation-panel">
 
-
             <!-- =============================================
                  EMPTY STATE
             ============================================== -->
@@ -248,13 +323,16 @@
 
                 </div>
 
+
                 <h2>
                     Apex Chat
                 </h2>
 
+
                 <p>
                     Select a friend to start a conversation.
                 </p>
+
 
                 <div class="empty-features">
 
@@ -285,7 +363,6 @@
                 id="conversation"
                 hidden
             >
-
 
                 <!-- HEADER -->
 
@@ -347,10 +424,12 @@
                             title="Voice call"
                             aria-label="Voice call"
                         >
+
                             <svg
                                 viewBox="0 0 24 24"
                                 aria-hidden="true"
                             >
+
                                 <path
                                     d="M6.7 3.5 9 8 7.2 9.8c1.4 3 3.8 5.4 6.8 6.8l1.8-1.8 4.5 2.3v3c0 .6-.4 1-1 1C10.2 21.1 2.9 13.8 2.9 4.7c0-.6.4-1 1-1h2.8Z"
                                     fill="none"
@@ -358,7 +437,9 @@
                                     stroke-width="1.7"
                                     stroke-linejoin="round"
                                 />
+
                             </svg>
+
                         </button>
 
 
@@ -388,7 +469,7 @@
 
 
 
-                <!-- NOTICE -->
+                <!-- FEATURE NOTICE -->
 
                 <div
                     class="feature-notice"
@@ -429,6 +510,7 @@
                         </span>
 
                     </div>
+
 
                     <div
                         class="emoji-grid"
@@ -515,7 +597,7 @@
 
     <script src="presence.js?v=1"></script>
 
-    <script src="chat.js?v=1"></script>
+    <script src="chat.js?v=2"></script>
 
 </body>
 
