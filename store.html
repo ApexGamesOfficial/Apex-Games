@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="theme-color"
+        content="#05070b"
+    >
+
+    <title>Store | Apex Games</title>
+
+    <link
+        rel="stylesheet"
+        href="store.css?v=1"
+    >
+</head>
+
+<body>
+
+    <!-- =====================================================
+         TOPBAR
+    ====================================================== -->
+
+    <header class="topbar">
+
+        <a
+            href="index.html"
+            class="brand"
+            aria-label="Apex Games Home"
+        >
+            <img
+                src="apex-logo.png"
+                alt=""
+                class="brand-logo"
+            >
+
+            <span class="brand-name">
+                APEX GAMES
+            </span>
+        </a>
+
+
+        <nav
+            class="main-nav"
+            aria-label="Main navigation"
+        >
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="library.html">
+                Library
+            </a>
+
+            <a href="chat.html">
+                Chat
+            </a>
+
+            <a
+                href="store.html"
+                class="active"
+            >
+                Store
+            </a>
+
+            <a href="news.html">
+                News
+            </a>
+
+            <a href="about.html">
+                About
+            </a>
+        </nav>
+
+
+        <div class="nav-right">
+
+            <a
+                href="profile.html"
+                class="account-button"
+            >
+                <div class="account-avatar-wrap">
+
+                    <img
+                        src="Default Apex Games Profile Picture.png"
+                        alt=""
+                        id="accountAvatar"
+                        class="account-avatar"
+                    >
+
+                    <span
+                        id="accountPresence"
+                        class="account-presence offline"
+                    ></span>
+
+                </div>
+
+                <span
+                    id="accountGamertag"
+                    class="account-gamertag"
+                >
+                    Account
+                </span>
+            </a>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =====================================================
+         STORE
+    ====================================================== -->
+
+    <main class="store">
+
+        <!-- =================================================
+             STORE INTRO
+        ================================================== -->
+
+        <section class="store-intro">
+
+            <div class="store-intro-copy">
+
+                <span class="eyebrow">
+                    APEX GAMES STORE
+                </span>
+
+                <h1>
+                    Find your next world.
+                </h1>
+
+                <p>
+                    Discover games from Apex Games and,
+                    in the future, developers across the
+                    Apex ecosystem.
+                </p>
+
+            </div>
+
+
+            <div class="store-search-wrap">
+
+                <svg
+                    class="store-search-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                >
+                    <path
+                        d="M11 4a7 7 0 1 0 4.9 12L21 21"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                    />
+                </svg>
+
+                <input
+                    type="search"
+                    id="storeSearch"
+                    placeholder="Search the Store..."
+                    autocomplete="off"
+                    aria-label="Search the Apex Games Store"
+                >
+
+                <button
+                    type="button"
+                    id="clearSearchButton"
+                    class="clear-search-button"
+                    aria-label="Clear search"
+                    hidden
+                >
+                    ×
+                </button>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             FEATURED
+        ================================================== -->
+
+        <section
+            class="featured"
+            id="featuredSection"
+        >
+
+            <div class="featured-background"></div>
+
+            <div class="featured-content">
+
+                <div class="featured-meta">
+
+                    <span class="featured-label">
+                        FEATURED
+                    </span>
+
+                    <span class="featured-studio">
+                        APEX GAMES
+                    </span>
+
+                </div>
+
+
+                <h2>
+                    Apex Demo
+                </h2>
+
+
+                <p>
+                    Step into the Apex ecosystem with the
+                    official Apex Games demonstration title.
+                </p>
+
+
+                <div class="featured-tags">
+
+                    <span>
+                        Action
+                    </span>
+
+                    <span>
+                        Windows
+                    </span>
+
+                    <span>
+                        Apex Games
+                    </span>
+
+                </div>
+
+
+                <div class="featured-actions">
+
+                    <button
+                        type="button"
+                        class="primary-button"
+                        data-open-game="apex-demo"
+                    >
+                        View Game
+                    </button>
+
+                    <a
+                        href="library.html"
+                        class="secondary-button"
+                    >
+                        Open Library
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="featured-art">
+
+                <div class="featured-logo-mark">
+                    <img
+                        src="apex-logo.png"
+                        alt=""
+                    >
+                </div>
+
+                <span>
+                    APEX DEMO
+                </span>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             BROWSE
+        ================================================== -->
+
+        <section class="browse-section">
+
+            <div class="section-heading">
+
+                <div>
+                    <span class="eyebrow">
+                        BROWSE
+                    </span>
+
+                    <h2>
+                        Store
+                    </h2>
+                </div>
+
+
+                <span
+                    class="result-count"
+                    id="resultCount"
+                >
+                    2 games
+                </span>
+
+            </div>
+
+
+
+            <!-- FILTERS -->
+
+            <div
+                class="filters"
+                id="filters"
+                aria-label="Store filters"
+            >
+
+                <button
+                    type="button"
+                    class="filter active"
+                    data-filter="all"
+                >
+                    All Games
+                </button>
+
+                <button
+                    type="button"
+                    class="filter"
+                    data-filter="action"
+                >
+                    Action
+                </button>
+
+                <button
+                    type="button"
+                    class="filter"
+                    data-filter="adventure"
+                >
+                    Adventure
+                </button>
+
+                <button
+                    type="button"
+                    class="filter"
+                    data-filter="coming-soon"
+                >
+                    Coming Soon
+                </button>
+
+            </div>
+
+
+
+            <!-- GAME GRID -->
+
+            <div
+                class="game-grid"
+                id="gameGrid"
+            ></div>
+
+
+            <div
+                class="store-empty"
+                id="storeEmpty"
+                hidden
+            >
+
+                <div class="store-empty-icon">
+                    ?
+                </div>
+
+                <h3>
+                    Nothing found
+                </h3>
+
+                <p>
+                    Try another search or category.
+                </p>
+
+                <button
+                    type="button"
+                    id="resetStoreButton"
+                >
+                    Reset Store
+                </button>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             FUTURE CATALOG
+        ================================================== -->
+
+        <section class="developer-section">
+
+            <div class="developer-mark">
+                <img
+                    src="apex-logo.png"
+                    alt=""
+                >
+            </div>
+
+
+            <div class="developer-copy">
+
+                <span class="eyebrow">
+                    THE STORE IS GROWING
+                </span>
+
+                <h2>
+                    More worlds are coming.
+                </h2>
+
+                <p>
+                    Apex Games is building a storefront
+                    designed for games from Apex and
+                    independent developers.
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- =====================================================
+         GAME DETAILS
+    ====================================================== -->
+
+    <div
+        class="game-modal"
+        id="gameModal"
+        hidden
+    >
+
+        <button
+            type="button"
+            class="modal-backdrop"
+            id="modalBackdrop"
+            aria-label="Close game details"
+        ></button>
+
+
+        <article
+            class="game-modal-card"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="modalGameTitle"
+        >
+
+            <button
+                type="button"
+                class="modal-close"
+                id="modalClose"
+                aria-label="Close"
+            >
+                ×
+            </button>
+
+
+            <div
+                class="modal-banner"
+                id="modalBanner"
+            >
+
+                <div class="modal-banner-mark">
+                    <img
+                        src="apex-logo.png"
+                        alt=""
+                    >
+                </div>
+
+                <span id="modalBannerTitle">
+                    APEX
+                </span>
+
+            </div>
+
+
+            <div class="modal-content">
+
+                <div class="modal-studio">
+                    <span id="modalDeveloper">
+                        Apex Games
+                    </span>
+
+                    <span class="modal-dot">
+                        •
+                    </span>
+
+                    <span id="modalRelease">
+                        2026
+                    </span>
+                </div>
+
+
+                <h2 id="modalGameTitle">
+                    Game
+                </h2>
+
+
+                <p
+                    class="modal-description"
+                    id="modalDescription"
+                ></p>
+
+
+                <div
+                    class="modal-tags"
+                    id="modalTags"
+                ></div>
+
+
+                <div class="modal-info-grid">
+
+                    <div>
+                        <span>
+                            PLATFORM
+                        </span>
+
+                        <strong id="modalPlatform">
+                            Windows
+                        </strong>
+                    </div>
+
+                    <div>
+                        <span>
+                            RELEASE
+                        </span>
+
+                        <strong id="modalReleaseInfo">
+                            2026
+                        </strong>
+                    </div>
+
+                    <div>
+                        <span>
+                            DEVELOPER
+                        </span>
+
+                        <strong id="modalDeveloperInfo">
+                            Apex Games
+                        </strong>
+                    </div>
+
+                </div>
+
+
+                <div class="modal-actions">
+
+                    <a
+                        href="library.html"
+                        class="primary-button"
+                        id="modalLibraryButton"
+                    >
+                        Open Library
+                    </a>
+
+                    <button
+                        type="button"
+                        class="secondary-button"
+                        id="modalUnavailableButton"
+                    >
+                        Store acquisition coming later
+                    </button>
+
+                </div>
+
+            </div>
+
+        </article>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         SCRIPTS
+    ====================================================== -->
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
+    ></script>
+
+    <script src="auth.js"></script>
+
+    <script src="presence.js?v=1"></script>
+
+    <script src="store.js?v=1"></script>
+
+</body>
+
+</html>
