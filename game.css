@@ -1779,5 +1779,6 @@ button {
     .hero-art-content strong {
         font-size: 36px;
     }
-
+[hidden] {
+    display: none !important;
 }
