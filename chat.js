@@ -6,9 +6,34 @@ const DEFAULT_AVATAR =
     "Default Apex Games Profile Picture.png";
 
 
+const CHAT_MINIMUM_LOAD_TIME =
+    900;
+
+
+const chatLoadStartedAt =
+    performance.now();
+
+
+
 /* =========================================================
    ELEMENTS
 ========================================================= */
+
+const chatLoader =
+    document.getElementById(
+        "chatLoader"
+    );
+
+const chatLoaderStatus =
+    document.getElementById(
+        "chatLoaderStatus"
+    );
+
+const chatLoaderRetry =
+    document.getElementById(
+        "chatLoaderRetry"
+    );
+
 
 const chatShell =
     document.getElementById(
@@ -159,6 +184,7 @@ const closeFeatureNotice =
     );
 
 
+
 /* =========================================================
    STATE
 ========================================================= */
@@ -174,6 +200,7 @@ let messageRefreshTimer = null;
 let lastMessageSignature = "";
 
 let sendingMessage = false;
+
 
 
 /* =========================================================
@@ -231,6 +258,112 @@ const EMOJIS = [
 ];
 
 
+
+/* =========================================================
+   LOADING SCREEN
+========================================================= */
+
+function setLoadingStatus(
+    text
+) {
+
+    if (!chatLoaderStatus) {
+        return;
+    }
+
+
+    chatLoaderStatus.textContent =
+        text;
+}
+
+
+async function finishLoadingScreen() {
+
+    const elapsed =
+        performance.now() -
+        chatLoadStartedAt;
+
+
+    const remaining =
+        Math.max(
+            0,
+            CHAT_MINIMUM_LOAD_TIME -
+            elapsed
+        );
+
+
+    if (
+        remaining >
+        0
+    ) {
+
+        await new Promise(
+            resolve =>
+                setTimeout(
+                    resolve,
+                    remaining
+                )
+        );
+    }
+
+
+    setLoadingStatus(
+        "Ready"
+    );
+
+
+    await new Promise(
+        resolve =>
+            setTimeout(
+                resolve,
+                120
+            )
+    );
+
+
+    document.body.classList.remove(
+        "chat-loading"
+    );
+
+
+    chatLoader.classList.add(
+        "hidden"
+    );
+
+
+    setTimeout(
+        () => {
+
+            chatLoader.hidden =
+                true;
+        },
+        450
+    );
+}
+
+
+function showLoadingError() {
+
+    setLoadingStatus(
+        "Apex Chat couldn't connect."
+    );
+
+
+    chatLoaderRetry.hidden =
+        false;
+}
+
+
+chatLoaderRetry.addEventListener(
+    "click",
+    () => {
+
+        window.location.reload();
+    }
+);
+
+
+
 /* =========================================================
    START
 ========================================================= */
@@ -238,6 +371,11 @@ const EMOJIS = [
 async function startChat() {
 
     try {
+
+        setLoadingStatus(
+            "Connecting to Apex Accounts..."
+        );
+
 
         const {
             data: {
@@ -251,8 +389,14 @@ async function startChat() {
 
         if (!session?.user) {
 
+            setLoadingStatus(
+                "Opening sign in..."
+            );
+
+
             window.location.href =
                 "login.html";
+
 
             return;
         }
@@ -262,19 +406,37 @@ async function startChat() {
             session.user;
 
 
+        setLoadingStatus(
+            "Loading your profile..."
+        );
+
+
         buildEmojiPicker();
 
 
-        await Promise.all([
-            loadAccount(),
-            loadFriends()
-        ]);
+        await loadAccount();
 
 
-        openFriendFromURL();
+        setLoadingStatus(
+            "Loading friends..."
+        );
+
+
+        await loadFriends();
+
+
+        setLoadingStatus(
+            "Starting Apex Chat..."
+        );
+
+
+        await openFriendFromURL();
 
 
         updateOwnPresence();
+
+
+        await finishLoadingScreen();
 
     } catch (error) {
 
@@ -289,8 +451,12 @@ async function startChat() {
                 Apex Chat couldn't load.
             </div>
         `;
+
+
+        showLoadingError();
     }
 }
+
 
 
 /* =========================================================
@@ -313,6 +479,7 @@ function setAvatar(
             image.onerror =
                 null;
 
+
             image.src =
                 DEFAULT_AVATAR;
         };
@@ -322,6 +489,7 @@ function setAvatar(
         url ||
         DEFAULT_AVATAR;
 }
+
 
 
 /* =========================================================
@@ -384,6 +552,7 @@ async function loadAccount() {
 }
 
 
+
 /* =========================================================
    LOAD FRIENDS
 ========================================================= */
@@ -432,7 +601,7 @@ async function loadFriends() {
         `;
 
 
-        return;
+        throw error;
     }
 
 
@@ -465,7 +634,9 @@ async function loadFriends() {
 
         friends = [];
 
+
         renderFriends();
+
 
         return;
     }
@@ -504,7 +675,7 @@ async function loadFriends() {
         `;
 
 
-        return;
+        throw profileError;
     }
 
 
@@ -521,6 +692,7 @@ async function loadFriends() {
 
     renderFriends();
 }
+
 
 
 /* =========================================================
@@ -614,6 +786,7 @@ function updateOwnPresence() {
     accountPresence.className =
         `account-presence ${status}`;
 }
+
 
 
 /* =========================================================
@@ -838,6 +1011,7 @@ function renderFriends() {
 }
 
 
+
 /* =========================================================
    SELECT FRIEND
 ========================================================= */
@@ -939,6 +1113,7 @@ async function selectFriend(
 }
 
 
+
 /* =========================================================
    BACK ON PHONE
 ========================================================= */
@@ -952,6 +1127,7 @@ conversationBack.addEventListener(
         );
     }
 );
+
 
 
 /* =========================================================
@@ -982,11 +1158,12 @@ function updateConversationPresence() {
 }
 
 
+
 /* =========================================================
    OPEN FRIEND FROM URL
 ========================================================= */
 
-function openFriendFromURL() {
+async function openFriendFromURL() {
 
     const params =
         new URLSearchParams(
@@ -1015,11 +1192,12 @@ function openFriendFromURL() {
 
     if (friend) {
 
-        selectFriend(
+        await selectFriend(
             friend
         );
     }
 }
+
 
 
 /* =========================================================
@@ -1032,11 +1210,14 @@ window.addEventListener(
 
         renderFriends();
 
+
         updateConversationPresence();
+
 
         updateOwnPresence();
     }
 );
+
 
 
 /* =========================================================
@@ -1160,6 +1341,7 @@ async function loadMessages(
         scrollToBottom();
     }
 }
+
 
 
 /* =========================================================
@@ -1299,6 +1481,7 @@ function renderMessages(
 }
 
 
+
 /* =========================================================
    TIME
 ========================================================= */
@@ -1324,6 +1507,7 @@ function formatTime(
         }
     );
 }
+
 
 
 /* =========================================================
@@ -1366,6 +1550,7 @@ messageForm.addEventListener(
             showFeatureNotice(
                 "Messages can contain up to 2,000 characters."
             );
+
 
             return;
         }
@@ -1445,6 +1630,7 @@ messageForm.addEventListener(
 );
 
 
+
 /* =========================================================
    INPUT
 ========================================================= */
@@ -1490,6 +1676,7 @@ messageInput.addEventListener(
 
         resizeInput();
 
+
         updateSendButton();
     }
 );
@@ -1517,6 +1704,7 @@ messageInput.addEventListener(
         }
     }
 );
+
 
 
 /* =========================================================
@@ -1612,6 +1800,7 @@ function insertEmoji(
 
     resizeInput();
 
+
     updateSendButton();
 }
 
@@ -1631,6 +1820,7 @@ emojiButton.addEventListener(
 );
 
 
+
 /* =========================================================
    SEARCH
 ========================================================= */
@@ -1647,9 +1837,11 @@ newChatButton.addEventListener(
 
         friendSearch.focus();
 
+
         friendSearch.select();
     }
 );
+
 
 
 /* =========================================================
@@ -1677,6 +1869,7 @@ closeFeatureNotice.addEventListener(
             true;
     }
 );
+
 
 
 /* =========================================================
@@ -1735,6 +1928,7 @@ conversationMoreButton.addEventListener(
 );
 
 
+
 /* =========================================================
    CLOSE EMOJI PICKER
 ========================================================= */
@@ -1765,6 +1959,7 @@ document.addEventListener(
         }
     }
 );
+
 
 
 /* =========================================================
@@ -1799,6 +1994,7 @@ function startMessageRefresh() {
 }
 
 
+
 /* =========================================================
    SCROLL
 ========================================================= */
@@ -1813,6 +2009,7 @@ function scrollToBottom() {
         }
     );
 }
+
 
 
 /* =========================================================
@@ -1837,6 +2034,7 @@ window.addEventListener(
 );
 
 
+
 /* =========================================================
    CLEANUP
 ========================================================= */
@@ -1855,6 +2053,7 @@ window.addEventListener(
         }
     }
 );
+
 
 
 /* =========================================================
