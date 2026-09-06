@@ -1,5 +1,5 @@
 /* =========================================================
-   APEX GAMES STORE v0.2
+   APEX GAMES STORE v0.3
 ========================================================= */
 
 const STORE_GAMES = [
@@ -15,9 +15,6 @@ const STORE_GAMES = [
 
         description:
             "Enter the Apex Games ecosystem with the official demonstration experience.",
-
-        longDescription:
-            "Apex Demo is the official demonstration title for the Apex Games platform, built to test the future Apex Client, Library, game delivery, updates, and the complete Apex ecosystem.",
 
         genre: "Action",
 
@@ -54,9 +51,6 @@ const STORE_GAMES = [
         description:
             "An upcoming Apex Games adventure currently in development.",
 
-        longDescription:
-            "Project Unknown is an upcoming Apex Games title. More information about the experience, gameplay, and release will be revealed in the future.",
-
         genre: "Adventure",
 
         categories: [
@@ -88,7 +82,7 @@ const STORE_GAMES = [
    STATE
 ========================================================= */
 
-let activeCategory = "all";
+let selectedCategory = "all";
 
 let featuredIndex = 0;
 
@@ -101,52 +95,30 @@ let featuredIndex = 0;
 const storeSearch =
     document.getElementById("storeSearch");
 
-const clearStoreSearch =
-    document.getElementById("clearStoreSearch");
+const clearSearch =
+    document.getElementById("clearSearch");
 
-const categoryTabs =
-    document.getElementById("categoryTabs");
+const gameCardGrid =
+    document.getElementById("gameCardGrid");
 
-const gameList =
-    document.getElementById("gameList");
+const upcomingGrid =
+    document.getElementById("upcomingGrid");
 
-const gameCount =
-    document.getElementById("gameCount");
-
-const nothingFound =
-    document.getElementById("nothingFound");
+const noGames =
+    document.getElementById("noGames");
 
 const resetStore =
     document.getElementById("resetStore");
 
-
-const previewArt =
-    document.getElementById("previewArt");
-
-const previewArtTitle =
-    document.getElementById("previewArtTitle");
-
-const previewTitle =
-    document.getElementById("previewTitle");
-
-const previewDescription =
-    document.getElementById("previewDescription");
-
-const previewRelease =
-    document.getElementById("previewRelease");
-
-const previewDeveloper =
-    document.getElementById("previewDeveloper");
-
-const previewTags =
-    document.getElementById("previewTags");
+const showAllGames =
+    document.getElementById("showAllGames");
 
 
-const featuredMainLink =
-    document.getElementById("featuredMainLink");
+const featuredLink =
+    document.getElementById("featuredLink");
 
-const featuredMainBackground =
-    document.getElementById("featuredMainBackground");
+const featuredArtBackground =
+    document.getElementById("featuredArtBackground");
 
 const featuredArtTitle =
     document.getElementById("featuredArtTitle");
@@ -169,16 +141,16 @@ const featuredStatus =
 const featuredPlatform =
     document.getElementById("featuredPlatform");
 
-const featuredDots =
-    document.getElementById("featuredDots");
+const featuredPagination =
+    document.getElementById("featuredPagination");
 
 
 
 /* =========================================================
-   STORE RENDER
+   FILTERING
 ========================================================= */
 
-function getVisibleGames() {
+function getFilteredGames() {
 
     const query =
         storeSearch
@@ -190,137 +162,125 @@ function getVisibleGames() {
     return STORE_GAMES.filter(
         game => {
 
-            const categoryMatch =
-                activeCategory === "all" ||
+            const categoryMatches =
+                selectedCategory === "all" ||
                 game.categories.includes(
-                    activeCategory
+                    selectedCategory
                 );
 
 
-            const text =
+            const searchableText =
                 [
                     game.title,
                     game.developer,
                     game.description,
                     game.genre,
-                    game.platform,
                     game.release,
+                    game.platform,
+                    game.status,
                     ...game.tags
                 ]
                     .join(" ")
                     .toLowerCase();
 
 
-            const searchMatch =
+            const searchMatches =
                 !query ||
-                text.includes(query);
+                searchableText.includes(
+                    query
+                );
 
 
             return (
-                categoryMatch &&
-                searchMatch
+                categoryMatches &&
+                searchMatches
             );
         }
     );
-}
-
-
-
-function renderGames() {
-
-    const games =
-        getVisibleGames();
-
-
-    gameList.innerHTML = "";
-
-
-    games.forEach(
-        game => {
-
-            gameList.appendChild(
-                createGameRow(game)
-            );
-        }
-    );
-
-
-    gameCount.textContent =
-        `${games.length} ${
-            games.length === 1
-                ? "game"
-                : "games"
-        }`;
-
-
-    nothingFound.hidden =
-        games.length !== 0;
-
-
-    clearStoreSearch.hidden =
-        storeSearch.value.length === 0;
-
-
-    if (games.length > 0) {
-        showPreview(games[0]);
-    }
 }
 
 
 
 /* =========================================================
-   GAME ROW
+   MAIN GAME CARDS
 ========================================================= */
 
-function createGameRow(game) {
+function renderGameCards() {
 
-    const row =
+    const games =
+        getFilteredGames();
+
+
+    gameCardGrid.innerHTML = "";
+
+
+    games.forEach(
+        game => {
+
+            gameCardGrid.appendChild(
+                createGameCard(game)
+            );
+        }
+    );
+
+
+    noGames.hidden =
+        games.length > 0;
+
+
+    clearSearch.hidden =
+        storeSearch.value.length === 0;
+}
+
+
+
+function createGameCard(game) {
+
+    const card =
         document.createElement("a");
 
 
-    row.className =
-        "game-row";
-
-
-    row.href =
+    card.href =
         `game.html?id=${encodeURIComponent(game.id)}`;
 
 
-    row.dataset.gameId =
-        game.id;
+    card.className =
+        `game-card ${
+            game.accent === "dark"
+                ? "dark"
+                : ""
+        }`;
 
 
-    row.dataset.accent =
-        game.accent;
+    card.innerHTML = `
 
-
-    row.innerHTML = `
-
-        <div class="game-row-art">
+        <div class="game-card-art">
 
             <img
                 src="apex-logo.png"
                 alt=""
             >
 
-            <span>
+            <span class="game-card-art-title">
                 ${escapeHTML(game.artTitle)}
             </span>
 
         </div>
 
 
-        <div class="game-row-info">
+        <div class="game-card-content">
 
             <h3>
                 ${escapeHTML(game.title)}
             </h3>
 
-            <p>
-                ${escapeHTML(game.developer)}
-            </p>
 
-            <div class="game-row-tags">
+            <span class="game-card-developer">
+                ${escapeHTML(game.developer)}
+            </span>
+
+
+            <div class="game-card-tags">
 
                 ${game.tags
                     .map(
@@ -331,126 +291,43 @@ function createGameRow(game) {
 
             </div>
 
-        </div>
 
+            <div class="game-card-bottom">
 
-        <div class="game-row-right">
+                <span class="game-card-status">
+                    ${escapeHTML(game.status)}
+                </span>
 
-            <span class="row-status">
-                ${escapeHTML(game.status)}
-            </span>
+                <span class="game-card-platform">
+                    ${escapeHTML(game.platform)}
+                </span>
 
-            <span class="row-release">
-                ${escapeHTML(game.release)}
-            </span>
+            </div>
 
         </div>
 
     `;
 
 
-    row.addEventListener(
-        "mouseenter",
-        () => {
-
-            setActivePreviewRow(
-                row
-            );
-
-
-            showPreview(
-                game
-            );
-        }
-    );
-
-
-    row.addEventListener(
-        "focus",
-        () => {
-
-            setActivePreviewRow(
-                row
-            );
-
-
-            showPreview(
-                game
-            );
-        }
-    );
-
-
-    return row;
-}
-
-
-
-function setActivePreviewRow(row) {
-
-    document
-        .querySelectorAll(".game-row")
-        .forEach(
-            item => {
-
-                item.classList.toggle(
-                    "preview-active",
-                    item === row
-                );
-            }
-        );
+    return card;
 }
 
 
 
 /* =========================================================
-   BIG HOVER PREVIEW
+   NEW & UPCOMING
 ========================================================= */
 
-function showPreview(game) {
+function renderUpcoming() {
 
-    previewArt.classList.toggle(
-        "dark",
-        game.accent === "dark"
-    );
+    upcomingGrid.innerHTML = "";
 
 
-    previewArtTitle.textContent =
-        game.artTitle;
+    STORE_GAMES.forEach(
+        game => {
 
-
-    previewTitle.textContent =
-        game.title;
-
-
-    previewDescription.textContent =
-        game.description;
-
-
-    previewRelease.textContent =
-        game.release;
-
-
-    previewDeveloper.textContent =
-        game.developer;
-
-
-    previewTags.innerHTML = "";
-
-
-    game.tags.forEach(
-        tag => {
-
-            const span =
-                document.createElement("span");
-
-
-            span.textContent =
-                tag;
-
-
-            previewTags.appendChild(
-                span
+            upcomingGrid.appendChild(
+                createWideCard(game)
             );
         }
     );
@@ -458,155 +335,65 @@ function showPreview(game) {
 
 
 
-/* =========================================================
-   SEARCH
-========================================================= */
+function createWideCard(game) {
 
-storeSearch.addEventListener(
-    "input",
-    renderGames
-);
+    const card =
+        document.createElement("a");
 
 
-clearStoreSearch.addEventListener(
-    "click",
-    () => {
-
-        storeSearch.value = "";
-
-        storeSearch.focus();
-
-        renderGames();
-    }
-);
+    card.href =
+        `game.html?id=${encodeURIComponent(game.id)}`;
 
 
-
-/* =========================================================
-   CATEGORIES
-========================================================= */
-
-categoryTabs.addEventListener(
-    "click",
-    event => {
-
-        const button =
-            event.target.closest(
-                "[data-category]"
-            );
+    card.className =
+        `wide-game-card ${
+            game.accent === "dark"
+                ? "dark"
+                : ""
+        }`;
 
 
-        if (!button) {
-            return;
-        }
+    card.innerHTML = `
+
+        <div class="wide-card-art">
+
+            <img
+                src="apex-logo.png"
+                alt=""
+            >
+
+        </div>
 
 
-        setCategory(
-            button.dataset.category
-        );
-    }
-);
+        <div class="wide-card-info">
+
+            <h3>
+                ${escapeHTML(game.title)}
+            </h3>
+
+            <p>
+                ${escapeHTML(game.description)}
+            </p>
+
+            <div class="wide-card-meta">
+
+                <span>
+                    ${escapeHTML(game.status)}
+                </span>
+
+                <span>
+                    ${escapeHTML(game.release)}
+                </span>
+
+            </div>
+
+        </div>
+
+    `;
 
 
-
-document
-    .querySelectorAll(
-        "[data-category-jump]"
-    )
-    .forEach(
-        button => {
-
-            button.addEventListener(
-                "click",
-                () => {
-
-                    setCategory(
-                        button.dataset.categoryJump
-                    );
-
-
-                    document
-                        .querySelector(".browse-games")
-                        ?.scrollIntoView({
-                            behavior: "smooth",
-                            block: "start"
-                        });
-                }
-            );
-        }
-    );
-
-
-
-document
-    .querySelectorAll(
-        "[data-filter-button]"
-    )
-    .forEach(
-        button => {
-
-            button.addEventListener(
-                "click",
-                () => {
-
-                    setCategory(
-                        button.dataset.filterButton
-                    );
-
-
-                    document
-                        .querySelector(".browse-games")
-                        ?.scrollIntoView({
-                            behavior: "smooth",
-                            block: "start"
-                        });
-                }
-            );
-        }
-    );
-
-
-
-function setCategory(category) {
-
-    activeCategory =
-        category;
-
-
-    document
-        .querySelectorAll(
-            "[data-category]"
-        )
-        .forEach(
-            button => {
-
-                button.classList.toggle(
-                    "active",
-                    button.dataset.category ===
-                        category
-                );
-            }
-        );
-
-
-    renderGames();
+    return card;
 }
-
-
-
-/* =========================================================
-   RESET
-========================================================= */
-
-resetStore.addEventListener(
-    "click",
-    () => {
-
-        storeSearch.value = "";
-
-        setCategory("all");
-    }
-);
 
 
 
@@ -614,9 +401,9 @@ resetStore.addEventListener(
    FEATURED
 ========================================================= */
 
-function renderFeatured() {
+function renderFeaturedPagination() {
 
-    featuredDots.innerHTML =
+    featuredPagination.innerHTML =
         "";
 
 
@@ -633,13 +420,7 @@ function renderFeatured() {
 
             button.setAttribute(
                 "aria-label",
-                `Show ${game.title}`
-            );
-
-
-            button.classList.toggle(
-                "active",
-                index === featuredIndex
+                `Feature ${game.title}`
             );
 
 
@@ -656,7 +437,7 @@ function renderFeatured() {
             );
 
 
-            featuredDots.appendChild(
+            featuredPagination.appendChild(
                 button
             );
         }
@@ -676,38 +457,8 @@ function updateFeatured() {
         ];
 
 
-    featuredMainLink.href =
+    featuredLink.href =
         `game.html?id=${encodeURIComponent(game.id)}`;
-
-
-    featuredMainBackground.style.background =
-        game.accent === "dark"
-
-            ? `
-                radial-gradient(
-                    circle at 50% 50%,
-                    rgba(120, 136, 157, .18),
-                    transparent 31%
-                ),
-                linear-gradient(
-                    135deg,
-                    #141920,
-                    #06080b 70%
-                )
-            `
-
-            : `
-                radial-gradient(
-                    circle at 50% 50%,
-                    rgba(22, 140, 255, .30),
-                    transparent 31%
-                ),
-                linear-gradient(
-                    135deg,
-                    #101c2b,
-                    #06090e 70%
-                )
-            `;
 
 
     featuredArtTitle.textContent =
@@ -741,32 +492,225 @@ function updateFeatured() {
     game.tags.forEach(
         tag => {
 
-            const span =
+            const element =
                 document.createElement("span");
 
 
-            span.textContent =
+            element.textContent =
                 tag;
 
 
             featuredTags.appendChild(
-                span
+                element
             );
         }
     );
 
 
-    [...featuredDots.children]
-        .forEach(
-            (dot, index) => {
+    if (
+        game.accent === "dark"
+    ) {
 
-                dot.classList.toggle(
+        featuredArtBackground.style.background = `
+
+            radial-gradient(
+                circle at 50% 48%,
+                rgba(124, 156, 184, .18),
+                transparent 30%
+            ),
+
+            linear-gradient(
+                135deg,
+                #21374a,
+                #09131d 70%
+            )
+
+        `;
+
+    } else {
+
+        featuredArtBackground.style.background = `
+
+            radial-gradient(
+                circle at 50% 48%,
+                rgba(24, 140, 255, .30),
+                transparent 30%
+            ),
+
+            linear-gradient(
+                135deg,
+                #16324d,
+                #08121e 70%
+            )
+
+        `;
+    }
+
+
+    [...featuredPagination.children]
+        .forEach(
+            (button, index) => {
+
+                button.classList.toggle(
                     "active",
                     index === featuredIndex
                 );
             }
         );
 }
+
+
+
+/* =========================================================
+   SEARCH
+========================================================= */
+
+storeSearch.addEventListener(
+    "input",
+    () => {
+
+        renderGameCards();
+
+        document
+            .getElementById("games")
+            ?.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+    }
+);
+
+
+
+clearSearch.addEventListener(
+    "click",
+    () => {
+
+        storeSearch.value =
+            "";
+
+
+        renderGameCards();
+
+
+        storeSearch.focus();
+    }
+);
+
+
+
+/* =========================================================
+   CATEGORIES
+========================================================= */
+
+document
+    .querySelectorAll(
+        "[data-category]"
+    )
+    .forEach(
+        button => {
+
+            button.addEventListener(
+                "click",
+                () => {
+
+                    selectedCategory =
+                        button.dataset.category;
+
+
+                    storeSearch.value =
+                        "";
+
+
+                    renderGameCards();
+
+
+                    document
+                        .getElementById("games")
+                        ?.scrollIntoView({
+                            behavior: "smooth",
+                            block: "start"
+                        });
+                }
+            );
+        }
+    );
+
+
+
+showAllGames.addEventListener(
+    "click",
+    () => {
+
+        selectedCategory =
+            "all";
+
+
+        storeSearch.value =
+            "";
+
+
+        renderGameCards();
+
+
+        document
+            .getElementById("games")
+            ?.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+    }
+);
+
+
+
+resetStore.addEventListener(
+    "click",
+    () => {
+
+        selectedCategory =
+            "all";
+
+
+        storeSearch.value =
+            "";
+
+
+        renderGameCards();
+    }
+);
+
+
+
+/* =========================================================
+   STORE NAV SCROLLING
+========================================================= */
+
+document
+    .querySelectorAll(
+        "[data-scroll]"
+    )
+    .forEach(
+        button => {
+
+            button.addEventListener(
+                "click",
+                () => {
+
+                    const target =
+                        document.getElementById(
+                            button.dataset.scroll
+                        );
+
+
+                    target?.scrollIntoView({
+                        behavior: "smooth",
+                        block: "start"
+                    });
+                }
+            );
+        }
+    );
 
 
 
@@ -826,6 +770,8 @@ function escapeHTML(value) {
    START
 ========================================================= */
 
-renderGames();
+renderGameCards();
 
-renderFeatured();
+renderUpcoming();
+
+renderFeaturedPagination();
