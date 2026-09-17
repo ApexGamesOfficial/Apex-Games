@@ -511,6 +511,10 @@ body {
 
     box-shadow: none;
 
+    /*
+       The CARD itself never scales or moves.
+       Only the thumbnail surface is allowed to zoom.
+    */
     transform: none;
 }
 
@@ -537,6 +541,13 @@ body {
     background: #07131e;
 }
 
+/*
+   This is the complete thumbnail surface.
+
+   Instead of enlarging the tiny Apex logo, we enlarge this
+   entire layer slightly while keeping it clipped by
+   .store-game-media.
+*/
 .store-game-placeholder {
     position: absolute;
     inset: 0;
@@ -551,6 +562,12 @@ body {
             #173b57,
             #081521 70%
         );
+
+    transform: scale(1);
+    transform-origin: center;
+
+    transition:
+        transform .28s ease;
 }
 
 .store-game-placeholder img {
@@ -564,46 +581,40 @@ body {
 
     object-fit: contain;
 
-    transition:
-        transform .25s ease;
+    /*
+       Do NOT scale the logo independently.
+    */
+    transform: none;
 }
 
-/* ONLY thumbnail content enlarges */
-document.querySelectorAll(".apex-nav-dropdown-toggle").forEach((toggle) => {
-    toggle.addEventListener("click", (event) => {
-        event.preventDefault();
-        event.stopPropagation();
+/*
+   Desktop/mouse hover:
+   zoom the WHOLE thumbnail surface, not the card and
+   not the little logo by itself.
+*/
+@media (hover: hover) and (pointer: fine) {
+    .store-game-card:hover
+    .store-game-placeholder {
+        transform: scale(1.06);
+    }
 
-        const menu = toggle.closest(".apex-nav-menu");
-        const dropdown = menu?.querySelector(".apex-nav-dropdown");
+    .store-game-card:hover
+    .store-game-placeholder img {
+        transform: none;
+    }
+}
 
-        if (!dropdown) return;
+/*
+   Existing gameplay/trailer preview layer.
 
-        const isOpen = menu.classList.contains("open");
-
-        document.querySelectorAll(".apex-nav-menu.open").forEach((otherMenu) => {
-            if (otherMenu !== menu) {
-                otherMenu.classList.remove("open");
-
-                const otherToggle =
-                    otherMenu.querySelector(".apex-nav-dropdown-toggle");
-
-                otherToggle?.setAttribute("aria-expanded", "false");
-            }
-        });
-
-        menu.classList.toggle("open", !isOpen);
-
-        toggle.setAttribute(
-            "aria-expanded",
-            String(!isOpen)
-        );
-    });
-});
-
+   JS can lazy-load a real preview and add .previewing to the
+   card. The video remains inside the 16:9 thumbnail.
+*/
 .store-game-media video {
     position: absolute;
     inset: 0;
+
+    z-index: 2;
 
     width: 100%;
     height: 100%;
@@ -611,6 +622,8 @@ document.querySelectorAll(".apex-nav-dropdown-toggle").forEach((toggle) => {
     object-fit: cover;
 
     opacity: 0;
+
+    pointer-events: none;
 
     transition:
         opacity .2s ease;
@@ -871,8 +884,6 @@ document.querySelectorAll(".apex-nav-dropdown-toggle").forEach((toggle) => {
 
     font-size: 9px;
 }
-
-
 /* =========================================================
    DISCOVERY PREVIEW
 ========================================================= */
@@ -1250,15 +1261,18 @@ document.querySelectorAll(".apex-nav-dropdown-toggle").forEach((toggle) => {
     }
 
     .featured-track,
-    .store-game-placeholder img,
+    .store-game-placeholder,
     .store-game-media video {
         transition: none;
     }
 }
+
+
 /* =========================================================
    APEX GAMES STORE v0.4.3
    BASE STYLE RECOVERY
-   ========================================================= */
+========================================================= */
+
 
 /* ---------- FORCE PAGE BASE ---------- */
 
@@ -1629,6 +1643,9 @@ main.store-page {
 
     box-shadow: none !important;
 
+    /*
+       Never move or scale the complete game card.
+    */
     transform: none !important;
 }
 
@@ -1652,6 +1669,12 @@ main.store-page {
     background: #07131e !important;
 }
 
+/*
+   Recovery layer version of the thumbnail rules.
+
+   These repeat the earlier rules with !important because this
+   recovery section intentionally has priority over the base CSS.
+*/
 .store-game-placeholder {
     position: absolute !important;
     inset: 0 !important;
@@ -1666,6 +1689,12 @@ main.store-page {
             #173b57,
             #081521 70%
         ) !important;
+
+    transform: scale(1) !important;
+    transform-origin: center !important;
+
+    transition:
+        transform .28s ease !important;
 }
 
 .store-game-placeholder img {
@@ -1677,13 +1706,53 @@ main.store-page {
 
     object-fit: contain !important;
 
-    transition:
-        transform .25s ease !important;
+    /*
+       Keep the Apex/game logo fixed at its normal size.
+    */
+    transform: none !important;
 }
 
-.store-game-card:hover
-.store-game-placeholder img {
-    transform: scale(1.13) !important;
+/*
+   Mouse/trackpad devices only:
+   zoom the complete thumbnail surface.
+*/
+@media (hover: hover) and (pointer: fine) {
+    .store-game-card:hover
+    .store-game-placeholder {
+        transform: scale(1.06) !important;
+    }
+
+    .store-game-card:hover
+    .store-game-placeholder img {
+        transform: none !important;
+    }
+}
+
+/*
+   Video preview remains layered over the thumbnail.
+*/
+.store-game-media video {
+    position: absolute !important;
+    inset: 0 !important;
+
+    z-index: 2 !important;
+
+    width: 100% !important;
+    height: 100% !important;
+
+    object-fit: cover !important;
+
+    opacity: 0 !important;
+
+    pointer-events: none !important;
+
+    transition:
+        opacity .2s ease !important;
+}
+
+.store-game-card.previewing
+.store-game-media video {
+    opacity: 1 !important;
 }
 
 .store-game-body {
@@ -1738,7 +1807,6 @@ main.store-page {
 
     font-size: 9px !important;
 }
-
 
 /* ---------- DISCOVERY BUTTONS ---------- */
 
@@ -1896,6 +1964,7 @@ main.store-page {
     }
 }
 
+
 @media (max-width: 800px) {
 
     main.store-page {
@@ -1925,5 +1994,110 @@ main.store-page {
     .category-strip {
         grid-template-columns:
             repeat(2, minmax(0,1fr)) !important;
+    }
+}
+
+
+/* =========================================================
+   STORE CARD HOVER SAFETY
+========================================================= */
+
+/*
+   Final safety rules.
+
+   These are intentionally placed at the END of the stylesheet
+   so an older recovery rule cannot accidentally bring back the
+   old "giant logo" hover behavior.
+*/
+
+.store-game-card,
+.store-game-card:hover {
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+.store-game-placeholder {
+    transform: scale(1) !important;
+    transform-origin: center center !important;
+
+    transition:
+        transform .28s ease !important;
+}
+
+.store-game-placeholder img,
+.store-game-card:hover .store-game-placeholder img {
+    transform: none !important;
+}
+
+/*
+   Only devices with a real mouse/trackpad get thumbnail zoom.
+   Touch/mobile stays static.
+*/
+@media (hover: hover) and (pointer: fine) {
+
+    .store-game-card:hover .store-game-placeholder {
+        transform: scale(1.06) !important;
+    }
+}
+
+
+/* =========================================================
+   VIDEO PREVIEW SAFETY
+========================================================= */
+
+/*
+   Preview videos occupy the entire thumbnail and never affect
+   the card's dimensions.
+*/
+
+.store-game-media video {
+    position: absolute !important;
+    inset: 0 !important;
+
+    z-index: 2 !important;
+
+    display: block !important;
+
+    width: 100% !important;
+    height: 100% !important;
+
+    object-fit: cover !important;
+
+    opacity: 0 !important;
+
+    pointer-events: none !important;
+
+    transform: none !important;
+
+    transition:
+        opacity .2s ease !important;
+}
+
+.store-game-card.previewing .store-game-media video {
+    opacity: 1 !important;
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior: auto !important;
+    }
+
+    .featured-track,
+    .store-game-placeholder,
+    .store-game-media video {
+        transition: none !important;
+    }
+
+    /*
+       No thumbnail zoom for users requesting reduced motion.
+    */
+    .store-game-card:hover .store-game-placeholder {
+        transform: scale(1) !important;
     }
 }
