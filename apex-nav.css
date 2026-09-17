@@ -20,11 +20,15 @@
 .topbar {
     position: relative;
     z-index: 1000;
+
     width: 100%;
     height: var(--apex-nav-height);
+
     display: flex;
     align-items: center;
+
     padding: 0 24px;
+
     background: var(--apex-nav-bg);
     border-bottom: 1px solid var(--apex-nav-border);
 }
@@ -38,9 +42,11 @@
 .brand {
     width: 42px;
     height: 42px;
+
     display: flex;
     align-items: center;
     justify-content: center;
+
     flex: 0 0 auto;
     margin-right: 19px;
 }
@@ -54,6 +60,7 @@
 
 .main-nav {
     height: var(--apex-nav-height);
+
     display: flex;
     align-items: stretch;
     gap: 2px;
@@ -61,6 +68,7 @@
 
 .nav-item {
     position: relative;
+
     display: flex;
     align-items: center;
 }
@@ -68,29 +76,47 @@
 .nav-link,
 .nav-dropdown-trigger {
     height: 100%;
+
     display: flex;
     align-items: center;
     justify-content: center;
+
     padding: 0 12px;
+
     border: 0;
     background: transparent;
+
     color: #aab2bf;
     font: inherit;
     font-size: 14px;
     font-weight: 600;
+
     text-decoration: none;
     white-space: nowrap;
+
     cursor: pointer;
-    transition:
-        color 130ms ease,
-        background-color 130ms ease;
+
+    transition: color 130ms ease;
 }
 
+/*
+   ALL NORMAL NAV WORDS:
+   Hover = text turns white only.
+   No gray background.
+*/
 .nav-link:hover,
-.nav-dropdown-trigger:hover,
+.nav-dropdown-trigger:hover {
+    color: #ffffff;
+    background: transparent;
+}
+
+/*
+   Keep the current/open nav item white without adding
+   a background highlight.
+*/
 .nav-item.dropdown-open > .nav-dropdown-trigger {
     color: #ffffff;
-    background: rgba(255, 255, 255, 0.055);
+    background: transparent;
 }
 
 .nav-link.active,
@@ -101,11 +127,14 @@
 .nav-link.active::after,
 .nav-dropdown-trigger.active::after {
     content: "";
+
     position: absolute;
     left: 11px;
     right: 11px;
     bottom: 0;
+
     height: 2px;
+
     background: var(--apex-nav-blue);
 }
 
@@ -116,11 +145,18 @@
 .nav-chevron {
     width: 7px;
     height: 7px;
+
     border-right: 1.5px solid currentColor;
     border-bottom: 1.5px solid currentColor;
+
     transform: rotate(45deg) translateY(-2px);
+
     opacity: 0.7;
-    transition: transform 140ms ease;
+
+    transition:
+        transform 140ms ease,
+        color 130ms ease,
+        opacity 130ms ease;
 }
 
 .dropdown-open .nav-chevron {
@@ -129,17 +165,25 @@
 
 .nav-dropdown {
     position: absolute;
+
     top: calc(100% + 7px);
     left: 0;
+
     width: 215px;
+
     padding: 7px;
+
     background: #11151c;
     border: 1px solid rgba(255, 255, 255, 0.11);
+
     box-shadow: 0 16px 35px rgba(0, 0, 0, 0.38);
+
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
+
     transform: translateY(-4px);
+
     transition:
         opacity 120ms ease,
         transform 120ms ease,
@@ -150,6 +194,7 @@
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
+
     transform: translateY(0);
 }
 
@@ -157,18 +202,25 @@
 .nav-dropdown button {
     width: 100%;
     min-height: 38px;
+
     display: flex;
     align-items: center;
+
     padding: 0 11px;
+
     border: 0;
     background: transparent;
+
     color: #c3cad4;
     font: inherit;
     font-size: 13px;
     font-weight: 500;
+
     text-decoration: none;
     text-align: left;
+
     cursor: pointer;
+
     transition:
         background-color 120ms ease,
         color 120ms ease;
@@ -186,6 +238,7 @@
 .nav-dropdown-separator {
     height: 1px;
     margin: 6px 5px;
+
     background: rgba(255, 255, 255, 0.08);
 }
 
@@ -197,11 +250,15 @@
 .nav-search {
     width: min(300px, 22vw);
     height: 36px;
+
     display: flex;
     align-items: center;
+
     margin-left: auto;
     margin-right: 14px;
+
     padding: 0 11px;
+
     background: #11161e;
     border: 1px solid rgba(255, 255, 255, 0.09);
 }
@@ -212,7 +269,9 @@
 
 .search-icon {
     flex: 0 0 auto;
+
     margin-right: 8px;
+
     color: #8791a0;
     font-size: 18px;
 }
@@ -220,9 +279,11 @@
 .nav-search input {
     width: 100%;
     min-width: 0;
+
     border: 0;
     outline: 0;
     background: transparent;
+
     color: #ffffff;
     font: inherit;
     font-size: 13px;
@@ -241,21 +302,27 @@
     display: flex;
     align-items: center;
     gap: 8px;
+
     flex: 0 0 auto;
 }
 
 .install-client-button {
     height: 34px;
+
     display: inline-flex;
     align-items: center;
     justify-content: center;
+
     padding: 0 13px;
+
     background: #202630;
     border: 1px solid rgba(255, 255, 255, 0.1);
+
     color: #e9edf3;
     font-size: 12px;
     font-weight: 650;
     text-decoration: none;
+
     transition:
         background-color 120ms ease,
         border-color 120ms ease;
@@ -272,15 +339,21 @@
 
 .notification-button {
     position: relative;
+
     width: 36px;
     height: 36px;
+
     display: flex;
     align-items: center;
     justify-content: center;
+
     border: 1px solid transparent;
     background: transparent;
+
     color: #aab3c0;
+
     cursor: pointer;
+
     transition:
         color 120ms ease,
         background-color 120ms ease;
@@ -294,49 +367,70 @@
 
 .notification-bell {
     position: relative;
+
     width: 15px;
     height: 17px;
+
     border: 1.7px solid currentColor;
     border-radius: 8px 8px 5px 5px;
 }
 
 .notification-bell::before {
     content: "";
+
     position: absolute;
+
     width: 5px;
     height: 2px;
+
     left: 50%;
     bottom: -5px;
+
     border-radius: 0 0 5px 5px;
+
     background: currentColor;
+
     transform: translateX(-50%);
 }
 
 .notification-bell::after {
     content: "";
+
     position: absolute;
+
     width: 4px;
     height: 4px;
+
     top: -4px;
     left: 50%;
+
     border-radius: 50%;
+
     background: currentColor;
+
     transform: translateX(-50%);
 }
 
 .notification-badge {
     position: absolute;
+
     top: 4px;
     right: 3px;
+
     min-width: 15px;
     height: 15px;
+
     display: none;
     align-items: center;
     justify-content: center;
+
     padding: 0 4px;
+
     border: 2px solid var(--apex-nav-bg);
     border-radius: 20px;
+
     background: #168cff;
+
     color: white;
     font-size: 9px;
     font-weight: 800;
@@ -353,17 +447,24 @@
 
 .notification-panel {
     position: absolute;
+
     top: calc(100% + 9px);
     right: 0;
+
     width: 355px;
     max-height: min(520px, calc(100vh - 90px));
+
     background: #10141b;
     border: 1px solid rgba(255, 255, 255, 0.11);
+
     box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
+
     transform: translateY(-4px);
+
     transition:
         opacity 120ms ease,
         transform 120ms ease,
@@ -374,15 +475,19 @@
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
+
     transform: translateY(0);
 }
 
 .notification-header {
     height: 52px;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
+
     padding: 0 15px;
+
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
@@ -394,9 +499,11 @@
 .notification-header button {
     border: 0;
     background: transparent;
+
     color: #8ebbe8;
     font: inherit;
     font-size: 11px;
+
     cursor: pointer;
 }
 
@@ -411,6 +518,7 @@
 
 .notification-empty {
     padding: 34px 18px;
+
     color: #7f8997;
     font-size: 13px;
     text-align: center;
@@ -418,13 +526,18 @@
 
 .notification-row {
     width: 100%;
+
     display: grid;
     grid-template-columns: 38px 1fr;
     gap: 10px;
+
     padding: 12px 14px;
+
     border: 0;
     border-bottom: 1px solid rgba(255, 255, 255, 0.055);
+
     background: transparent;
+
     text-align: left;
     cursor: pointer;
 }
@@ -440,12 +553,16 @@
 .notification-icon {
     width: 38px;
     height: 38px;
+
     display: flex;
     align-items: center;
     justify-content: center;
+
     overflow: hidden;
+
     background: #1b222c;
     border: 1px solid rgba(255, 255, 255, 0.08);
+
     color: #aeb7c4;
     font-size: 15px;
 }
@@ -462,6 +579,7 @@
 
 .notification-message {
     display: block;
+
     color: #d7dde6;
     font-size: 12px;
     line-height: 1.45;
@@ -469,16 +587,20 @@
 
 .notification-time {
     display: block;
+
     margin-top: 4px;
+
     color: #727d8c;
     font-size: 10px;
 }
 
 .notification-footer {
     min-height: 43px;
+
     display: flex;
     align-items: center;
     justify-content: center;
+
     border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
@@ -499,6 +621,7 @@
 
 .nav-account {
     position: relative;
+
     display: flex;
     align-items: center;
 }
@@ -512,10 +635,13 @@
 .login-link,
 .create-account-button {
     min-height: 34px;
+
     display: inline-flex;
     align-items: center;
     justify-content: center;
+
     padding: 0 11px;
+
     color: #d7dde6;
     font-size: 12px;
     font-weight: 600;
@@ -539,14 +665,20 @@
 .profile-widget {
     min-width: 142px;
     height: 42px;
+
     display: flex;
     align-items: center;
+
     padding: 4px 7px;
+
     border: 0;
     background: transparent;
+
     color: inherit;
     text-decoration: none;
+
     cursor: pointer;
+
     transition: background-color 120ms ease;
 }
 
@@ -558,30 +690,39 @@
 .profile-widget img {
     width: 32px;
     height: 32px;
+
     flex: 0 0 auto;
+
     object-fit: cover;
+
     background: #1b212a;
 }
 
 .profile-widget-copy {
     min-width: 0;
+
     display: flex;
     flex-direction: column;
+
     margin-left: 8px;
 }
 
 #profileGamertag {
     max-width: 105px;
+
     overflow: hidden;
+
     color: #eef2f7;
     font-size: 12px;
     font-weight: 650;
+
     text-overflow: ellipsis;
     white-space: nowrap;
 }
 
 .profile-wallet {
     margin-top: 2px;
+
     color: #808b9a;
     font-size: 10px;
 }
@@ -589,12 +730,22 @@
 .profile-arrow {
     width: 7px;
     height: 7px;
+
     flex: 0 0 auto;
+
     margin-left: auto;
     margin-right: 3px;
-    border-right: 1.5px solid #87919f;
-    border-bottom: 1.5px solid #87919f;
+
+    border-right: 1.5px solid currentColor;
+    border-bottom: 1.5px solid currentColor;
+
+    color: #87919f;
+
     transform: rotate(45deg) translateY(-2px);
+
+    transition:
+        color 130ms ease,
+        transform 140ms ease;
 }
 
 .nav-account.dropdown-open .profile-arrow {
@@ -608,17 +759,25 @@
 
 .account-dropdown {
     position: absolute;
+
     top: calc(100% + 8px);
     right: 0;
+
     width: 245px;
+
     padding: 7px;
+
     background: #10141b;
     border: 1px solid rgba(255, 255, 255, 0.11);
+
     box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
+
     transform: translateY(-4px);
+
     transition:
         opacity 120ms ease,
         transform 120ms ease,
@@ -629,6 +788,7 @@
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
+
     transform: translateY(0);
 }
 
@@ -636,23 +796,30 @@
     display: grid;
     grid-template-columns: 38px 1fr;
     gap: 10px;
+
     padding: 9px 9px 12px;
+
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .account-dropdown-header img {
     width: 38px;
     height: 38px;
+
     object-fit: cover;
+
     background: #1c222b;
 }
 
 .account-dropdown-name {
     display: block;
+
     overflow: hidden;
+
     color: #ffffff;
     font-size: 13px;
     font-weight: 700;
+
     text-overflow: ellipsis;
     white-space: nowrap;
 }
@@ -661,7 +828,9 @@
     display: flex;
     align-items: center;
     gap: 5px;
+
     margin-top: 5px;
+
     color: #8e98a7;
     font-size: 10px;
 }
@@ -669,7 +838,9 @@
 .account-status-dot {
     width: 6px;
     height: 6px;
+
     border-radius: 50%;
+
     background: #39c875;
 }
 
@@ -681,17 +852,23 @@
 .account-menu button {
     width: 100%;
     min-height: 37px;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
+
     padding: 0 10px;
+
     border: 0;
     background: transparent;
+
     color: #c1c9d4;
     font: inherit;
     font-size: 12px;
+
     text-align: left;
     text-decoration: none;
+
     cursor: pointer;
 }
 
@@ -709,6 +886,7 @@
 .account-menu-separator {
     height: 1px;
     margin: 6px 5px;
+
     background: rgba(255, 255, 255, 0.08);
 }
 
@@ -719,13 +897,18 @@
 
 .apex-toast-container {
     position: fixed;
+
     right: 18px;
     bottom: 18px;
+
     z-index: 5000;
+
     width: min(355px, calc(100vw - 36px));
+
     display: flex;
     flex-direction: column;
     gap: 8px;
+
     pointer-events: none;
 }
 
@@ -733,17 +916,25 @@
     display: grid;
     grid-template-columns: 44px 1fr auto;
     gap: 11px;
+
     align-items: center;
+
     min-height: 66px;
+
     padding: 10px;
+
     background: #10151c;
     border: 1px solid rgba(255, 255, 255, 0.12);
+
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+
     opacity: 0;
     transform: translateY(12px);
+
     transition:
         opacity 180ms ease,
         transform 180ms ease;
+
     pointer-events: auto;
 }
 
@@ -755,11 +946,15 @@
 .apex-toast-icon {
     width: 44px;
     height: 44px;
+
     display: flex;
     align-items: center;
     justify-content: center;
+
     overflow: hidden;
+
     background: #1d242e;
+
     color: #aeb8c5;
 }
 
@@ -771,7 +966,9 @@
 
 .apex-toast-copy strong {
     display: block;
+
     margin-bottom: 3px;
+
     color: #ffffff;
     font-size: 11px;
 }
@@ -784,11 +981,15 @@
 
 .apex-toast-close {
     align-self: start;
+
     width: 25px;
     height: 25px;
+
     border: 0;
     background: transparent;
+
     color: #76808e;
+
     cursor: pointer;
 }
 
@@ -808,7 +1009,9 @@
 .notification-button:focus-visible,
 .profile-widget:focus-visible,
 .login-link:focus-visible,
-.create-account-button:focus-visible {
+.create-account-button:focus-visible,
+.nav-arrow-trigger:focus-visible,
+.profile-arrow-trigger:focus-visible {
     outline: 2px solid rgba(22, 140, 255, 0.8);
     outline-offset: -2px;
 }
@@ -867,17 +1070,21 @@
 
     .notification-panel {
         position: fixed;
+
         top: 66px;
         left: 10px;
         right: 10px;
+
         width: auto;
     }
 
     .account-dropdown {
         position: fixed;
+
         top: 66px;
         left: 10px;
         right: 10px;
+
         width: auto;
     }
 
@@ -920,36 +1127,43 @@
     display: flex;
     align-items: center;
     padding-right: 5px !important;
+
+    background: transparent !important;
 }
 
 /*
-   IMPORTANT:
-   Hovering the WORD only changes the word to white.
-   No background highlight.
+   Library / Store / Community WORD:
+   only the word turns white.
 */
 .nav-split-link:hover {
-    color: #ffffff;
-    background: transparent;
+    color: #ffffff !important;
+    background: transparent !important;
 }
 
 .nav-arrow-trigger {
     appearance: none;
+
     display: flex;
     align-items: center;
     justify-content: center;
+
     width: 22px;
     min-width: 22px;
     padding: 0;
+
     border: 0;
     background: transparent;
-    color: inherit;
+
+    color: #aab2bf;
+
     cursor: pointer;
+
     transition: color 130ms ease;
 }
 
 /*
-   Hovering the ARROW only changes the arrow to white.
-   No background highlight.
+   Library / Store / Community ARROW:
+   only the arrow turns white.
 */
 .nav-arrow-trigger:hover {
     color: #ffffff;
@@ -958,6 +1172,14 @@
 
 .nav-arrow-trigger .nav-chevron {
     margin: 0;
+    color: inherit;
+}
+
+/*
+   Keep arrow white while its dropdown is open.
+*/
+.nav-item.dropdown-open .nav-arrow-trigger {
+    color: #ffffff;
 }
 
 
@@ -972,20 +1194,25 @@
     padding: 0 !important;
 }
 
+/*
+   PROFILE IS THE EXCEPTION:
+   it keeps the existing gray highlight.
+*/
 .profile-main-link {
     min-width: 0;
+
     display: flex;
     align-items: center;
     gap: 9px;
+
     padding: 6px 4px 6px 8px;
+
     color: inherit;
     text-decoration: none;
+
+    transition: background-color 120ms ease;
 }
 
-/*
-   Profile is intentionally different from Library / Store /
-   Community. The profile area keeps its gray hover.
-*/
 .profile-main-link:hover {
     background: rgba(255, 255, 255, 0.04);
 }
@@ -996,23 +1223,43 @@
 
 .profile-arrow-trigger {
     appearance: none;
+
     width: 28px;
     min-width: 28px;
+
     display: flex;
     align-items: center;
     justify-content: center;
+
     padding: 0;
+
     border: 0;
     background: transparent;
-    color: inherit;
+
+    color: #87919f;
+
     cursor: pointer;
-    transition: color 130ms ease;
+
+    transition:
+        color 130ms ease,
+        background-color 120ms ease;
 }
 
 /*
-   Profile arrow itself turns white when hovered.
+   Profile arrow turns white when directly hovered.
 */
 .profile-arrow-trigger:hover {
     color: #ffffff;
-    background: transparent;
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.profile-arrow-trigger .profile-arrow {
+    color: inherit;
+}
+
+/*
+   Keep profile arrow white while account menu is open.
+*/
+.nav-account.dropdown-open .profile-arrow-trigger {
+    color: #ffffff;
 }
