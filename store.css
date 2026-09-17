@@ -1,1869 +1,637 @@
 /* =========================================================
-   APEX GAMES STORE v0.31
-   Exact Home Navbar + Store Layout Fix
-========================================================= */
+   APEX GAMES STORE v0.4.1 — LAYOUT HOTFIX
+   ========================================================= */
 
-* {
-    box-sizing: border-box;
-}
+/* ---------- FEATURED ---------- */
 
-:root {
-    --page-bg: #07111c;
-    --page-bg-light: #0a1827;
-
-    --surface: #0e1c2b;
-    --surface-light: #13263a;
-    --surface-hover: #183149;
-
-    --card: #102237;
-    --card-light: #17324c;
-
-    --border: rgba(151, 185, 218, .14);
-    --border-bright: rgba(151, 185, 218, .26);
-
-    --text: #f5f8fb;
-    --muted: #91a6b9;
-    --muted-dark: #657c91;
-
-    --blue: #168CFF;
-    --blue-light: #3EA1FF;
-    --blue-dark: #0B5FB8;
-
-    --topbar-height: 78px;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    margin: 0;
-
-    min-height: 100vh;
-
-    background: var(--page-bg);
-
-    color: var(--text);
-
-    font-family:
-        Inter,
-        Arial,
-        Helvetica,
-        sans-serif;
-}
-
-button,
-input {
-    font: inherit;
-}
-
-button {
-    color: inherit;
-}
-
-
-
-/* =========================================================
-   EXACT HOME NAVBAR
-========================================================= */
-
-.topbar {
-    position: fixed;
-
-    top: 0;
-    left: 0;
-    right: 0;
-
-    z-index: 1000;
-
-    height: 78px;
-
-    display: grid;
-
-    grid-template-columns:
-        auto
-        minmax(220px, 560px)
-        auto;
-
-    align-items: center;
-
-    gap: 24px;
-
-    padding: 0 30px;
-
-    border-bottom:
-        1px solid rgba(255,255,255,.08);
-
-    background:
-        rgba(5,7,10,.92);
-
-    backdrop-filter: blur(20px);
-}
-
-
-
-/* LEFT */
-
-.nav-left {
-    display: flex;
-    align-items: center;
-
-    gap: 30px;
-
-    min-width: 0;
-}
-
-.brand {
-    flex: 0 0 auto;
-
-    display: flex;
-    align-items: center;
-
-    text-decoration: none;
-}
-
-.brand img {
-    width: 94px;
-    max-height: 54px;
-
-    object-fit: contain;
-}
-
-
-
-/* NAV LINKS */
-
-.main-nav {
-    display: flex;
-    align-items: center;
-
-    gap: 21px;
-}
-
-.main-nav a {
-    position: relative;
-
-    padding: 28px 0 25px;
-
-    color: #9ba3ac;
-
-    text-decoration: none;
-
-    font-size: 13px;
-    font-weight: 800;
-
-    transition:
-        color .18s ease;
-}
-
-.main-nav a:hover,
-.main-nav a:focus-visible,
-.main-nav a.active {
-    color: white;
-
-    outline: none;
-}
-
-.main-nav a.active::after {
-    content: "";
-
-    position: absolute;
-
-    left: 0;
-    right: 0;
-    bottom: 17px;
-
-    height: 2px;
-
-    background: var(--blue);
-}
-
-
-
-/* =========================================================
-   EXACT HOME SEARCH
-========================================================= */
-
-.nav-search {
+.featured-viewport {
+    display: block !important;
     width: 100%;
-
-    height: 42px;
-
-    display: flex;
-    align-items: center;
-
-    gap: 9px;
-
-    padding: 0 14px;
-
-    border:
-        1px solid rgba(255,255,255,.12);
-
-    border-radius: 5px;
-
-    background:
-        rgba(255,255,255,.075);
-
-    transition:
-        border-color .18s ease,
-        background .18s ease,
-        box-shadow .18s ease;
+    overflow: hidden !important;
+    border: 1px solid #23425e;
+    background: #091726;
 }
 
-.nav-search:focus-within {
-    border-color: var(--blue);
-
-    background:
-        rgba(255,255,255,.11);
-
-    box-shadow:
-        0 0 0 1px
-        rgba(255,255,255,.15);
-}
-
-.search-icon {
-    color: #9ca4ad;
-
-    font-size: 20px;
-}
-
-.nav-search input {
+.featured-track {
+    display: flex !important;
     width: 100%;
-
-    border: none;
-    outline: none;
-
-    background: transparent;
-
-    color: white;
-
-    font-size: 13px;
+    min-height: 0;
 }
 
-.nav-search input::placeholder {
-    color: #777f88;
-}
+.featured-slide {
+    flex: 0 0 100% !important;
+    width: 100% !important;
+    min-width: 100% !important;
+    min-height: 360px !important;
 
+    display: grid !important;
+    grid-template-columns: minmax(0, 1.8fr) 340px !important;
 
-
-/* =========================================================
-   EXACT HOME ACCOUNT
-========================================================= */
-
-.nav-account {
-    display: flex;
-    justify-content: flex-end;
-}
-
-.logged-out-account {
-    display: flex;
-    align-items: center;
-
-    gap: 13px;
-}
-
-.login-link {
-    color: #a9b0b7;
-
+    color: #fff;
     text-decoration: none;
-
-    font-size: 13px;
-    font-weight: 800;
 }
 
-.login-link:hover,
-.login-link:focus-visible {
-    color: white;
-
-    outline: none;
-}
-
-.create-account-button {
-    min-height: 42px;
-
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-
-    padding: 0 18px;
-
-    border:
-        2px solid var(--blue);
-
-    border-radius: 5px;
-
-    background: var(--blue);
-
-    color: white;
-
-    text-decoration: none;
-
-    white-space: nowrap;
-
-    font-size: 12px;
-    font-weight: 900;
-
-    transition:
-        transform .18s ease,
-        background .18s ease,
-        color .18s ease,
-        border-color .18s ease;
-}
-
-.create-account-button:hover,
-.create-account-button:focus-visible {
-    transform: scale(1.05);
-
-    background: transparent;
-
-    color: var(--blue-light);
-
-    border-color: var(--blue-light);
-
-    outline: none;
-}
-
-
-
-/* PROFILE */
-
-.profile-widget {
-    display: flex;
-    align-items: center;
-
-    gap: 10px;
-
-    min-height: 48px;
-
-    padding:
-        5px 10px 5px 5px;
-
-    border:
-        2px solid transparent;
-
-    border-radius: 7px;
-
-    color: white;
-
-    text-decoration: none;
-
-    font-size: 13px;
-    font-weight: 900;
-
-    transition:
-        transform .18s ease,
-        border-color .18s ease,
-        background .18s ease,
-        box-shadow .18s ease;
-}
-
-.profile-widget img {
-    width: 37px;
-    height: 37px;
-
-    border-radius: 4px;
-
-    object-fit: cover;
-
-    background: #161b21;
-}
-
-.profile-widget:hover,
-.profile-widget:focus-visible {
-    transform: scale(1.04);
-
-    border-color: var(--blue);
-
-    background:
-        rgba(22, 140, 255, .10);
-
-    box-shadow:
-        0 0 22px
-        rgba(22, 140, 255, .12);
-
-    outline: none;
-}
-
-.profile-widget[hidden] {
-    display: none !important;
-}
-
-
-
-/* =========================================================
-   PAGE BACKGROUND
-========================================================= */
-
-.store-page {
+.featured-slide-art {
     position: relative;
-
-    min-height: 100vh;
-
-    padding-top:
-        var(--topbar-height);
-
-    overflow: hidden;
-
-    background:
-        linear-gradient(
-            180deg,
-            #0a1929 0,
-            #081522 420px,
-            #07111c 900px
-        );
-}
-
-.store-background {
-    position: absolute;
-
-    top: 0;
-    left: 0;
-    right: 0;
-
-    height: 720px;
-
-    pointer-events: none;
-
-    background:
-        radial-gradient(
-            circle at 24% 20%,
-            rgba(27, 119, 198, .20),
-            transparent 35%
-        ),
-        radial-gradient(
-            circle at 78% 16%,
-            rgba(39, 95, 153, .16),
-            transparent 31%
-        );
-}
-
-.store-shell {
-    position: relative;
-
-    z-index: 1;
-
-    width:
-        min(1240px, calc(100% - 50px));
-
-    margin:
-        0 auto;
-
-    padding:
-        38px 0 95px;
-}
-
-
-
-/* =========================================================
-   STORE NAV
-========================================================= */
-
-.store-nav {
-    position: sticky;
-
-    top:
-        calc(var(--topbar-height) + 14px);
-
-    z-index: 100;
-
-    min-height: 48px;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    gap: 16px;
-
-    margin-bottom: 54px;
-
-    padding:
-        5px 6px 5px 8px;
-
-    border:
-        1px solid rgba(147, 185, 218, .18);
-
-    border-radius: 5px;
-
-    background:
-        linear-gradient(
-            90deg,
-            rgba(18, 52, 79, .96),
-            rgba(12, 34, 55, .96)
-        );
-
-    box-shadow:
-        0 12px 30px
-        rgba(0, 0, 0, .18);
-
-    backdrop-filter:
-        blur(15px);
-}
-
-.store-nav-links {
-    display: flex;
-    align-items: center;
-}
-
-.store-nav-links a,
-.store-nav-links button {
-    min-height: 36px;
-
-    display: flex;
-    align-items: center;
-
-    padding:
-        0 14px;
-
-    border: 0;
-
-    border-radius: 3px;
-
-    background: transparent;
-
-    color: #b3c7d8;
-
-    text-decoration: none;
-
-    font-size: 10px;
-    font-weight: 700;
-
-    cursor: pointer;
-}
-
-.store-nav-links a:hover,
-.store-nav-links button:hover {
-    color: white;
-
-    background:
-        rgba(255,255,255,.055);
-}
-
-.store-nav-links .active {
-    color: white;
-
-    background:
-        linear-gradient(
-            180deg,
-            #198ff7,
-            #1177d2
-        );
-}
-
-.store-search {
-    width: 280px;
-    height: 36px;
-
-    display: flex;
-    align-items: center;
-
-    gap: 8px;
-
-    padding:
-        0 10px;
-
-    border:
-        1px solid
-        rgba(158,196,228,.22);
-
-    border-radius: 3px;
-
-    background:
-        rgba(5,18,30,.72);
-}
-
-.store-search > span {
-    color: #72a8d2;
-}
-
-.store-search input {
     min-width: 0;
 
-    flex: 1;
-
-    border: 0;
-    outline: 0;
-
-    background: transparent;
-
-    color: white;
-
-    font-size: 10px;
-}
-
-.store-search input::placeholder {
-    color: #7890a5;
-}
-
-.clear-search {
-    width: 24px;
-    height: 24px;
-
-    padding: 0;
-
-    border: 0;
-
-    background: transparent;
-
-    color: #9cb1c2;
-
-    cursor: pointer;
-}
-
-
-
-/* =========================================================
-   GENERAL SECTIONS
-========================================================= */
-
-.store-section {
-    margin-bottom: 64px;
-
-    scroll-margin-top:
-        calc(var(--topbar-height) + 95px);
-}
-
-.featured-section {
-    padding-top: 4px;
-}
-
-.section-heading {
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-
-    gap: 20px;
-
-    margin-bottom: 18px;
-}
-
-.section-label {
-    display: block;
-
-    margin-bottom: 5px;
-
-    color: #45a9ff;
-
-    font-size: 8px;
-    font-weight: 900;
-
-    letter-spacing: .16em;
-}
-
-.section-heading h1,
-.section-heading h2 {
-    margin: 0;
-
-    color: white;
-
-    font-size: 22px;
-    font-weight: 800;
-
-    letter-spacing: -.025em;
-}
-
-.section-action {
-    padding:
-        8px 12px;
-
-    border:
-        1px solid
-        rgba(159,194,224,.26);
-
-    border-radius: 3px;
-
-    background:
-        rgba(19,43,64,.7);
-
-    color: #b9cad8;
-
-    font-size: 8px;
-    font-weight: 800;
-
-    cursor: pointer;
-}
-
-.section-action:hover {
-    background:
-        rgba(29,63,93,.8);
-
-    color: white;
-}
-
-
-
-/* =========================================================
-   FEATURED GAME
-========================================================= */
-
-.featured-game {
-    min-height: 385px;
-
-    display: grid;
-
-    grid-template-columns:
-        minmax(0,1.75fr)
-        355px;
-
-    overflow: hidden;
-
-    border:
-        1px solid
-        rgba(147,181,211,.16);
-
-    background: #0b1723;
-
-    box-shadow:
-        0 24px 50px
-        rgba(0,0,0,.28);
-}
-
-.featured-art {
-    position: relative;
-
-    min-height: 385px;
-
-    display: flex;
+    display: flex !important;
     align-items: center;
     justify-content: center;
 
     overflow: hidden;
 
-    text-decoration: none;
-
-    isolation: isolate;
+    background: linear-gradient(
+        135deg,
+        #173651,
+        #07121e
+    );
 }
 
-.featured-art-background {
+.featured-slide-art.dark {
+    background: linear-gradient(
+        135deg,
+        #263a4c,
+        #08111a
+    );
+}
+
+.featured-slide-art img {
+    width: 110px !important;
+    height: auto !important;
+    object-fit: contain !important;
+}
+
+.featured-slide-art strong {
     position: absolute;
+    left: 28px;
+    bottom: 25px;
 
-    inset: 0;
-
-    z-index: -2;
-
-    background:
-        radial-gradient(
-            circle at 50% 48%,
-            rgba(24,140,255,.30),
-            transparent 30%
-        ),
-        linear-gradient(
-            135deg,
-            #16324d,
-            #08121e 70%
-        );
-
-    transition:
-        transform .3s ease;
-}
-
-.featured-art::after {
-    content: "";
-
-    position: absolute;
-
-    inset: 0;
-
-    z-index: -1;
-
-    background:
-        linear-gradient(
-            to right,
-            transparent 72%,
-            rgba(5,14,23,.36)
-        );
-}
-
-.featured-art:hover
-.featured-art-background {
-    transform: scale(1.02);
-}
-
-.featured-art-brand {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    gap: 18px;
-}
-
-.featured-art-brand img {
-    width: 125px;
-    height: 125px;
-
-    object-fit: contain;
-
-    filter:
-        drop-shadow(
-            0 18px 30px
-            rgba(0,0,0,.34)
-        );
-}
-
-.featured-art-brand strong {
-    color:
-        rgba(255,255,255,.7);
+    color: rgba(255,255,255,.72);
 
     font-size: 11px;
-
-    letter-spacing: .22em;
-}
-
-
-
-/* FEATURED DETAILS */
-
-.featured-details {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-
-    gap: 15px;
-
-    padding: 24px;
-
-    background:
-        linear-gradient(
-            145deg,
-            #173049,
-            #0c1a29
-        );
-}
-
-.featured-developer {
-    color: #7594ad;
-
-    font-size: 7px;
     font-weight: 900;
-
-    letter-spacing: .13em;
+    letter-spacing: .2em;
 }
 
-.featured-details h2 {
-    margin:
-        8px 0 0;
+.featured-slide-info {
+    min-width: 0;
 
-    font-size: 27px;
+    display: flex !important;
+    flex-direction: column;
 
-    letter-spacing: -.035em;
+    padding: 25px !important;
+
+    background: #142d44;
 }
 
-.featured-details p {
-    margin:
-        10px 0 0;
-
-    color: #9cb1c2;
-
-    font-size: 9px;
-
-    line-height: 1.6;
+.featured-slide-info h2 {
+    margin: 5px 0 8px !important;
+    font-size: 25px !important;
 }
 
-.featured-screenshots {
-    display: grid;
+.featured-slide-info p {
+    margin: 0 !important;
 
-    grid-template-columns:
-        1fr 1fr;
+    color: #9db1c3 !important;
 
-    gap: 5px;
+    font-size: 12px !important;
+    line-height: 1.5;
 }
 
-.featured-screenshots div {
-    aspect-ratio: 16 / 8;
+.featured-mini-shots {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
 
-    border:
-        1px solid
-        rgba(159,194,224,.11);
-
-    background:
-        radial-gradient(
-            circle at 65% 40%,
-            rgba(33,140,228,.22),
-            transparent 35%
-        ),
-        #0c1b2a;
+    margin-top: 15px;
 }
 
-.featured-now {
-    color: white !important;
+.featured-mini-shots span {
+    height: 55px !important;
 
-    font-size: 10px !important;
+    border: 1px solid #28445c;
 
-    font-weight: 800;
+    background: #10273b;
 }
 
 .featured-tags {
     display: flex;
     flex-wrap: wrap;
-
     gap: 5px;
 
-    margin-top: 8px;
+    margin-top: 13px;
 }
 
 .featured-tags span {
-    padding:
-        5px 7px;
+    padding: 4px 6px;
 
-    border-radius: 2px;
+    background: #203b52;
 
-    background:
-        rgba(107,158,199,.17);
+    color: #b5c8d8;
 
-    color: #a9c0d3;
-
-    font-size: 7px;
+    font-size: 9px;
 }
 
-.featured-footer {
-    display: flex;
+.featured-price {
+    display: flex !important;
     align-items: center;
     justify-content: space-between;
 
-    gap: 15px;
+    margin-top: auto;
+    padding-top: 14px;
+
+    color: #9db1c3;
+
+    font-size: 11px;
 }
 
-.featured-status {
-    color: white;
-
-    font-size: 9px;
-    font-weight: 800;
-}
-
-.featured-platform {
-    color: #8198aa;
-
-    font-size: 8px;
+.featured-price strong {
+    color: #fff;
+    font-size: 14px;
 }
 
 
+/* ---------- COMPACT GAME CARDS ---------- */
 
-/* FEATURED PAGINATION */
+.compact-game-row,
+.game-card-grid {
+    display: grid !important;
 
-.featured-pagination {
-    display: flex;
+    grid-template-columns:
+        repeat(5, minmax(0, 1fr)) !important;
+
+    gap: 10px !important;
+
+    align-items: start;
+}
+
+.store-game-card {
+    display: block !important;
+
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: none !important;
+
+    overflow: hidden;
+
+    border: 1px solid #203b52 !important;
+    border-radius: 0 !important;
+
+    background: #102132 !important;
+
+    color: #fff !important;
+    text-decoration: none !important;
+
+    box-shadow: none !important;
+
+    transform: none !important;
+}
+
+.store-game-card:hover {
+    border-color: #435c70 !important;
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+
+/* THUMBNAIL */
+
+.store-game-media {
+    position: relative !important;
+
+    width: 100% !important;
+    height: auto !important;
+
+    aspect-ratio: 16 / 9 !important;
+
+    overflow: hidden !important;
+
+    background: #09131d;
+}
+
+.store-game-placeholder {
+    position: absolute;
+    inset: 0;
+
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+
+    background: linear-gradient(
+        135deg,
+        #16334c,
+        #07131e
+    );
+}
+
+.store-game-placeholder img {
+    width: 54px !important;
+    height: 54px !important;
+
+    object-fit: contain !important;
+
+    transition: transform .25s ease !important;
+}
+
+
+/* THIS is the hover enlargement you wanted */
+
+.store-game-card:hover
+.store-game-placeholder img {
+    transform: scale(1.12) !important;
+}
+
+
+/* VIDEO PREVIEW */
+
+.store-game-media video {
+    position: absolute !important;
+    inset: 0 !important;
+
+    width: 100% !important;
+    height: 100% !important;
+
+    object-fit: cover !important;
+
+    opacity: 0;
+
+    transition: opacity .18s ease !important;
+}
+
+.store-game-card.previewing
+.store-game-media video {
+    opacity: 1;
+}
+
+
+/* CARD INFO */
+
+.store-game-body {
+    min-height: 82px !important;
+
+    display: flex !important;
+    flex-direction: column;
+
+    padding: 8px 9px !important;
+}
+
+.store-game-title {
+    margin: 0 0 6px !important;
+
+    overflow: hidden;
+
+    color: #fff !important;
+
+    font-size: 12px !important;
+    font-weight: 700 !important;
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.store-game-tags {
+    display: flex !important;
+    flex-wrap: wrap;
+
+    gap: 4px !important;
+
+    min-height: 18px !important;
+}
+
+.store-game-tags span {
+    padding: 3px 5px !important;
+
+    background: #1b3449 !important;
+
+    color: #91a9bd !important;
+
+    font-size: 7px !important;
+}
+
+.store-game-price {
+    display: flex !important;
+    align-items: center;
+    justify-content: flex-end;
+
+    gap: 5px;
+
+    margin-top: auto !important;
+    padding-top: 7px;
+
+    color: #fff !important;
+
+    font-size: 10px !important;
+}
+
+.store-game-price strong {
+    font-size: 10px !important;
+}
+
+.store-game-price .coming {
+    color: #9db1c3 !important;
+    font-size: 9px !important;
+}
+
+
+/* ---------- DISCOVERY TABS ---------- */
+
+.discovery-tabs {
+    display: flex !important;
+
+    gap: 4px !important;
+
+    margin-bottom: 12px;
+
+    border-bottom: 1px solid #263b4d;
+
+    overflow-x: auto;
+}
+
+.discovery-tabs button {
+    min-height: 36px !important;
+
+    padding: 0 12px !important;
+
+    border: 0 !important;
+    border-bottom: 2px solid transparent !important;
+
+    background: transparent !important;
+
+    color: #8fa3b5 !important;
+
+    font-size: 10px !important;
+    font-weight: 700 !important;
+
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.discovery-tabs button:hover {
+    background: rgba(255,255,255,.05) !important;
+    color: #fff !important;
+}
+
+.discovery-tabs button.active {
+    border-bottom-color: #168cff !important;
+
+    background: rgba(22,140,255,.08) !important;
+
+    color: #fff !important;
+}
+
+
+/* ---------- DISCOVERY CONTENT ---------- */
+
+.discovery-layout {
+    display: grid !important;
+
+    grid-template-columns:
+        minmax(0, 1.8fr)
+        minmax(240px, .7fr) !important;
+
+    gap: 10px !important;
+}
+
+.discovery-list {
+    display: flex !important;
+    flex-direction: column;
 
     gap: 5px;
 }
 
-.featured-pagination button {
-    width: 25px;
-    height: 5px;
+.discovery-item {
+    min-height: 70px !important;
 
-    padding: 0;
-
-    border: 0;
-
-    border-radius: 99px;
-
-    background: #29425a;
-
-    cursor: pointer;
-}
-
-.featured-pagination button.active {
-    background: var(--blue);
-}
-
-
-
-/* =========================================================
-   GAME CARDS
-========================================================= */
-
-.game-card-grid {
-    display: grid;
+    display: grid !important;
 
     grid-template-columns:
-        repeat(3, minmax(0,1fr));
+        120px minmax(0, 1fr) auto !important;
 
-    gap: 13px;
+    border: 1px solid transparent !important;
+
+    background: #122538 !important;
+
+    color: #fff !important;
+    text-decoration: none !important;
 }
 
-.game-card {
-    min-width: 0;
+.discovery-item:hover,
+.discovery-item.active {
+    border-color: #405b72 !important;
 
-    display: block;
-
-    overflow: hidden;
-
-    border:
-        1px solid
-        rgba(151,187,218,.14);
-
-    border-radius: 3px;
-
-    background:
-        linear-gradient(
-            180deg,
-            #17324b,
-            #10243a
-        );
-
-    color: white;
-
-    text-decoration: none;
-
-    box-shadow:
-        0 10px 25px
-        rgba(0,0,0,.18);
-
-    transition:
-        transform .16s ease,
-        border-color .16s ease,
-        box-shadow .16s ease;
+    background: #1b344a !important;
 }
 
-.game-card:hover {
-    transform:
-        translateY(-4px);
-
-    border-color:
-        rgba(89,175,246,.48);
-
-    box-shadow:
-        0 18px 35px
-        rgba(0,0,0,.26);
-}
-
-.game-card-art {
-    position: relative;
-
-    width: 100%;
-
-    aspect-ratio: 16 / 9;
-
-    display: flex;
+.discovery-item-media {
+    display: flex !important;
     align-items: center;
     justify-content: center;
 
-    overflow: hidden;
-
-    background:
-        radial-gradient(
-            circle at 50% 50%,
-            rgba(28,144,255,.32),
-            transparent 32%
-        ),
-        linear-gradient(
-            135deg,
-            #173653,
-            #081522
-        );
+    background: #09131d;
 }
 
-.game-card.dark
-.game-card-art {
-    background:
-        radial-gradient(
-            circle at 50% 50%,
-            rgba(124,156,184,.17),
-            transparent 33%
-        ),
-        linear-gradient(
-            135deg,
-            #1c2c3b,
-            #09121b
-        );
+.discovery-item-media img {
+    width: 42px !important;
+    height: auto !important;
 }
 
-.game-card-art img {
-    width: 78px;
-    height: 78px;
-
-    object-fit: contain;
+.discovery-item-info {
+    padding: 10px !important;
 }
 
-.game-card-art-title {
-    position: absolute;
+.discovery-item-info strong {
+    display: block;
 
-    left: 14px;
-    bottom: 11px;
+    margin-bottom: 4px;
 
-    color:
-        rgba(255,255,255,.65);
-
-    font-size: 8px;
-    font-weight: 900;
-
-    letter-spacing: .14em;
+    font-size: 12px !important;
 }
 
-.game-card-content {
-    min-height: 110px;
+.discovery-item-info span {
+    color: #8fa5b7 !important;
 
-    display: flex;
-    flex-direction: column;
-
-    padding: 14px;
+    font-size: 8px !important;
 }
 
-.game-card-content h3 {
+.discovery-item-price {
+    align-self: center !important;
+
+    padding: 10px !important;
+
+    color: #fff;
+
+    font-size: 10px !important;
+}
+
+
+/* ---------- PREVIEW ---------- */
+
+.discovery-preview {
+    min-height: 230px !important;
+
+    padding: 14px !important;
+
+    border: 1px solid #29455d !important;
+
+    background: #142a3d !important;
+}
+
+.discovery-preview h3 {
+    margin: 0 0 5px !important;
+
+    font-size: 17px !important;
+}
+
+.discovery-preview p {
     margin: 0;
 
-    font-size: 14px;
-    font-weight: 800;
+    color: #8fa5b7 !important;
+
+    font-size: 9px !important;
 }
 
-.game-card-developer {
-    margin-top: 5px;
-
-    color: #83a0b7;
-
-    font-size: 7px;
-}
-
-.game-card-tags {
+.preview-tags {
     display: flex;
     flex-wrap: wrap;
 
-    gap: 5px;
+    gap: 4px;
 
-    margin-top: 11px;
+    margin-top: 10px;
 }
 
-.game-card-tags span {
-    padding:
-        4px 6px;
+.preview-tags span {
+    padding: 3px 5px !important;
 
-    border-radius: 2px;
+    background: #263f54 !important;
 
-    background:
-        rgba(119,164,200,.13);
+    color: #b7c8d6 !important;
 
-    color: #92adc2;
-
-    font-size: 6px;
+    font-size: 7px !important;
 }
 
-.game-card-bottom {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+.preview-art {
+    aspect-ratio: 16 / 9;
 
-    gap: 10px;
-
-    margin-top: auto;
-
-    padding-top: 12px;
-}
-
-.game-card-status {
-    color: #e5edf4;
-
-    font-size: 8px;
-    font-weight: 800;
-}
-
-.game-card-platform {
-    color: #8098aa;
-
-    font-size: 7px;
-}
-
-
-
-/* =========================================================
-   WIDE CARDS
-========================================================= */
-
-.wide-card-grid {
-    display: grid;
-
-    grid-template-columns:
-        repeat(2, minmax(0,1fr));
-
-    gap: 12px;
-}
-
-.wide-game-card {
-    min-height: 140px;
-
-    display: grid;
-
-    grid-template-columns:
-        210px minmax(0,1fr);
-
-    overflow: hidden;
-
-    border:
-        1px solid
-        rgba(151,187,218,.14);
-
-    border-radius: 3px;
-
-    background:
-        linear-gradient(
-            90deg,
-            #173049,
-            #102238
-        );
-
-    color: white;
-
-    text-decoration: none;
-
-    transition:
-        transform .15s ease,
-        border-color .15s ease;
-}
-
-.wide-game-card:hover {
-    transform:
-        translateY(-3px);
-
-    border-color:
-        rgba(86,174,247,.46);
-}
-
-.wide-card-art {
-    display: flex;
+    display: flex !important;
     align-items: center;
     justify-content: center;
 
-    background:
-        radial-gradient(
-            circle,
-            rgba(28,144,255,.27),
-            transparent 34%
-        ),
-        #0b1a28;
+    margin-top: 11px !important;
+
+    background: #091725 !important;
 }
 
-.wide-game-card.dark
-.wide-card-art {
-    background:
-        radial-gradient(
-            circle,
-            rgba(124,156,184,.14),
-            transparent 34%
-        ),
-        #0c1620;
-}
-
-.wide-card-art img {
-    width: 62px;
-    height: 62px;
-
-    object-fit: contain;
-}
-
-.wide-card-info {
-    min-width: 0;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-
-    padding: 18px;
-}
-
-.wide-card-info h3 {
-    margin: 0;
-
-    font-size: 15px;
-}
-
-.wide-card-info p {
-    margin:
-        7px 0 0;
-
-    color: #8fa8bb;
-
-    font-size: 8px;
-
-    line-height: 1.5;
-}
-
-.wide-card-meta {
-    display: flex;
-    justify-content: space-between;
-
-    gap: 10px;
-
-    margin-top: 14px;
-
-    color: #9db3c5;
-
-    font-size: 7px;
+.preview-art img {
+    width: 50px !important;
 }
 
 
+/* ---------- CATEGORY BUTTONS ---------- */
 
-/* =========================================================
-   NO RESULTS
-========================================================= */
+.category-strip {
+    display: grid !important;
 
-.no-games {
-    padding:
-        55px 20px;
+    grid-template-columns:
+        repeat(7, minmax(0, 1fr)) !important;
 
-    border:
-        1px dashed
-        rgba(157,194,224,.25);
-
-    background:
-        rgba(14,32,49,.55);
-
-    text-align: center;
+    gap: 6px !important;
 }
 
-.no-games[hidden] {
-    display: none;
-}
+.category-strip button {
+    min-height: 42px !important;
 
-.no-games h3 {
-    margin: 0;
+    padding: 0 8px;
 
-    font-size: 17px;
-}
+    border: 1px solid #28445b !important;
+    border-radius: 0 !important;
 
-.no-games p {
-    color: #8ca3b6;
+    background: #12283a !important;
 
-    font-size: 9px;
-}
+    color: #b9cad8 !important;
 
-.no-games button {
-    min-height: 36px;
-
-    margin-top: 8px;
-
-    padding:
-        0 15px;
-
-    border: 0;
-
-    border-radius: 3px;
-
-    background: var(--blue);
-
-    color: white;
-
-    font-size: 8px;
-    font-weight: 800;
+    font-size: 9px !important;
+    font-weight: 700 !important;
 
     cursor: pointer;
 }
 
+.category-strip button:hover,
+.category-strip button.active {
+    background: #26394a !important;
+    border-color: #52687b !important;
 
-
-/* =========================================================
-   CATEGORIES
-========================================================= */
-
-.category-grid {
-    display: grid;
-
-    grid-template-columns:
-        repeat(4, minmax(0,1fr));
-
-    gap: 10px;
-}
-
-.category-card {
-    min-height: 145px;
-
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-
-    padding: 17px;
-
-    border:
-        1px solid
-        rgba(151,187,218,.14);
-
-    border-radius: 3px;
-
-    background:
-        linear-gradient(
-            145deg,
-            #183653,
-            #10253a
-        );
-
-    text-align: left;
-
-    cursor: pointer;
-
-    transition:
-        transform .15s ease,
-        filter .15s ease;
-}
-
-.category-card:hover {
-    transform:
-        translateY(-3px);
-
-    filter:
-        brightness(1.12);
-}
-
-.category-icon {
-    width: 38px;
-    height: 38px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    margin-bottom: auto;
-
-    border-radius: 4px;
-
-    background:
-        rgba(255,255,255,.08);
-
-    color: white;
-
-    font-size: 17px;
-    font-weight: 900;
-}
-
-.category-card strong {
-    margin-top: 25px;
-
-    font-size: 13px;
-}
-
-.category-card > span:last-child {
-    margin-top: 5px;
-
-    color: #9db3c5;
-
-    font-size: 7px;
-}
-
-.category-card.adventure {
-    background:
-        linear-gradient(
-            145deg,
-            #214262,
-            #142b43
-        );
-}
-
-.category-card.upcoming {
-    background:
-        linear-gradient(
-            145deg,
-            #233a52,
-            #122438
-        );
-}
-
-.category-card.all {
-    background:
-        linear-gradient(
-            145deg,
-            #1b4566,
-            #12304a
-        );
+    color: #fff !important;
 }
 
 
+/* ---------- SECTION SPACING ---------- */
 
-/* =========================================================
-   STORE BOTTOM
-========================================================= */
-
-.store-bottom {
-    min-height: 170px;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    gap: 25px;
-
-    padding: 30px;
-
-    border:
-        1px solid
-        rgba(153,190,220,.14);
-
-    background:
-        linear-gradient(
-            110deg,
-            #16334e,
-            #0c2032
-        );
+.store-section {
+    margin-bottom: 45px !important;
 }
 
-.store-bottom h2 {
-    margin:
-        6px 0 0;
-
-    font-size: 22px;
-}
-
-.store-bottom p {
-    max-width: 560px;
-
-    margin:
-        8px 0 0;
-
-    color: #91a9bc;
-
-    font-size: 9px;
-
-    line-height: 1.6;
-}
-
-.store-bottom > a {
-    min-height: 40px;
-
-    display: flex;
-    align-items: center;
-
-    padding:
-        0 15px;
-
-    border:
-        1px solid
-        rgba(164,202,231,.26);
-
-    border-radius: 3px;
-
-    background:
-        rgba(255,255,255,.045);
-
-    color: white;
-
-    text-decoration: none;
-
-    font-size: 8px;
-    font-weight: 800;
+.personalized-section {
+    padding-top: 0 !important;
 }
 
 
+/* ---------- RESPONSIVE ---------- */
 
-/* =========================================================
-   FOOTER
-========================================================= */
+@media (max-width: 1100px) {
 
-.store-footer {
-    min-height: 130px;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    gap: 20px;
-
-    padding:
-        25px
-        max(
-            25px,
-            calc((100vw - 1240px) / 2)
-        );
-
-    border-top:
-        1px solid
-        rgba(255,255,255,.06);
-
-    background: #050b12;
-
-    color: #647b8e;
-}
-
-.footer-brand {
-    display: flex;
-    align-items: center;
-
-    gap: 12px;
-}
-
-.footer-brand img {
-    width: 65px;
-
-    object-fit: contain;
-}
-
-.footer-brand strong {
-    font-size: 8px;
-
-    letter-spacing: .14em;
-}
-
-.store-footer > span {
-    font-size: 8px;
-}
-
-
-
-/* =========================================================
-   HOME-MATCHING TABLET BEHAVIOR
-========================================================= */
-
-@media (max-width: 1150px) {
-
-    .topbar {
-        grid-template-columns:
-            auto
-            1fr
-            auto;
-    }
-
-    .main-nav {
-        gap: 14px;
-    }
-
-    .main-nav a {
-        font-size: 11px;
-    }
-
-    .featured-game {
-        grid-template-columns:
-            minmax(0,1.4fr)
-            310px;
-    }
-
+    .compact-game-row,
     .game-card-grid {
         grid-template-columns:
-            repeat(2,minmax(0,1fr));
+            repeat(4, minmax(0, 1fr)) !important;
     }
 
-    .category-grid {
+    .category-strip {
         grid-template-columns:
-            repeat(2,minmax(0,1fr));
+            repeat(4, minmax(0, 1fr)) !important;
     }
 
 }
 
+@media (max-width: 800px) {
 
-
-/* =========================================================
-   SMALL TABLET
-========================================================= */
-
-@media (max-width: 950px) {
-
-    .topbar {
-        height: auto;
-
-        min-height: 76px;
-
-        grid-template-columns:
-            1fr
-            auto;
-
-        padding:
-            13px 20px;
-    }
-
-    .nav-left {
-        gap: 18px;
-    }
-
-    .main-nav {
-        display: none;
-    }
-
-    .nav-search {
-        grid-column:
-            1 / 3;
-
-        grid-row: 2;
-
-        margin-top: 2px;
-    }
-
-    .store-page {
-        padding-top: 132px;
-    }
-
-    .store-nav {
-        top: 145px;
-    }
-
-    .featured-game {
-        grid-template-columns:
-            minmax(0,1.2fr)
-            285px;
-    }
-
-    .wide-card-grid {
-        grid-template-columns:
-            1fr;
-    }
-
-}
-
-
-
-/* =========================================================
-   PHONE
-========================================================= */
-
-@media (max-width: 650px) {
-
-    .topbar {
-        padding:
-            11px 14px;
-    }
-
-    .brand img {
-        width: 78px;
-    }
-
-    .logged-out-account {
-        gap: 8px;
-    }
-
-    .login-link {
-        display: none;
-    }
-
-    .create-account-button {
-        min-height: 39px;
-
-        padding:
-            0 12px;
-
-        font-size: 10px;
-    }
-
-    .profile-widget {
-        min-height: 54px;
-    }
-
-    .store-shell {
-        width:
-            calc(100% - 24px);
-
-        padding-top: 14px;
-    }
-
-    .store-nav {
-        position: static;
-
-        display: block;
-
-        margin-bottom: 32px;
-    }
-
-    .store-nav-links {
-        overflow-x: auto;
-
-        scrollbar-width: none;
-    }
-
-    .store-nav-links::-webkit-scrollbar {
-        display: none;
-    }
-
-    .store-nav-links a,
-    .store-nav-links button {
-        flex: 0 0 auto;
-    }
-
-    .store-search {
-        width: 100%;
-
-        margin-top: 5px;
-    }
-
-    .featured-game {
-        display: block;
-    }
-
-    .featured-art {
-        min-height: 245px;
-    }
-
-    .featured-details {
-        min-height: 300px;
-    }
-
+    .compact-game-row,
     .game-card-grid {
         grid-template-columns:
-            repeat(2,minmax(0,1fr));
-
-        gap: 8px;
+            repeat(2, minmax(0, 1fr)) !important;
     }
 
-    .game-card-content {
-        min-height: 105px;
-
-        padding: 11px;
-    }
-
-    .game-card-content h3 {
-        font-size: 12px;
-    }
-
-    .game-card-tags span:nth-child(n+3) {
-        display: none;
-    }
-
-    .wide-game-card {
+    .featured-slide {
         grid-template-columns:
-            135px minmax(0,1fr);
-
-        min-height: 115px;
+            1fr !important;
     }
 
-    .category-grid {
+    .featured-slide-art {
+        aspect-ratio: 16 / 9;
+    }
+
+    .discovery-layout {
         grid-template-columns:
-            repeat(2,minmax(0,1fr));
+            1fr !important;
     }
 
-    .category-card {
-        min-height: 125px;
+    .discovery-preview {
+        display: none !important;
     }
 
-    .store-bottom {
-        align-items: flex-start;
-        flex-direction: column;
-    }
-
-    .store-footer {
-        align-items: flex-start;
-        flex-direction: column;
+    .category-strip {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr)) !important;
     }
 
 }
-
-
-
-/* =========================================================
-   VERY SMALL PHONE
-========================================================= */
-
-@media (max-width: 440px) {
-
-    .game-card-grid,
-    .category-grid {
-        grid-template-columns:
-            1fr;
-    }
-
-    .wide-game-card {
-        display: block;
-    }
-
-    .wide-card-art {
-        min-height: 150px;
-    }
-
-}
-
-
-
-/* =========================================================
-   REDUCED MOTION
-========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
 
-    *,
-    *::before,
-    *::after {
-        scroll-behavior: auto !important;
-
-        transition-duration:
-            .001ms !important;
+    .featured-track,
+    .store-game-placeholder img,
+    .store-game-media video {
+        transition: none !important;
     }
 
 }
