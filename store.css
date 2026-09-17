@@ -1228,3 +1228,675 @@ body {
         transition: none;
     }
 }
+/* =========================================================
+   APEX GAMES STORE v0.4.3
+   BASE STYLE RECOVERY
+   ========================================================= */
+
+/* ---------- FORCE PAGE BASE ---------- */
+
+html,
+body {
+    margin: 0 !important;
+    padding: 0 !important;
+
+    width: 100% !important;
+    min-height: 100% !important;
+
+    background: #06111c !important;
+
+    color: #ffffff !important;
+
+    font-family:
+        Inter,
+        Arial,
+        Helvetica,
+        sans-serif !important;
+}
+
+body {
+    overflow-x: hidden !important;
+}
+
+
+/* ---------- LINKS ---------- */
+
+.store-page a {
+    color: inherit;
+    text-decoration: none;
+}
+
+
+/* ---------- STORE PAGE ---------- */
+
+main.store-page {
+    position: relative !important;
+
+    display: block !important;
+
+    min-height: 100vh !important;
+
+    padding:
+        16px
+        22px
+        70px !important;
+
+    background:
+        linear-gradient(
+            180deg,
+            #081827 0,
+            #06111c 520px
+        ) !important;
+
+    color: #ffffff !important;
+}
+
+.store-shell {
+    position: relative !important;
+
+    display: block !important;
+
+    width: min(1320px, 100%) !important;
+
+    margin: 0 auto !important;
+}
+
+
+/* ---------- STORE SUB NAV ---------- */
+
+.store-nav {
+    width: 100% !important;
+    min-height: 52px !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+
+    gap: 16px !important;
+
+    padding: 6px !important;
+
+    margin: 0 0 30px !important;
+
+    background: #11314a !important;
+
+    border: 1px solid #26516e !important;
+}
+
+.store-nav-links {
+    display: flex !important;
+    align-items: center !important;
+
+    gap: 2px !important;
+}
+
+.store-nav-links a,
+.store-nav-links button {
+    appearance: none !important;
+
+    height: 38px !important;
+
+    display: inline-flex !important;
+    align-items: center !important;
+
+    padding: 0 15px !important;
+
+    margin: 0 !important;
+
+    border: 0 !important;
+    border-radius: 0 !important;
+
+    background: transparent !important;
+
+    color: #a9bfd0 !important;
+
+    font-family:
+        Inter,
+        Arial,
+        Helvetica,
+        sans-serif !important;
+
+    font-size: 12px !important;
+    font-weight: 700 !important;
+
+    text-decoration: none !important;
+
+    cursor: pointer !important;
+}
+
+.store-nav-links a:hover,
+.store-nav-links button:hover {
+    background: rgba(255,255,255,.06) !important;
+
+    color: #ffffff !important;
+}
+
+.store-nav-links a.active {
+    background: #168cff !important;
+
+    color: #ffffff !important;
+}
+
+
+/* ---------- STORE SEARCH ---------- */
+
+.store-search {
+    width: 300px !important;
+    height: 38px !important;
+
+    display: flex !important;
+    align-items: center !important;
+
+    gap: 8px !important;
+
+    padding: 0 10px !important;
+
+    background: #081a2b !important;
+
+    border: 1px solid #31536b !important;
+}
+
+.store-search input {
+    width: 100% !important;
+
+    padding: 0 !important;
+
+    border: 0 !important;
+    outline: 0 !important;
+
+    background: transparent !important;
+
+    color: #ffffff !important;
+
+    font-family:
+        Inter,
+        Arial,
+        Helvetica,
+        sans-serif !important;
+
+    font-size: 12px !important;
+}
+
+.store-search input::placeholder {
+    color: #73899b !important;
+}
+
+
+/* ---------- HEADINGS ---------- */
+
+.store-page h1,
+.store-page h2,
+.store-page h3,
+.store-page p {
+    font-family:
+        Inter,
+        Arial,
+        Helvetica,
+        sans-serif !important;
+}
+
+.store-page h1,
+.store-page h2,
+.store-page h3 {
+    color: #ffffff !important;
+}
+
+.section-heading {
+    min-height: 50px !important;
+
+    display: flex !important;
+    align-items: flex-end !important;
+    justify-content: space-between !important;
+
+    gap: 20px !important;
+
+    margin: 0 0 15px !important;
+}
+
+.section-heading h1,
+.section-heading h2 {
+    margin: 0 !important;
+
+    line-height: 1.1 !important;
+}
+
+.section-heading h1 {
+    font-size: 27px !important;
+}
+
+.section-heading h2 {
+    font-size: 22px !important;
+}
+
+.section-label {
+    display: block !important;
+
+    margin: 0 0 6px !important;
+
+    color: #37a7ff !important;
+
+    font-family:
+        Inter,
+        Arial,
+        Helvetica,
+        sans-serif !important;
+
+    font-size: 10px !important;
+    font-weight: 900 !important;
+
+    letter-spacing: .13em !important;
+}
+
+
+/* ---------- SECTION SPACING ---------- */
+
+.store-section {
+    display: block !important;
+
+    margin: 0 0 46px !important;
+
+    padding: 0 !important;
+
+    scroll-margin-top: 90px;
+}
+
+
+/* ---------- SECTION ACTION ---------- */
+
+.section-action {
+    appearance: none !important;
+
+    height: 31px !important;
+
+    padding: 0 12px !important;
+
+    border: 1px solid #31536b !important;
+    border-radius: 0 !important;
+
+    background: #10283a !important;
+
+    color: #b8cad8 !important;
+
+    font-family:
+        Inter,
+        Arial,
+        Helvetica,
+        sans-serif !important;
+
+    font-size: 10px !important;
+    font-weight: 700 !important;
+
+    cursor: pointer !important;
+}
+
+.section-action:hover {
+    background: #1a3448 !important;
+
+    color: #ffffff !important;
+}
+
+
+/* ---------- FEATURED INDICATORS ---------- */
+
+.featured-pagination {
+    display: flex !important;
+    align-items: center !important;
+
+    gap: 5px !important;
+}
+
+.featured-pagination button {
+    appearance: none !important;
+
+    width: 25px !important;
+    height: 5px !important;
+
+    padding: 0 !important;
+    margin: 0 !important;
+
+    border: 0 !important;
+
+    background: #29465d !important;
+
+    cursor: pointer !important;
+}
+
+.featured-pagination button.active {
+    width: 38px !important;
+
+    background: #168cff !important;
+}
+
+
+/* ---------- COMPACT CARDS ---------- */
+
+.compact-game-row,
+.game-card-grid {
+    display: grid !important;
+
+    grid-template-columns:
+        repeat(5, minmax(0, 1fr)) !important;
+
+    gap: 11px !important;
+
+    width: 100% !important;
+}
+
+.store-game-card {
+    display: block !important;
+
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: none !important;
+
+    overflow: hidden !important;
+
+    background: #102436 !important;
+
+    border: 1px solid #203d54 !important;
+    border-radius: 0 !important;
+
+    color: #ffffff !important;
+
+    text-decoration: none !important;
+
+    box-shadow: none !important;
+
+    transform: none !important;
+}
+
+.store-game-card:hover {
+    border-color: #49667b !important;
+
+    box-shadow: none !important;
+
+    transform: none !important;
+}
+
+.store-game-media {
+    position: relative !important;
+
+    width: 100% !important;
+
+    aspect-ratio: 16 / 9 !important;
+
+    overflow: hidden !important;
+
+    background: #07131e !important;
+}
+
+.store-game-placeholder {
+    position: absolute !important;
+    inset: 0 !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    background:
+        radial-gradient(
+            circle,
+            #173b57,
+            #081521 70%
+        ) !important;
+}
+
+.store-game-placeholder img {
+    width: 52px !important;
+    max-width: 52px !important;
+
+    height: 52px !important;
+    max-height: 52px !important;
+
+    object-fit: contain !important;
+
+    transition:
+        transform .25s ease !important;
+}
+
+.store-game-card:hover
+.store-game-placeholder img {
+    transform: scale(1.13) !important;
+}
+
+.store-game-body {
+    min-height: 76px !important;
+
+    display: flex !important;
+    flex-direction: column !important;
+
+    padding: 8px !important;
+}
+
+.store-game-title {
+    margin: 0 0 6px !important;
+
+    overflow: hidden !important;
+
+    color: #ffffff !important;
+
+    font-size: 12px !important;
+    font-weight: 700 !important;
+
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+}
+
+.store-game-tags {
+    display: flex !important;
+    flex-wrap: wrap !important;
+
+    gap: 3px !important;
+}
+
+.store-game-tags span {
+    padding: 3px 4px !important;
+
+    background: #1c384e !important;
+
+    color: #94adbf !important;
+
+    font-size: 7px !important;
+}
+
+.store-game-price {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+
+    margin-top: auto !important;
+    padding-top: 7px !important;
+
+    color: #ffffff !important;
+
+    font-size: 9px !important;
+}
+
+
+/* ---------- DISCOVERY BUTTONS ---------- */
+
+.discovery-tabs {
+    display: flex !important;
+
+    gap: 2px !important;
+
+    margin: 0 0 10px !important;
+
+    border-bottom:
+        1px solid #294358 !important;
+}
+
+.discovery-tabs button {
+    appearance: none !important;
+
+    min-height: 37px !important;
+
+    padding: 0 13px !important;
+
+    border: 0 !important;
+    border-bottom:
+        2px solid transparent !important;
+
+    border-radius: 0 !important;
+
+    background: transparent !important;
+
+    color: #8fa4b5 !important;
+
+    font-family:
+        Inter,
+        Arial,
+        Helvetica,
+        sans-serif !important;
+
+    font-size: 10px !important;
+    font-weight: 700 !important;
+
+    cursor: pointer !important;
+}
+
+.discovery-tabs button:hover {
+    background:
+        rgba(255,255,255,.05) !important;
+
+    color: #ffffff !important;
+}
+
+.discovery-tabs button.active {
+    border-bottom-color:
+        #168cff !important;
+
+    background:
+        rgba(22,140,255,.08) !important;
+
+    color: #ffffff !important;
+}
+
+
+/* ---------- CATEGORY BUTTONS ---------- */
+
+.category-strip {
+    display: grid !important;
+
+    grid-template-columns:
+        repeat(7, minmax(0,1fr)) !important;
+
+    gap: 6px !important;
+}
+
+.category-strip button {
+    appearance: none !important;
+
+    min-height: 44px !important;
+
+    padding: 0 8px !important;
+
+    border:
+        1px solid #29485f !important;
+
+    border-radius: 0 !important;
+
+    background: #10283a !important;
+
+    color: #a9bdcc !important;
+
+    font-family:
+        Inter,
+        Arial,
+        Helvetica,
+        sans-serif !important;
+
+    font-size: 9px !important;
+    font-weight: 700 !important;
+
+    cursor: pointer !important;
+}
+
+.category-strip button:hover,
+.category-strip button.active {
+    border-color: #536c7f !important;
+
+    background: #20384b !important;
+
+    color: #ffffff !important;
+}
+
+
+/* ---------- FOOTER ---------- */
+
+.store-footer {
+    min-height: 80px !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+
+    padding: 0 max(
+        22px,
+        calc((100vw - 1320px) / 2)
+    ) !important;
+
+    border-top:
+        1px solid #1b3345 !important;
+
+    background: #050d15 !important;
+
+    color: #718697 !important;
+
+    font-family:
+        Inter,
+        Arial,
+        Helvetica,
+        sans-serif !important;
+
+    font-size: 9px !important;
+}
+
+
+/* ---------- RESPONSIVE ---------- */
+
+@media (max-width: 1100px) {
+
+    .compact-game-row,
+    .game-card-grid {
+        grid-template-columns:
+            repeat(4, minmax(0,1fr)) !important;
+    }
+
+    .category-strip {
+        grid-template-columns:
+            repeat(4, minmax(0,1fr)) !important;
+    }
+}
+
+@media (max-width: 800px) {
+
+    main.store-page {
+        padding-left: 12px !important;
+        padding-right: 12px !important;
+    }
+
+    .store-nav {
+        align-items: stretch !important;
+        flex-direction: column !important;
+    }
+
+    .store-nav-links {
+        overflow-x: auto !important;
+    }
+
+    .store-search {
+        width: 100% !important;
+    }
+
+    .compact-game-row,
+    .game-card-grid {
+        grid-template-columns:
+            repeat(2, minmax(0,1fr)) !important;
+    }
+
+    .category-strip {
+        grid-template-columns:
+            repeat(2, minmax(0,1fr)) !important;
+    }
+}
