@@ -569,10 +569,37 @@ body {
 }
 
 /* ONLY thumbnail content enlarges */
-.store-game-card:hover
-.store-game-placeholder img {
-    transform: scale(1.13);
-}
+document.querySelectorAll(".apex-nav-dropdown-toggle").forEach((toggle) => {
+    toggle.addEventListener("click", (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+
+        const menu = toggle.closest(".apex-nav-menu");
+        const dropdown = menu?.querySelector(".apex-nav-dropdown");
+
+        if (!dropdown) return;
+
+        const isOpen = menu.classList.contains("open");
+
+        document.querySelectorAll(".apex-nav-menu.open").forEach((otherMenu) => {
+            if (otherMenu !== menu) {
+                otherMenu.classList.remove("open");
+
+                const otherToggle =
+                    otherMenu.querySelector(".apex-nav-dropdown-toggle");
+
+                otherToggle?.setAttribute("aria-expanded", "false");
+            }
+        });
+
+        menu.classList.toggle("open", !isOpen);
+
+        toggle.setAttribute(
+            "aria-expanded",
+            String(!isOpen)
+        );
+    });
+});
 
 .store-game-media video {
     position: absolute;
