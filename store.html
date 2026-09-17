@@ -14,651 +14,316 @@
         content="#07111d"
     >
 
-    <title>Store | Apex Games</title>
+    <title>Apex Games Store</title>
 
-    <link
-        rel="stylesheet"
-        href="store.css?v=3"
-    >
+    <link rel="stylesheet" href="store.css">
+    <link rel="stylesheet" href="mobile-nav.css">
 </head>
 
 <body>
 
-<!-- =========================================================
-     APEX GAMES NAVBAR
-========================================================= -->
-
-<header class="topbar">
-
-    <div class="nav-left">
-
-        <a
-            href="index.html"
-            class="brand"
-            aria-label="Apex Games Home"
-        >
-            <img
-                src="apex-logo.png"
-                alt="Apex Games"
-            >
+    <header class="topbar">
+        <a class="brand" href="index.html" aria-label="Apex Games Home">
+            <img src="apex-logo.png" alt="">
+            <span>APEX GAMES</span>
         </a>
 
-        <nav
-            class="main-nav"
-            aria-label="Main navigation"
-        >
-            <a href="index.html">
-                Home
-            </a>
-
-            <a href="library.html">
-                Library
-            </a>
-
-            <a href="chat.html">
-                Chat
-            </a>
-
-            <a
-                href="store.html"
-                class="active"
-            >
-                Store
-            </a>
-
-            <a href="news.html">
-                News
-            </a>
-
-            <a href="about.html">
-                About
-            </a>
+        <nav class="main-nav" aria-label="Main navigation">
+            <a href="store.html" class="active">STORE</a>
+            <a href="news.html">NEWS</a>
+            <a href="library.html">LIBRARY</a>
+            <a href="chat.html">CHAT</a>
         </nav>
 
-    </div>
-
-
-    <form
-        class="nav-search"
-        id="navSearch"
-    >
-
-        <span class="search-icon">
-            ⌕
-        </span>
-
-        <input
-            type="search"
-            id="navSearchInput"
-            placeholder="Search Apex Games"
-            autocomplete="off"
-            aria-label="Search Apex Games"
-        >
-
-    </form>
-
-
-    <div class="nav-account">
-
-        <div
-            class="logged-out-account"
-            id="loggedOutAccount"
-        >
-
-            <a
-                href="login.html"
-                class="login-link"
-            >
-                Log In
-            </a>
-
-            <a
-                href="signup.html"
-                class="create-account-button"
-            >
-                Create Account
-            </a>
-
-        </div>
-
-
-        <a
-            href="profile.html"
-            class="profile-widget"
-            id="profileWidget"
-            hidden
-        >
-
-            <img
-                src="Default Apex Games Profile Picture.png"
-                alt="Profile Picture"
-                id="profilePicture"
-            >
-
-            <span id="profileGamertag">
-                Player
-            </span>
-
-        </a>
-
-    </div>
-
-</header>
-
-
-
-<!-- =========================================================
-     STORE PAGE
-========================================================= -->
-
-<main class="store-page">
-
-    <!-- STORE BACKGROUND -->
-
-    <div class="store-background"></div>
-
-
-    <div class="store-shell">
-
-
-        <!-- =================================================
-             STORE NAV
-        ================================================== -->
-
-        <nav class="store-nav">
-
-            <div class="store-nav-links">
-
-                <a
-                    href="store.html"
-                    class="active"
-                >
-                    Store Home
-                </a>
-
-                <button
-                    type="button"
-                    data-scroll="featured"
-                >
-                    Featured
-                </button>
-
-                <button
-                    type="button"
-                    data-scroll="games"
-                >
-                    Browse
-                </button>
-
-                <button
-                    type="button"
-                    data-scroll="categories"
-                >
-                    Categories
-                </button>
-
-                <button
-                    type="button"
-                    data-category="coming-soon"
-                >
-                    Upcoming
-                </button>
-
-            </div>
-
-
-            <div class="store-search">
-
-                <span>
-                    ⌕
-                </span>
-
+        <div class="topbar-actions">
+            <label class="global-search">
+                <span class="sr-only">Search Apex Games</span>
                 <input
                     type="search"
-                    id="storeSearch"
-                    placeholder="Search the store"
+                    placeholder="Search Apex Games"
                     autocomplete="off"
                 >
+            </label>
 
-                <button
-                    type="button"
-                    id="clearSearch"
-                    class="clear-search"
-                    aria-label="Clear search"
-                    hidden
-                >
-                    ×
-                </button>
+            <a class="profile-link" href="profile.html">
+                <span class="profile-avatar"></span>
+                <span class="profile-name">Profile</span>
+            </a>
+        </div>
+    </header>
 
+    <main>
+
+        <section class="store-shell">
+
+            <div class="store-nav">
+                <nav class="store-links" aria-label="Store navigation">
+                    <a href="#store-home" class="active">Store Home</a>
+                    <a href="#featured">Featured</a>
+                    <a href="#explore">Browse</a>
+                    <a href="#categories">Categories</a>
+                    <a href="#upcoming">Upcoming</a>
+                </nav>
+
+                <label class="store-search">
+                    <span class="sr-only">Search the store</span>
+                    <input
+                        id="storeSearch"
+                        type="search"
+                        placeholder="Search the store"
+                        autocomplete="off"
+                    >
+                </label>
             </div>
 
-        </nav>
-
-
-
-        <!-- =================================================
-             FEATURED
-        ================================================== -->
-
-        <section
-            class="store-section featured-section"
-            id="featured"
-        >
-
-            <div class="section-heading">
-
-                <div>
-                    <span class="section-label">
-                        FEATURED
-                    </span>
-
-                    <h1>
-                        Featured & Recommended
-                    </h1>
-                </div>
-
-
-                <div
-                    class="featured-pagination"
-                    id="featuredPagination"
-                ></div>
-
-            </div>
-
-
-
-            <article
-                class="featured-game"
-                id="featuredGame"
+            <section
+                class="featured-section"
+                id="featured"
+                aria-labelledby="featuredHeading"
             >
-
-                <a
-                    href="game.html?id=apex-demo"
-                    class="featured-art"
-                    id="featuredLink"
-                >
+                <div class="section-heading-row">
+                    <div>
+                        <span class="eyebrow">DISCOVER</span>
+                        <h1 id="featuredHeading">Featured &amp; Recommended</h1>
+                    </div>
 
                     <div
-                        class="featured-art-background"
-                        id="featuredArtBackground"
+                        class="featured-pagination"
+                        id="featuredPagination"
+                        aria-label="Featured games"
+                    ></div>
+                </div>
+
+                <article
+                    class="featured-stage"
+                    id="featuredStage"
+                    aria-live="polite"
+                >
+                    <div class="featured-track" id="featuredTrack"></div>
+                </article>
+            </section>
+
+            <section
+                class="store-section"
+                id="recommended"
+                aria-labelledby="recommendedHeading"
+            >
+                <div class="section-heading-row">
+                    <div>
+                        <span class="eyebrow">FOR YOU</span>
+                        <h2 id="recommendedHeading">
+                            Recommended Based on the Games You Play
+                        </h2>
+                    </div>
+
+                    <a class="section-link" href="#explore">
+                        Browse all
+                    </a>
+                </div>
+
+                <div
+                    class="game-card-row"
+                    id="recommendedGames"
+                ></div>
+            </section>
+
+            <section
+                class="store-section"
+                id="because-you-played"
+                aria-labelledby="becauseHeading"
+            >
+                <div class="section-heading-row">
+                    <div>
+                        <span class="eyebrow">RECOMMENDED</span>
+                        <h2 id="becauseHeading">
+                            Because You Played Apex Demo
+                        </h2>
+                    </div>
+                </div>
+
+                <div
+                    class="game-card-row"
+                    id="becauseGames"
+                ></div>
+            </section>
+
+            <section
+                class="store-section noteworthy-section"
+                id="noteworthy"
+                aria-labelledby="noteworthyHeading"
+            >
+                <div class="section-heading-row">
+                    <div>
+                        <span class="eyebrow">DISCOVER</span>
+                        <h2 id="noteworthyHeading">
+                            New &amp; Noteworthy
+                        </h2>
+                    </div>
+                </div>
+
+                <div
+                    class="noteworthy-tabs"
+                    role="tablist"
+                    aria-label="New and noteworthy categories"
+                >
+                    <button
+                        class="noteworthy-tab active"
+                        type="button"
+                        role="tab"
+                        aria-selected="true"
+                        data-store-tab="new"
+                    >
+                        Popular New Releases
+                    </button>
+
+                    <button
+                        class="noteworthy-tab"
+                        type="button"
+                        role="tab"
+                        aria-selected="false"
+                        data-store-tab="top"
+                    >
+                        Top Sellers
+                    </button>
+
+                    <button
+                        class="noteworthy-tab"
+                        type="button"
+                        role="tab"
+                        aria-selected="false"
+                        data-store-tab="upcoming"
+                    >
+                        Popular Upcoming
+                    </button>
+
+                    <button
+                        class="noteworthy-tab"
+                        type="button"
+                        role="tab"
+                        aria-selected="false"
+                        data-store-tab="specials"
+                    >
+                        Specials
+                    </button>
+
+                    <button
+                        class="noteworthy-tab"
+                        type="button"
+                        role="tab"
+                        aria-selected="false"
+                        data-store-tab="free"
+                    >
+                        Trending Free
+                    </button>
+                </div>
+
+                <div class="noteworthy-layout">
+
+                    <div
+                        class="noteworthy-list"
+                        id="noteworthyList"
                     ></div>
 
-                    <div class="featured-art-brand">
-
-                        <img
-                            src="apex-logo.png"
-                            alt=""
-                        >
-
-                        <strong
-                            id="featuredArtTitle"
-                        >
-                            APEX DEMO
-                        </strong>
-
-                    </div>
-
-                </a>
-
-
-
-                <div class="featured-details">
-
-                    <div>
-
-                        <span
-                            class="featured-developer"
-                            id="featuredDeveloper"
-                        >
-                            APEX GAMES
-                        </span>
-
-                        <h2
-                            id="featuredTitle"
-                        >
-                            Apex Demo
-                        </h2>
-
-                        <p
-                            id="featuredDescription"
-                        >
-                            Enter the Apex Games ecosystem
-                            with the official demonstration
-                            experience.
-                        </p>
-
-                    </div>
-
-
-
-                    <div class="featured-screenshots">
-
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                        <div></div>
-
-                    </div>
-
-
-
-                    <div>
-
-                        <p class="featured-now">
-                            Now on Apex Games
-                        </p>
-
-                        <div
-                            class="featured-tags"
-                            id="featuredTags"
-                        ></div>
-
-                    </div>
-
-
-
-                    <div class="featured-footer">
-
-                        <span
-                            id="featuredStatus"
-                            class="featured-status"
-                        >
-                            Available
-                        </span>
-
-                        <span
-                            id="featuredPlatform"
-                            class="featured-platform"
-                        >
-                            Windows
-                        </span>
-
-                    </div>
+                    <aside
+                        class="noteworthy-preview"
+                        id="noteworthyPreview"
+                        aria-label="Selected game preview"
+                    ></aside>
 
                 </div>
+            </section>
 
-            </article>
-
-        </section>
-
-
-
-        <!-- =================================================
-             SPOTLIGHT CARDS
-        ================================================== -->
-
-        <section
-            class="store-section"
-            id="games"
-        >
-
-            <div class="section-heading">
-
-                <div>
-                    <span class="section-label">
-                        DISCOVER
-                    </span>
-
-                    <h2>
-                        Explore Games
-                    </h2>
-                </div>
-
-
-                <button
-                    type="button"
-                    class="section-action"
-                    id="showAllGames"
-                >
-                    Browse All
-                </button>
-
-            </div>
-
-
-
-            <div
-                class="game-card-grid"
-                id="gameCardGrid"
-            ></div>
-
-
-
-            <div
-                class="no-games"
-                id="noGames"
-                hidden
+            <section
+                class="store-section"
+                id="explore"
+                aria-labelledby="exploreHeading"
             >
+                <div class="section-heading-row">
+                    <div>
+                        <span class="eyebrow">STORE</span>
+                        <h2 id="exploreHeading">Explore Games</h2>
+                    </div>
 
-                <h3>
-                    No games found
-                </h3>
-
-                <p>
-                    Try another search or category.
-                </p>
-
-                <button
-                    type="button"
-                    id="resetStore"
-                >
-                    Reset Store
-                </button>
-
-            </div>
-
-        </section>
-
-
-
-        <!-- =================================================
-             NEW & UPCOMING
-        ================================================== -->
-
-        <section class="store-section">
-
-            <div class="section-heading">
-
-                <div>
-                    <span class="section-label">
-                        WHAT'S NEXT
-                    </span>
-
-                    <h2>
-                        New & Upcoming
-                    </h2>
+                    <span
+                        class="result-count"
+                        id="storeResultCount"
+                    ></span>
                 </div>
 
-            </div>
+                <div
+                    class="game-card-grid"
+                    id="exploreGames"
+                ></div>
 
-
-
-            <div
-                class="wide-card-grid"
-                id="upcomingGrid"
-            ></div>
-
-        </section>
-
-
-
-        <!-- =================================================
-             CATEGORIES
-        ================================================== -->
-
-        <section
-            class="store-section"
-            id="categories"
-        >
-
-            <div class="section-heading">
-
-                <div>
-                    <span class="section-label">
-                        BROWSE
+                <div
+                    class="store-empty"
+                    id="storeEmpty"
+                    hidden
+                >
+                    <strong>No games found.</strong>
+                    <span>
+                        Try another search or category.
                     </span>
+                </div>
+            </section>
 
-                    <h2>
-                        Browse by Category
-                    </h2>
+            <section
+                class="store-section"
+                id="categories"
+                aria-labelledby="categoriesHeading"
+            >
+                <div class="section-heading-row">
+                    <div>
+                        <span class="eyebrow">BROWSE</span>
+                        <h2 id="categoriesHeading">
+                            Browse by Category
+                        </h2>
+                    </div>
                 </div>
 
-            </div>
+                <div
+                    class="category-grid"
+                    id="categoryGrid"
+                ></div>
+            </section>
 
+            <section
+                class="store-section"
+                id="upcoming"
+                aria-labelledby="upcomingHeading"
+            >
+                <div class="section-heading-row">
+                    <div>
+                        <span class="eyebrow">COMING NEXT</span>
+                        <h2 id="upcomingHeading">
+                            New &amp; Upcoming
+                        </h2>
+                    </div>
+                </div>
 
+                <div
+                    class="game-card-row"
+                    id="upcomingGames"
+                ></div>
+            </section>
 
-            <div class="category-grid">
+            <section class="store-ending">
+                <span class="eyebrow">APEX GAMES</span>
 
-                <button
-                    type="button"
-                    class="category-card action"
-                    data-category="action"
-                >
-                    <span class="category-icon">
-                        A
-                    </span>
-
-                    <strong>
-                        Action
-                    </strong>
-
-                    <span>
-                        Fast-paced experiences
-                    </span>
-                </button>
-
-
-                <button
-                    type="button"
-                    class="category-card adventure"
-                    data-category="adventure"
-                >
-                    <span class="category-icon">
-                        ↗
-                    </span>
-
-                    <strong>
-                        Adventure
-                    </strong>
-
-                    <span>
-                        Explore new worlds
-                    </span>
-                </button>
-
-
-                <button
-                    type="button"
-                    class="category-card upcoming"
-                    data-category="coming-soon"
-                >
-                    <span class="category-icon">
-                        +
-                    </span>
-
-                    <strong>
-                        Coming Soon
-                    </strong>
-
-                    <span>
-                        See what's next
-                    </span>
-                </button>
-
-
-                <button
-                    type="button"
-                    class="category-card all"
-                    data-category="all"
-                >
-                    <span class="category-icon">
-                        ◫
-                    </span>
-
-                    <strong>
-                        All Games
-                    </strong>
-
-                    <span>
-                        View the full catalog
-                    </span>
-                </button>
-
-            </div>
-
-        </section>
-
-
-
-        <!-- =================================================
-             STORE INFO
-        ================================================== -->
-
-        <section class="store-bottom">
-
-            <div>
-
-                <span class="section-label">
-                    APEX GAMES
-                </span>
-
-                <h2>
-                    More worlds are coming.
-                </h2>
+                <h2>More worlds are coming.</h2>
 
                 <p>
-                    The Apex Games Store will continue
-                    expanding with new games, developers,
-                    and experiences.
+                    New games, creators, communities, and experiences
+                    will continue joining the Apex Games catalog.
                 </p>
-
-            </div>
-
-
-            <a href="about.html">
-                About Apex Games
-            </a>
+            </section>
 
         </section>
 
-    </div>
+    </main>
 
-</main>
-
-
-
-<footer class="store-footer">
-
-    <div class="footer-brand">
-
-        <img
-            src="apex-logo.png"
-            alt=""
-        >
-
-        <strong>
-            APEX GAMES
-        </strong>
-
-    </div>
-
-    <span>
-        Creating Worlds. Elevating Reality.
-    </span>
-
-</footer>
-
-
-
-<script
-    src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
-></script>
-
-<script src="auth.js"></script>
-<script src="account-state.js"></script>
-<script src="presence.js?v=1"></script>
-<script src="store.js?v=3"></script>
+    <script src="store.js"></script>
+    <script src="mobile-nav.js"></script>
 
 </body>
-
 </html>
