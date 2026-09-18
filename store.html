@@ -16,10 +16,10 @@
 
     <title>Store | Apex Games</title>
 
-    <!-- STORE -->
+    <!-- STORE V3 -->
     <link
         rel="stylesheet"
-        href="store.css?v=4"
+        href="store.css?v=5"
     >
 
     <!-- GLOBAL APEX NAV -->
@@ -33,12 +33,6 @@
 
 <!-- =========================================================
      APEX GAMES NAVBAR
-
-     apex-nav.js replaces this existing shell with the
-     upgraded global navigation.
-
-     Keeping the basic shell here also gives us a graceful
-     fallback if JavaScript fails to load.
 ========================================================= -->
 
 <header class="topbar">
@@ -166,18 +160,21 @@
 
 
 <!-- =========================================================
-     STORE
+     STORE V3
 ========================================================= -->
 
 <main class="store-page">
 
-    <div class="store-background"></div>
+    <div
+        class="store-background"
+        aria-hidden="true"
+    ></div>
 
     <div class="store-shell">
 
 
         <!-- =================================================
-             STORE NAV
+             STORE NAVIGATION
         ================================================== -->
 
         <nav
@@ -203,16 +200,9 @@
 
                 <button
                     type="button"
-                    data-scroll="recommendations"
+                    data-scroll="fresh-releases"
                 >
-                    For You
-                </button>
-
-                <button
-                    type="button"
-                    data-scroll="new-noteworthy"
-                >
-                    New &amp; Noteworthy
+                    Fresh Releases
                 </button>
 
                 <button
@@ -220,6 +210,13 @@
                     data-scroll="categories"
                 >
                     Categories
+                </button>
+
+                <button
+                    type="button"
+                    data-scroll="games"
+                >
+                    Browse
                 </button>
 
             </div>
@@ -255,7 +252,13 @@
 
 
         <!-- =================================================
-             FEATURED
+             FEATURED & RECOMMENDED
+
+             V3:
+             - Larger presentation
+             - Left/right controls
+             - Indicators
+             - Automatic rotation handled by store.js
         ================================================== -->
 
         <section
@@ -263,7 +266,7 @@
             id="featured"
         >
 
-            <div class="section-heading">
+            <div class="section-heading featured-heading">
 
                 <div>
 
@@ -277,35 +280,70 @@
 
                 </div>
 
+            </div>
 
-                <div
-                    class="featured-pagination"
-                    id="featuredPagination"
-                    aria-label="Featured games"
-                ></div>
+
+            <div
+                class="featured-carousel store-carousel"
+                id="featuredCarousel"
+            >
+
+                <button
+                    type="button"
+                    class="carousel-arrow featured-arrow carousel-arrow-left"
+                    id="featuredPrevious"
+                    aria-label="Previous featured game"
+                >
+                    <span aria-hidden="true">
+                        ‹
+                    </span>
+                </button>
+
+
+                <div class="featured-viewport">
+
+                    <div
+                        class="featured-track"
+                        id="featuredTrack"
+                    ></div>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="carousel-arrow featured-arrow carousel-arrow-right"
+                    id="featuredNext"
+                    aria-label="Next featured game"
+                >
+                    <span aria-hidden="true">
+                        ›
+                    </span>
+                </button>
 
             </div>
 
 
-            <div class="featured-viewport">
-
-                <div
-                    class="featured-track"
-                    id="featuredTrack"
-                ></div>
-
-            </div>
+            <div
+                class="featured-pagination"
+                id="featuredPagination"
+                aria-label="Featured games"
+            ></div>
 
         </section>
 
 
         <!-- =================================================
-             RECOMMENDED
+             DEALS & EVENTS
+
+             Entire section is hidden when store.js has no
+             legitimate promotions to display.
         ================================================== -->
 
         <section
-            class="store-section"
-            id="recommendations"
+            class="store-section deals-section"
+            id="deals-events"
+            hidden
         >
 
             <div class="section-heading">
@@ -313,11 +351,92 @@
                 <div>
 
                     <span class="section-label">
-                        YOUR STORE
+                        HAPPENING NOW
                     </span>
 
                     <h2>
-                        Recommended Based on the Games You Play
+                        Deals &amp; Events
+                    </h2>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="section-action"
+                    id="viewAllDeals"
+                >
+                    See All
+                </button>
+
+            </div>
+
+
+            <div
+                class="store-carousel row-carousel"
+                data-carousel="deals"
+            >
+
+                <button
+                    type="button"
+                    class="carousel-arrow row-arrow carousel-arrow-left"
+                    data-carousel-previous="deals"
+                    aria-label="Previous deals and events"
+                    hidden
+                >
+                    <span aria-hidden="true">
+                        ‹
+                    </span>
+                </button>
+
+
+                <div
+                    class="horizontal-row deals-row"
+                    id="dealsRow"
+                    data-carousel-track="deals"
+                ></div>
+
+
+                <button
+                    type="button"
+                    class="carousel-arrow row-arrow carousel-arrow-right"
+                    data-carousel-next="deals"
+                    aria-label="More deals and events"
+                    hidden
+                >
+                    <span aria-hidden="true">
+                        ›
+                    </span>
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             RECOMMENDED FOR YOU
+
+             store.js may hide this section when there is not
+             enough player/library activity to personalize it.
+        ================================================== -->
+
+        <section
+            class="store-section personalized-section"
+            id="recommendations"
+            hidden
+        >
+
+            <div class="section-heading">
+
+                <div>
+
+                    <span class="section-label">
+                        FOR YOU
+                    </span>
+
+                    <h2>
+                        Recommended For You
                     </h2>
 
                 </div>
@@ -335,20 +454,57 @@
 
 
             <div
-                class="compact-game-row"
-                id="recommendedRow"
-            ></div>
+                class="store-carousel row-carousel"
+                data-carousel="recommended"
+            >
+
+                <button
+                    type="button"
+                    class="carousel-arrow row-arrow carousel-arrow-left"
+                    data-carousel-previous="recommended"
+                    aria-label="Previous recommended games"
+                    hidden
+                >
+                    <span aria-hidden="true">
+                        ‹
+                    </span>
+                </button>
+
+
+                <div
+                    class="horizontal-row game-row"
+                    id="recommendedRow"
+                    data-carousel-track="recommended"
+                ></div>
+
+
+                <button
+                    type="button"
+                    class="carousel-arrow row-arrow carousel-arrow-right"
+                    data-carousel-next="recommended"
+                    aria-label="More recommended games"
+                    hidden
+                >
+                    <span aria-hidden="true">
+                        ›
+                    </span>
+                </button>
+
+            </div>
 
         </section>
 
 
         <!-- =================================================
              BECAUSE YOU PLAYED
+
+             Hidden until real player activity supports it.
         ================================================== -->
 
         <section
             class="store-section personalized-section"
             id="because-you-played"
+            hidden
         >
 
             <div class="section-heading">
@@ -356,14 +512,12 @@
                 <div>
 
                     <span class="section-label">
-                        FOR YOU
+                        BASED ON YOUR PLAY
                     </span>
 
                     <h2>
                         Because You Played
-                        <span id="becauseGameTitle">
-                            Apex Demo
-                        </span>
+                        <span id="becauseGameTitle"></span>
                     </h2>
 
                 </div>
@@ -372,20 +526,54 @@
 
 
             <div
-                class="compact-game-row"
-                id="becauseRow"
-            ></div>
+                class="store-carousel row-carousel"
+                data-carousel="because"
+            >
+
+                <button
+                    type="button"
+                    class="carousel-arrow row-arrow carousel-arrow-left"
+                    data-carousel-previous="because"
+                    aria-label="Previous similar games"
+                    hidden
+                >
+                    <span aria-hidden="true">
+                        ‹
+                    </span>
+                </button>
+
+
+                <div
+                    class="horizontal-row game-row"
+                    id="becauseRow"
+                    data-carousel-track="because"
+                ></div>
+
+
+                <button
+                    type="button"
+                    class="carousel-arrow row-arrow carousel-arrow-right"
+                    data-carousel-next="because"
+                    aria-label="More similar games"
+                    hidden
+                >
+                    <span aria-hidden="true">
+                        ›
+                    </span>
+                </button>
+
+            </div>
 
         </section>
 
 
         <!-- =================================================
-             NEW & NOTEWORTHY
+             FRESH RELEASES
         ================================================== -->
 
         <section
             class="store-section"
-            id="new-noteworthy"
+            id="fresh-releases"
         >
 
             <div class="section-heading">
@@ -397,7 +585,87 @@
                     </span>
 
                     <h2>
-                        New &amp; Noteworthy
+                        Fresh Releases
+                    </h2>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="section-action"
+                    data-scroll="games"
+                >
+                    Browse All
+                </button>
+
+            </div>
+
+
+            <div
+                class="store-carousel row-carousel"
+                data-carousel="fresh"
+            >
+
+                <button
+                    type="button"
+                    class="carousel-arrow row-arrow carousel-arrow-left"
+                    data-carousel-previous="fresh"
+                    aria-label="Previous fresh releases"
+                    hidden
+                >
+                    <span aria-hidden="true">
+                        ‹
+                    </span>
+                </button>
+
+
+                <div
+                    class="horizontal-row game-row"
+                    id="freshReleasesRow"
+                    data-carousel-track="fresh"
+                ></div>
+
+
+                <button
+                    type="button"
+                    class="carousel-arrow row-arrow carousel-arrow-right"
+                    data-carousel-next="fresh"
+                    aria-label="More fresh releases"
+                    hidden
+                >
+                    <span aria-hidden="true">
+                        ›
+                    </span>
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             EXPLORE CATEGORIES
+
+             Larger visual cards with permanent white category
+             pills. store.js only renders useful categories.
+        ================================================== -->
+
+        <section
+            class="store-section category-section"
+            id="categories"
+        >
+
+            <div class="section-heading">
+
+                <div>
+
+                    <span class="section-label">
+                        FIND YOUR NEXT GAME
+                    </span>
+
+                    <h2>
+                        Explore Categories
                     </h2>
 
                 </div>
@@ -406,72 +674,41 @@
 
 
             <div
-                class="discovery-tabs"
-                role="tablist"
-                aria-label="New and noteworthy filters"
+                class="store-carousel category-carousel"
+                data-carousel="categories"
             >
 
                 <button
                     type="button"
-                    class="active"
-                    data-discovery="new"
-                    role="tab"
-                    aria-selected="true"
+                    class="carousel-arrow row-arrow carousel-arrow-left"
+                    data-carousel-previous="categories"
+                    aria-label="Previous categories"
+                    hidden
                 >
-                    Popular New Releases
+                    <span aria-hidden="true">
+                        ‹
+                    </span>
                 </button>
 
-                <button
-                    type="button"
-                    data-discovery="top"
-                    role="tab"
-                    aria-selected="false"
-                >
-                    Top Sellers
-                </button>
-
-                <button
-                    type="button"
-                    data-discovery="upcoming"
-                    role="tab"
-                    aria-selected="false"
-                >
-                    Popular Upcoming
-                </button>
-
-                <button
-                    type="button"
-                    data-discovery="specials"
-                    role="tab"
-                    aria-selected="false"
-                >
-                    Specials
-                </button>
-
-                <button
-                    type="button"
-                    data-discovery="free"
-                    role="tab"
-                    aria-selected="false"
-                >
-                    Trending Free
-                </button>
-
-            </div>
-
-
-            <div class="discovery-layout">
 
                 <div
-                    class="discovery-list"
-                    id="discoveryList"
+                    class="horizontal-row category-row"
+                    id="categoryRow"
+                    data-carousel-track="categories"
                 ></div>
 
-                <aside
-                    class="discovery-preview"
-                    id="discoveryPreview"
-                    aria-live="polite"
-                ></aside>
+
+                <button
+                    type="button"
+                    class="carousel-arrow row-arrow carousel-arrow-right"
+                    data-carousel-next="categories"
+                    aria-label="More categories"
+                    hidden
+                >
+                    <span aria-hidden="true">
+                        ›
+                    </span>
+                </button>
 
             </div>
 
@@ -479,11 +716,237 @@
 
 
         <!-- =================================================
-             EXPLORE GAMES
+             STUDIOS YOU MIGHT LIKE
+
+             V3 replacement for the Steam-like
+             "developers/publishers you know" concept.
+
+             Hidden until player history provides enough data.
         ================================================== -->
 
         <section
-            class="store-section"
+            class="store-section personalized-section studio-section"
+            id="studios-you-might-like"
+            hidden
+        >
+
+            <div class="section-heading">
+
+                <div>
+
+                    <span class="section-label">
+                        DISCOVER CREATORS
+                    </span>
+
+                    <h2>
+                        Studios You Might Like
+                    </h2>
+
+                    <p class="section-subtitle">
+                        Creators connected to the games you play.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div
+                class="store-carousel row-carousel"
+                data-carousel="studios"
+            >
+
+                <button
+                    type="button"
+                    class="carousel-arrow row-arrow carousel-arrow-left"
+                    data-carousel-previous="studios"
+                    aria-label="Previous studios"
+                    hidden
+                >
+                    <span aria-hidden="true">
+                        ‹
+                    </span>
+                </button>
+
+
+                <div
+                    class="horizontal-row studio-row"
+                    id="studioRow"
+                    data-carousel-track="studios"
+                ></div>
+
+
+                <button
+                    type="button"
+                    class="carousel-arrow row-arrow carousel-arrow-right"
+                    data-carousel-next="studios"
+                    aria-label="More studios"
+                    hidden
+                >
+                    <span aria-hidden="true">
+                        ›
+                    </span>
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             PLAYER PICKS
+
+             Hidden until Apex has real community recommendation
+             data to show.
+        ================================================== -->
+
+        <section
+            class="store-section community-section"
+            id="player-picks"
+            hidden
+        >
+
+            <div class="section-heading">
+
+                <div>
+
+                    <span class="section-label">
+                        FROM THE COMMUNITY
+                    </span>
+
+                    <h2>
+                        Player Picks
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <div
+                class="store-carousel row-carousel"
+                data-carousel="player-picks"
+            >
+
+                <button
+                    type="button"
+                    class="carousel-arrow row-arrow carousel-arrow-left"
+                    data-carousel-previous="player-picks"
+                    aria-label="Previous player picks"
+                    hidden
+                >
+                    <span aria-hidden="true">
+                        ‹
+                    </span>
+                </button>
+
+
+                <div
+                    class="horizontal-row game-row"
+                    id="playerPicksRow"
+                    data-carousel-track="player-picks"
+                ></div>
+
+
+                <button
+                    type="button"
+                    class="carousel-arrow row-arrow carousel-arrow-right"
+                    data-carousel-next="player-picks"
+                    aria-label="More player picks"
+                    hidden
+                >
+                    <span aria-hidden="true">
+                        ›
+                    </span>
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             BEST ON APX
+
+             Intentionally disabled until APX Cloud Gaming
+             launches. store.js controls availability.
+        ================================================== -->
+
+        <section
+            class="store-section apx-section"
+            id="best-on-apx"
+            hidden
+        >
+
+            <div class="section-heading">
+
+                <div>
+
+                    <span class="section-label">
+                        APX CLOUD GAMING
+                    </span>
+
+                    <h2>
+                        Best on APX
+                    </h2>
+
+                    <p class="section-subtitle">
+                        Games built for a great APX Cloud Gaming experience.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div
+                class="store-carousel row-carousel"
+                data-carousel="apx"
+            >
+
+                <button
+                    type="button"
+                    class="carousel-arrow row-arrow carousel-arrow-left"
+                    data-carousel-previous="apx"
+                    aria-label="Previous APX games"
+                    hidden
+                >
+                    <span aria-hidden="true">
+                        ‹
+                    </span>
+                </button>
+
+
+                <div
+                    class="horizontal-row game-row"
+                    id="apxRow"
+                    data-carousel-track="apx"
+                ></div>
+
+
+                <button
+                    type="button"
+                    class="carousel-arrow row-arrow carousel-arrow-right"
+                    data-carousel-next="apx"
+                    aria-label="More APX games"
+                    hidden
+                >
+                    <span aria-hidden="true">
+                        ›
+                    </span>
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             ALL GAMES
+        ================================================== -->
+
+        <section
+            class="store-section browse-section"
             id="games"
         >
 
@@ -492,11 +955,11 @@
                 <div>
 
                     <span class="section-label">
-                        BROWSE
+                        STORE CATALOG
                     </span>
 
                     <h2>
-                        Explore Games
+                        Browse Games
                     </h2>
 
                 </div>
@@ -507,7 +970,7 @@
                     class="section-action"
                     id="showAllGames"
                 >
-                    Browse All
+                    Show All
                 </button>
 
             </div>
@@ -546,88 +1009,6 @@
 
 
         <!-- =================================================
-             CATEGORIES
-        ================================================== -->
-
-        <section
-            class="store-section"
-            id="categories"
-        >
-
-            <div class="section-heading">
-
-                <div>
-
-                    <span class="section-label">
-                        BROWSE
-                    </span>
-
-                    <h2>
-                        Browse by Category
-                    </h2>
-
-                </div>
-
-            </div>
-
-
-            <div class="category-strip">
-
-                <button
-                    type="button"
-                    data-category="action"
-                >
-                    Action
-                </button>
-
-                <button
-                    type="button"
-                    data-category="adventure"
-                >
-                    Adventure
-                </button>
-
-                <button
-                    type="button"
-                    data-category="multiplayer"
-                >
-                    Multiplayer
-                </button>
-
-                <button
-                    type="button"
-                    data-category="singleplayer"
-                >
-                    Singleplayer
-                </button>
-
-                <button
-                    type="button"
-                    data-category="free-to-play"
-                >
-                    Free to Play
-                </button>
-
-                <button
-                    type="button"
-                    data-category="controller"
-                >
-                    Controller
-                </button>
-
-                <button
-                    type="button"
-                    data-category="coming-soon"
-                >
-                    Upcoming
-                </button>
-
-            </div>
-
-        </section>
-
-
-        <!-- =================================================
              STORE END
         ================================================== -->
 
@@ -646,7 +1027,7 @@
                 <p>
                     The Apex Games Store will continue
                     expanding with new games, developers,
-                    and experiences.
+                    events, and experiences.
                 </p>
 
             </div>
@@ -704,19 +1085,16 @@
 
 <!-- =========================================================
      GLOBAL NAV
-
-     Loaded after account scripts so it can preserve the
-     existing account system while upgrading the interface.
 ========================================================= -->
 
 <script src="apex-nav.js?v=1"></script>
 
 
 <!-- =========================================================
-     STORE
+     STORE V3
 ========================================================= -->
 
-<script src="store.js?v=4"></script>
+<script src="store.js?v=5"></script>
 
 </body>
 </html>
