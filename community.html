@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="theme-color"
+        content="#080b10"
+    >
+
+    <title>Community | Apex Games</title>
+
+    <link
+        rel="stylesheet"
+        href="community.css?v=1"
+    >
+
+    <link
+        rel="stylesheet"
+        href="apex-nav.css?v=1"
+    >
+</head>
+
+<body>
+
+<!-- =========================================================
+     APEX GAMES GLOBAL NAV PLACEHOLDER
+     Replaced by apex-nav.js
+========================================================= -->
+
+<header class="topbar">
+
+    <div class="nav-left">
+
+        <a
+            href="index.html"
+            class="brand"
+            aria-label="Apex Games Home"
+        >
+            <img
+                src="apex-logo.png"
+                alt="Apex Games"
+            >
+        </a>
+
+        <nav
+            class="main-nav"
+            aria-label="Main navigation"
+        >
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="library.html">
+                Library
+            </a>
+
+            <a href="chat.html">
+                Chat
+            </a>
+
+            <a href="store.html">
+                Store
+            </a>
+
+            <a
+                href="community.html"
+                class="active"
+            >
+                Community
+            </a>
+
+            <a href="news.html">
+                News
+            </a>
+
+            <a href="about.html">
+                About
+            </a>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+<!-- =========================================================
+     COMMUNITY
+========================================================= -->
+
+<main class="community-page">
+
+    <div
+        class="community-background"
+        aria-hidden="true"
+    ></div>
+
+
+    <div class="community-shell">
+
+
+        <!-- =================================================
+             PAGE HEADER
+        ================================================== -->
+
+        <section class="community-header">
+
+            <div class="community-header-copy">
+
+                <span class="community-eyebrow">
+                    APEX GAMES COMMUNITY
+                </span>
+
+                <h1>
+                    Community
+                </h1>
+
+                <p>
+                    Find players, discover creators, join discussions,
+                    and see what's happening across Apex Games.
+                </p>
+
+            </div>
+
+
+            <div class="community-header-actions">
+
+                <a
+                    href="friends.html"
+                    class="community-secondary-button"
+                >
+                    Friends
+                </a>
+
+                <a
+                    href="discussions.html"
+                    class="community-primary-button"
+                >
+                    Start a Discussion
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             COMMUNITY NAVIGATION
+        ================================================== -->
+
+        <nav
+            class="community-tabs"
+            aria-label="Community sections"
+        >
+
+            <a
+                href="community.html"
+                class="active"
+            >
+                Home
+            </a>
+
+            <a href="discussions.html">
+                Discussions
+            </a>
+
+            <a href="activity.html">
+                Activity
+            </a>
+
+            <a href="creators.html">
+                Creators
+            </a>
+
+            <a href="friends.html">
+                Friends
+            </a>
+
+        </nav>
+
+
+        <!-- =================================================
+             MAIN GRID
+        ================================================== -->
+
+        <div class="community-layout">
+
+
+            <!-- =============================================
+                 LEFT / MAIN CONTENT
+            ============================================== -->
+
+            <div class="community-main">
+
+
+                <!-- =========================================
+                     DISCUSSIONS
+                ========================================== -->
+
+                <section class="community-section">
+
+                    <div class="section-heading">
+
+                        <div>
+
+                            <span class="section-kicker">
+                                DISCUSSIONS
+                            </span>
+
+                            <h2>
+                                Community discussions
+                            </h2>
+
+                            <p>
+                                Talk about games, updates, strategies,
+                                development, and everything Apex Games.
+                            </p>
+
+                        </div>
+
+
+                        <a
+                            href="discussions.html"
+                            class="section-link"
+                        >
+                            View discussions
+                            <span aria-hidden="true">→</span>
+                        </a>
+
+                    </div>
+
+
+                    <div
+                        class="discussion-feed"
+                        id="discussionFeed"
+                    >
+
+                        <div
+                            class="community-empty-state"
+                            id="discussionEmptyState"
+                        >
+
+                            <div
+                                class="empty-icon discussion-empty-icon"
+                                aria-hidden="true"
+                            >
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+
+                            <h3>
+                                No discussions yet
+                            </h3>
+
+                            <p>
+                                Community discussions will appear here
+                                when players start posting.
+                            </p>
+
+                            <a
+                                href="discussions.html"
+                                class="empty-action"
+                            >
+                                Open Discussions
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =========================================
+                     ACTIVITY
+                ========================================== -->
+
+                <section class="community-section">
+
+                    <div class="section-heading">
+
+                        <div>
+
+                            <span class="section-kicker">
+                                ACTIVITY
+                            </span>
+
+                            <h2>
+                                Latest activity
+                            </h2>
+
+                            <p>
+                                Recent public activity from the Apex Games
+                                community will show up here.
+                            </p>
+
+                        </div>
+
+
+                        <a
+                            href="activity.html"
+                            class="section-link"
+                        >
+                            View activity
+                            <span aria-hidden="true">→</span>
+                        </a>
+
+                    </div>
+
+
+                    <div
+                        class="activity-feed"
+                        id="activityFeed"
+                    >
+
+                        <div
+                            class="community-empty-state compact"
+                            id="activityEmptyState"
+                        >
+
+                            <div
+                                class="empty-icon activity-empty-icon"
+                                aria-hidden="true"
+                            >
+                                <span></span>
+                            </div>
+
+                            <h3>
+                                Nothing to show yet
+                            </h3>
+
+                            <p>
+                                Public community activity will appear
+                                here as Apex Games grows.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =========================================
+                     COMMUNITY SAFETY
+                ========================================== -->
+
+                <section class="community-safety">
+
+                    <div class="safety-icon" aria-hidden="true">
+                        <span></span>
+                    </div>
+
+
+                    <div class="safety-copy">
+
+                        <span class="section-kicker">
+                            COMMUNITY SAFETY
+                        </span>
+
+                        <h2>
+                            Play together. Keep it respectful.
+                        </h2>
+
+                        <p>
+                            Apex Games community tools are built around
+                            player safety. Public community features should
+                            include reporting, blocking, moderation, privacy
+                            controls, and anti-spam protections.
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="safety-button"
+                        id="communityGuidelinesButton"
+                    >
+                        Community Guidelines
+                    </button>
+
+                </section>
+
+            </div>
+
+
+            <!-- =============================================
+                 RIGHT SIDEBAR
+            ============================================== -->
+
+            <aside class="community-sidebar">
+
+
+                <!-- =========================================
+                     QUICK LINKS
+                ========================================== -->
+
+                <section class="sidebar-panel">
+
+                    <div class="sidebar-panel-header">
+
+                        <span class="section-kicker">
+                            EXPLORE
+                        </span>
+
+                        <h2>
+                            Community
+                        </h2>
+
+                    </div>
+
+
+                    <div class="community-quick-links">
+
+                        <a
+                            href="discussions.html"
+                            class="community-quick-link"
+                        >
+
+                            <span class="quick-link-icon">
+                                D
+                            </span>
+
+                            <span class="quick-link-copy">
+
+                                <strong>
+                                    Discussions
+                                </strong>
+
+                                <small>
+                                    Join community conversations
+                                </small>
+
+                            </span>
+
+                            <span
+                                class="quick-link-arrow"
+                                aria-hidden="true"
+                            >
+                                →
+                            </span>
+
+                        </a>
+
+
+                        <a
+                            href="activity.html"
+                            class="community-quick-link"
+                        >
+
+                            <span class="quick-link-icon">
+                                A
+                            </span>
+
+                            <span class="quick-link-copy">
+
+                                <strong>
+                                    Activity
+                                </strong>
+
+                                <small>
+                                    See what's happening
+                                </small>
+
+                            </span>
+
+                            <span
+                                class="quick-link-arrow"
+                                aria-hidden="true"
+                            >
+                                →
+                            </span>
+
+                        </a>
+
+
+                        <a
+                            href="creators.html"
+                            class="community-quick-link"
+                        >
+
+                            <span class="quick-link-icon">
+                                C
+                            </span>
+
+                            <span class="quick-link-copy">
+
+                                <strong>
+                                    Creators
+                                </strong>
+
+                                <small>
+                                    Discover Apex creators
+                                </small>
+
+                            </span>
+
+                            <span
+                                class="quick-link-arrow"
+                                aria-hidden="true"
+                            >
+                                →
+                            </span>
+
+                        </a>
+
+
+                        <a
+                            href="friends.html"
+                            class="community-quick-link"
+                        >
+
+                            <span class="quick-link-icon">
+                                F
+                            </span>
+
+                            <span class="quick-link-copy">
+
+                                <strong>
+                                    Friends
+                                </strong>
+
+                                <small>
+                                    Find and manage friends
+                                </small>
+
+                            </span>
+
+                            <span
+                                class="quick-link-arrow"
+                                aria-hidden="true"
+                            >
+                                →
+                            </span>
+
+                        </a>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =========================================
+                     FEATURED CREATORS
+                ========================================== -->
+
+                <section class="sidebar-panel">
+
+                    <div class="sidebar-panel-heading-row">
+
+                        <div>
+
+                            <span class="section-kicker">
+                                CREATORS
+                            </span>
+
+                            <h2>
+                                Featured creators
+                            </h2>
+
+                        </div>
+
+
+                        <a href="creators.html">
+                            View all
+                        </a>
+
+                    </div>
+
+
+                    <div
+                        class="creator-list"
+                        id="featuredCreatorList"
+                    >
+
+                        <div class="creator-empty">
+
+                            <div
+                                class="creator-empty-icon"
+                                aria-hidden="true"
+                            >
+                                A
+                            </div>
+
+                            <strong>
+                                Creator discovery is coming together
+                            </strong>
+
+                            <p>
+                                Featured Apex Games creators will appear
+                                here once creator profiles are available.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =========================================
+                     FIND PLAYERS
+                ========================================== -->
+
+                <section class="sidebar-panel player-search-panel">
+
+                    <div class="sidebar-panel-header">
+
+                        <span class="section-kicker">
+                            PLAYERS
+                        </span>
+
+                        <h2>
+                            Find players
+                        </h2>
+
+                        <p>
+                            Search for an Apex Games player by gamertag.
+                        </p>
+
+                    </div>
+
+
+                    <form
+                        class="player-search"
+                        id="communityPlayerSearch"
+                    >
+
+                        <label
+                            for="communityPlayerSearchInput"
+                            class="sr-only"
+                        >
+                            Search players
+                        </label>
+
+                        <input
+                            type="search"
+                            id="communityPlayerSearchInput"
+                            placeholder="Search gamertags"
+                            autocomplete="off"
+                        >
+
+                        <button type="submit">
+                            Search
+                        </button>
+
+                    </form>
+
+
+                    <p
+                        class="player-search-message"
+                        id="playerSearchMessage"
+                        aria-live="polite"
+                    ></p>
+
+                </section>
+
+            </aside>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<!-- =========================================================
+     COMMUNITY GUIDELINES MODAL
+========================================================= -->
+
+<div
+    class="community-modal-backdrop"
+    id="communityModalBackdrop"
+    hidden
+></div>
+
+
+<section
+    class="community-modal"
+    id="communityGuidelinesModal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="communityGuidelinesTitle"
+    hidden
+>
+
+    <div class="community-modal-header">
+
+        <div>
+
+            <span class="section-kicker">
+                APEX GAMES
+            </span>
+
+            <h2 id="communityGuidelinesTitle">
+                Community Guidelines
+            </h2>
+
+        </div>
+
+
+        <button
+            type="button"
+            class="modal-close"
+            id="communityGuidelinesClose"
+            aria-label="Close community guidelines"
+        >
+            ×
+        </button>
+
+    </div>
+
+
+    <div class="community-modal-content">
+
+        <div class="guideline">
+
+            <strong>
+                Respect other players
+            </strong>
+
+            <p>
+                Harassment, threats, targeted abuse, and hateful behavior
+                do not belong in the Apex Games community.
+            </p>
+
+        </div>
+
+
+        <div class="guideline">
+
+            <strong>
+                Keep personal information private
+            </strong>
+
+            <p>
+                Do not post private or identifying information about
+                yourself or another person.
+            </p>
+
+        </div>
+
+
+        <div class="guideline">
+
+            <strong>
+                Don't spam or scam
+            </strong>
+
+            <p>
+                Avoid repeated unwanted posts, deceptive links,
+                impersonation, and attempts to trick other players.
+            </p>
+
+        </div>
+
+
+        <div class="guideline">
+
+            <strong>
+                Keep content appropriate
+            </strong>
+
+            <p>
+                Community content should be appropriate for the
+                Apex Games audience and follow platform rules.
+            </p>
+
+        </div>
+
+
+        <div class="guideline">
+
+            <strong>
+                Report problems
+            </strong>
+
+            <p>
+                When reporting and blocking tools are available,
+                use them when content or another account violates
+                community rules.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="community-modal-footer">
+
+        <button
+            type="button"
+            id="communityGuidelinesDone"
+        >
+            Done
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     SCRIPTS
+========================================================= -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script src="auth.js"></script>
+
+<script src="presence.js?v=1"></script>
+
+<script src="community.js?v=1"></script>
+
+<script src="apex-nav.js?v=1"></script>
+
+</body>
+
+</html>
